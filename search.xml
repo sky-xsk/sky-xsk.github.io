@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F05%2F14%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[vue2.0，jsonp的一个小案例 请求百度搜索的接口]]></title>
+    <url>%2F2017%2F03%2F10%2Fvue2-0%EF%BC%8Cjsonp%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%A1%88%E4%BE%8B-%E8%AF%B7%E6%B1%82%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E7%9A%84%E6%8E%A5%E5%8F%A3%2F</url>
+    <content type="text"><![CDATA[我用的是vue-cli，可以自己去下一个试试看！JSONP(JSON with Padding)是JSON的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。由于同源策略，一般来说位于 server1.example.com 的网页无法与不是 server1.example.com的服务器沟通，而 HTML 的script 元素是一个例外。利用 script 元素的这个开放策略，网页可以得到从其他来源动态产生的 JSON 资料，而这种使用模式就是所谓的 JSONP。用 JSONP 抓到的资料并不是 JSON，而是任意的JavaScript，用 JavaScript 直译器执行而不是用 JSON 解析器解析。这里用的”vue-resource”里的示例；下面开始了： #html:123456789101112131415&lt;template&gt; &lt;div class=&quot;bar&quot;&gt; &lt;div id=&quot;box&quot;&gt; &lt;h1&gt;jsonp请求百度接口&lt;/h1&gt; &lt;input type=&quot;text&quot; v-model=&quot;t1&quot; @keyup=&quot;get($event)&quot; placeholder=&quot;请输入您要搜索的关键词&quot; class=&quot;input_s&quot; @keydown.down=&quot;changeDown()&quot; @keydown.up.prevent=&quot;changeUp()&quot;&gt; &lt;ul class=&quot;ul_se&quot;&gt; &lt;li v-for=&quot;(value,$index) in myData&quot; :class=&quot;&#123;gray:$index==now&#125;&quot; @click=&quot;clickChose($index)&quot;&gt; &#123;&#123;value&#125;&#125; &lt;/li&gt; &lt;/ul&gt; &lt;p v-show=&quot;myData.length==0&quot;&gt;暂无数据...&lt;/p&gt; &lt;/div&gt; &lt;/div&gt;&lt;/template&gt; #js:1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950&lt;script&gt; export default &#123; data() &#123; return &#123; myData:[], t1:&apos;&apos;, now:-1, &#125; &#125;, methods:&#123; get(ev)&#123; //键盘操作 if(ev.keyCode==38 || ev.keyCode==40) return; if(ev.keyCode==13)&#123; window.open(&apos;https://www.baidu.com/s?wd=&apos;+this.t1); this.t1=&apos;&apos;; &#125; this.$http.jsonp(&quot;https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su&quot;, //跨域请求接口 &#123; params: &#123; wd:this.t1, &#125;, jsonp:&apos;cb&apos; &#125;).then(function(res)&#123; this.myData = JSON.parse(res.bodyText).s &#125;,function()&#123; console.log(&quot;请求失败！！！&quot;) &#125;); &#125;, changeDown()&#123; //下键选择 this.now++; if(this.now==this.myData.length)this.now=-1; this.t1=this.myData[this.now]; &#125;, changeUp()&#123; //上键选择 this.now--; if(this.now==-2)this.now=this.myData.length-1; this.t1=this.myData[this.now]; &#125;, clickChose($index)&#123; //鼠标选择搜索关键词事件 this.now = $index; this.t1=this.myData[this.now]; window.open(&apos;https://www.baidu.com/s?wd=&apos;+this.t1); &#125;, &#125;, &#125;&lt;/script&gt; #css:1234567&lt;style scoped&gt;.ul_se&#123; background: #fff; border: 1px solid #ccc; width: 100%;&#125;.ul_se li&#123;list-style: none; height: 30px; line-height: 30px; cursor: pointer;&#125;.input_s&#123;width: 400px; height: 30px; padding-left: 10px;&#125;.gray&#123;background: deepskyblue; color: #fff;&#125;.ul_se li:hover&#123;background: deepskyblue; color: #fff;&#125;&lt;/style&gt; 最终效果：当你在输入框里输入搜索的关键词的时候，就会自动将联想的词汇显示在下方，按一下“enter”键，即可跳转到搜索结果 的页面，同是按“上”，“下”键可以进行选择搜索的关键词，鼠标也可以进行操作选择，跳转！ 以后搜索，直接打开就可以了！]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>vue2.0</tag>
+      </tags>
+  </entry>
+</search>
