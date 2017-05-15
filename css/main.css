@@ -811,6 +811,24 @@ pre .javascript .function {
 .info h6 {
   color: #5bc0de;
 }
+.tag-cloud a {
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 0;
+  border-radius: 3px;
+}
+.tag-cloud a:nth-child(odd) {
+  background: #009688;
+}
+.tag-cloud a:nth-child(even) {
+  background: #ff5722;
+}
+.tag-cloud a:nth-child(odd):hover {
+  background: #393d49;
+}
+.tag-cloud a:nth-child(even):hover {
+  background: #1e9fff;
+}
 .btn {
   display: inline-block;
   padding: 0 20px;
@@ -931,7 +949,7 @@ pre .javascript .function {
   right: 30px;
   z-index: 1050;
   padding: 0 6px;
-  width: 24px;
+  width: 44px;
   background: #222;
   font-size: 12px;
   opacity: 1;
@@ -958,7 +976,7 @@ pre .javascript .function {
   bottom: 19px;
 }
 .header {
-  background: transparent;
+  background: url("../../../images/banner.png") no-repeat;
 }
 .header-inner {
   position: relative;
@@ -981,7 +999,7 @@ pre .javascript .function {
   display: inline-block;
   padding: 0 40px;
   color: #fff;
-  background: #222;
+  background: #3e3e74;
   border-bottom: none;
 }
 .brand:hover {
@@ -1004,7 +1022,7 @@ pre .javascript .function {
 .site-subtitle {
   margin-top: 10px;
   font-size: 13px;
-  color: #999;
+  color: #000;
 }
 .use-motion .brand {
   opacity: 0;
@@ -1088,6 +1106,8 @@ pre .javascript .function {
 }
 .post-body {
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
 }
 @media (max-width: 767px) {
   .post-body {
@@ -1326,6 +1346,8 @@ pre .javascript .function {
   border-bottom: none;
   line-height: 1.2;
   vertical-align: top;
+  padding-left: 50px;
+  background: url("../../../images/title.png") left no-repeat;
 }
 .posts-expand .post-title-link::before {
   content: "";
@@ -1362,6 +1384,7 @@ pre .javascript .function {
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
   text-align: center;
+  background: #f2f2f2;
 }
 .posts-expand .post-meta .post-category-list {
   display: inline-block;
@@ -1452,6 +1475,25 @@ pre .javascript .function {
   display: inline-block;
   margin-right: 10px;
   font-size: 13px;
+}
+.post-tags a {
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 0;
+  border-radius: 3px;
+  color: #fff;
+}
+.post-tags a:nth-child(odd) {
+  background: #009688;
+}
+.post-tags a:nth-child(even) {
+  background: #ff5722;
+}
+.post-tags a:nth-child(odd):hover {
+  background: #393d49;
+}
+.post-tags a:nth-child(even):hover {
+  background: #1e9fff;
 }
 .post-nav {
   display: table;
@@ -1691,10 +1733,10 @@ pre .javascript .function {
   position: fixed;
   right: 30px;
   bottom: 45px;
-  width: 14px;
-  height: 14px;
-  padding: 5px;
-  background: #222;
+  width: 24px;
+  height: 24px;
+  padding: 10px;
+  background: #3e3e74;
   line-height: 0;
   z-index: 1050;
   cursor: pointer;
@@ -1720,7 +1762,7 @@ pre .javascript .function {
   margin-top: 3px;
 }
 .sidebar-toggle-line:first-child {
-  margin-top: 0;
+  margin-top: 5px;
 }
 .site-author-image {
   display: block;
@@ -1810,7 +1852,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fe2f81;
+  background: #c3e0fe;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -1924,6 +1966,7 @@ pre .javascript .function {
 .footer {
   font-size: 14px;
   color: #999;
+  background: #2f4056;
 }
 .footer img {
   border: none;
@@ -1937,9 +1980,10 @@ pre .javascript .function {
 }
 .powered-by,
 .theme-info {
-  display: inline-block;
+  display: none;
 }
 .powered-by {
+  display: none;
   margin-right: 10px;
 }
 .powered-by::after {
@@ -2411,6 +2455,24 @@ pre .javascript .function {
 }
 .category-all-page .category-list-child {
   padding-left: 10px;
+}
+.category-list-item a {
+  padding: 5px;
+  border: 0;
+  border-radius: 3px;
+  color: #fff;
+}
+.category-list-item a:nth-child(odd) {
+  background: #009688;
+}
+.category-list-item a:nth-child(even) {
+  background: #ff5722;
+}
+.category-list-item a:nth-child(odd):hover {
+  background: #393d49;
+}
+.category-list-item a:nth-child(even):hover {
+  background: #1e9fff;
 }
 #schedule ul#event-list {
   padding-left: 30px;
