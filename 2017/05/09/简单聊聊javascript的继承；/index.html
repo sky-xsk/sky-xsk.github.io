@@ -402,14 +402,14 @@
 
       
         <p>在JS中继承是一个非常复杂的话题，比其他任何面向对象语言中的继承都复杂得多。<br>在大多数其他面向对象语言中，继承一个类只需使用一个关键字即可。在JS中想要达到继承公用成员的目的，需要采取一系列措施。JS属于原型式继承，得益于这种灵活性，我们既可以使用标准的基于类的继承，也可以使用更微妙一些的原型式继承。在JS中应该要明确一点，一切继承都是通过prototype来进行的，且JS是基于对象来继承的。（这话是比较官方的说法，看着都很专业）<br> <a id="more"></a></p>
-<p>###在说继承之前，首先得先回答一个问题，什么是继承？###<br>我理解的继承，简单来说就是，<br>–1.在原有类的基础上，进行可操作的修改，得到一个崭新的类，这个类有原来类的功能，同时也有自己的功能；<br>–2.这个新的类，不会影响原有类的功能，不会相互干预；</p>
+<p></p><h1>在说继承之前，首先得先回答一个问题，什么是继承？</h1><br>我理解的继承，简单来说就是，<br>–1.在原有类的基础上，进行可操作的修改，得到一个崭新的类，这个类有原来类的功能，同时也有自己的功能；<br>–2.这个新的类，不会影响原有类的功能，不会相互干预；<p></p>
 <p>这里肯定有人要问了，什么是‘可操作的修改呢？’说白了就是在不影响整个类的功能的前提下，进行的修改！这点和第二点略有重复，仔细想想，还是有所区别的！！！<br>下面开始说说常用的集中继承方式：</p>
 <p>###1.代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">function Person(name, sex) &#123;</div><div class="line">    this.name = name;</div><div class="line">    this.sex = sex;</div><div class="line">&#125;</div><div class="line">Person.prototype.showName = function() &#123;</div><div class="line">    console.log(this.name);</div><div class="line">&#125;</div><div class="line">Person.prototype.showSex = function() &#123;</div><div class="line">    console.log(this.sex);</div><div class="line">&#125;</div><div class="line">function work(name, sex, job) &#123;</div><div class="line">   //构造函数伪装调用父级的构造函数——为了继承属性</div><div class="line">    Person.call(this, name, sex);</div><div class="line">    //Person.apply(this, [name, sex]);  //此处的call与apply是有区别的，往下看</div><div class="line">    this.job = job;</div><div class="line">&#125;</div><div class="line">work.prototype = Person.prototype; //通过prototype继承父级的属性</div><div class="line">work.prototype.showJob = function() &#123;</div><div class="line">    console.log(this.job);</div><div class="line">&#125;</div><div class="line">var s = new work(&apos;xue&apos;, &apos;nan&apos;, &apos;developer&apos;);</div><div class="line">s.showJob()  //developer</div></pre></td></tr></table></figure></p>
 <p>简单的解释一下上面的代码：首先写了一个很简单的构造函数，在函数的原型上分别添加了showName和showSex的方法；紧接着写了一个work（）函数，这里注意work（）里面的参数，多了一个job参数，这个参数就是要继承的参数， Person.call(this, name, sex);有人问这里的this指的是啥？看下图：<br><img src="http://upload-images.jianshu.io/upload_images/4155235-9aee6ba236710093.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>答案就是 <b>new出来的work对象！</b><br>work.prototype = Person.prototype;这句话就是通过prototype继承父级的属性，name和sex；然后就是在work的基础上添加showJob方法；<br>最后就是new一个work对象，执行方法！最后work继承了Person的name和sex属性；是不是很好懂！</p>
 <p>###2.代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">function Person(name, sex) &#123;</div><div class="line">           this.name = name;</div><div class="line">           this.sex = sex;</div><div class="line">       &#125;</div><div class="line">       Person.prototype.showName = function() &#123;</div><div class="line">           alert(this.name);</div><div class="line">       &#125;;</div><div class="line">       Person.prototype.showSex = function() &#123;</div><div class="line">           alert(this.sex);</div><div class="line">       &#125;;</div><div class="line">       function work(name, sex, job) &#123;</div><div class="line">           Person.call(this, name, sex);</div><div class="line">           this.job = job;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       //1.原型链 通过原型来继承父级的方法</div><div class="line">       //work.prototype=Person.prototype;</div><div class="line"></div><div class="line">      // 2.原型链 通过原型来继承父级的方法(循环方法)</div><div class="line">      // Person.prototype类型是object；</div><div class="line">       for (var i in Person.prototype) &#123;</div><div class="line">           Worker.prototype[i] = Person.prototype[i];</div><div class="line">       &#125;</div><div class="line">       Worker.prototype.showJob = function() &#123;</div><div class="line">           alert(this.job);</div><div class="line">       &#125;;</div><div class="line">       var p = new Person(&apos;xue&apos;, &apos;nan&apos;);</div><div class="line">       var w = new work(&apos;xue&apos;, &apos;nan&apos;, &apos;developer&apos;);</div><div class="line">       // p.showName();</div><div class="line">       // p.showSex();</div><div class="line">       // w.showName();</div><div class="line">       // w.showSex();</div><div class="line">       // w.showJob();</div></pre></td></tr></table></figure></p>
 <p>简单解释一下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"> for (var i in Person.prototype) &#123;</div><div class="line">       Worker.prototype[i] = Person.prototype[i];</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
 <p>这里只是用不同方法，通过原型链来继承父级的方法，原理是一样的！</p>
-<p>###call与apply的区别###<br>js中call和apply都可以实现继承，唯一的一点参数不同，func.call(func1,var1,var2,var3)对应的apply写法为：func.apply(func1,[var1,var2,var3])。<br>说简单一点，这两函数的作用其实就是更改对象的内部指针，即改变对象的this指向的内容。这在面向对象的js编程过程中有时是很有用的。<br>如有错误请私信本人！</p>
+<p></p><h1>call与apply的区别</h1><br>js中call和apply都可以实现继承，唯一的一点参数不同，func.call(func1,var1,var2,var3)对应的apply写法为：func.apply(func1,[var1,var2,var3])。<br>说简单一点，这两函数的作用其实就是更改对象的内部指针，即改变对象的this指向的内容。这在面向对象的js编程过程中有时是很有用的。<br>如有错误请私信本人！<p></p>
 
       
     </div>
@@ -541,8 +541,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/headers.png"
@@ -672,6 +681,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">在说继承之前，首先得先回答一个问题，什么是继承？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">call与apply的区别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
