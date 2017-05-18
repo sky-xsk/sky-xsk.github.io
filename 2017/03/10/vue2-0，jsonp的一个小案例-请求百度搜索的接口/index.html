@@ -80,6 +80,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="殖民的博客" type="application/atom+xml" />
+
 
 
 
@@ -178,6 +180,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
+
   <div class="site-meta ">
     
 
@@ -219,16 +222,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -245,6 +238,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
           </a>
         </li>
       
@@ -389,6 +392,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  586
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
 
           
 
@@ -408,8 +442,35 @@
 <p>#css:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;style scoped&gt;</div><div class="line">.ul_se&#123; background: #fff; border: 1px solid #ccc; width: 100%;&#125;</div><div class="line">.ul_se li&#123;list-style: none; height: 30px; line-height: 30px; cursor: pointer;&#125;</div><div class="line">.input_s&#123;width: 400px; height: 30px; padding-left: 10px;&#125;</div><div class="line">.gray&#123;background: deepskyblue; color: #fff;&#125;</div><div class="line">.ul_se li:hover&#123;background: deepskyblue; color: #fff;&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></p>
 <p>最终效果：当你在输入框里输入搜索的关键词的时候，就会自动将联想的词汇显示在下方，按一下“enter”键，即可跳转到搜索结果 的页面，同是按“上”，“下”键可以进行选择搜索的关键词，鼠标也可以进行操作选择，跳转！<br><img src="http://upload-images.jianshu.io/upload_images/4155235-3eccbc030e74c61b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p>以后搜索，直接打开就可以了！</p>
-<p><b>推荐首音乐</b></p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66"><br></iframe> 
+<blockquote>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script></blockquote>
+
       
     </div>
 
@@ -456,6 +517,21 @@
     <div>
       
         
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      殖民
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://sky-xsk.github.io/2017/03/10/vue2-0，jsonp的一个小案例-请求百度搜索的接口/" title="vue2.0，jsonp的一个小案例 请求百度搜索的接口">http://sky-xsk.github.io/2017/03/10/vue2-0，jsonp的一个小案例-请求百度搜索的接口/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
 
       
     </div>
@@ -477,14 +553,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/02/关于es6的部分语法介绍/" rel="next" title="关于es6的部分语法介绍">
+                <i class="fa fa-chevron-left"></i> 关于es6的部分语法介绍
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/09/简单聊聊javascript的继承；/" rel="prev" title="简单聊聊javascript的继承；">
-                简单聊聊javascript的继承； <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/15/用sourceTree，将自己的代码上传到github上去/" rel="prev" title="用sourceTree，将自己的代码上传到github上去">
+                用sourceTree，将自己的代码上传到github上去 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -533,14 +613,12 @@
       <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
-
+  
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
-
       
 
       
-
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
@@ -556,7 +634,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -567,7 +645,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -578,7 +656,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -586,6 +664,13 @@
 
         </nav>
 
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
         
 
         <div class="links-of-author motion-element">
@@ -627,6 +712,15 @@
                 </a>
               </span>
             
+              <span class="links-of-author-item">
+                <a href="http://shang.qq.com/email/stop/email_stop.html?qq=871855637&sig=a1c657365db7e82805ea4b2351081fc3ebcde159f8ae49b1&tttt=1" target="_blank" title="Contact">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                  Contact
+                </a>
+              </span>
+            
           
         </div>
 
@@ -638,7 +732,7 @@
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
-              一些很牛的博客/网址
+              一些博客/网址
             </div>
             <ul class="links-of-blogroll-list">
               
@@ -676,6 +770,9 @@
       
 
     </div>
+
+     
+
   </aside>
 
 
@@ -693,14 +790,13 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">殖民</span>
-   <p style="margin:0">版权所有：殖民的博客</p>
+ 
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"5","bdPos":"left","bdTop":"178.5"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+  <p style="margin:0">版权所有：殖民的博客</p>
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 
-</div>
 
 <div class="theme-info">
   主题 -
@@ -1190,8 +1286,33 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.1"></script>
+
 
   
 

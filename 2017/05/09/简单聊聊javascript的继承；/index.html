@@ -80,6 +80,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="殖民的博客" type="application/atom+xml" />
+
 
 
 
@@ -93,14 +95,14 @@
 <meta name="description" content="在JS中继承是一个非常复杂的话题，比其他任何面向对象语言中的继承都复杂得多。在大多数其他面向对象语言中，继承一个类只需使用一个关键字即可。在JS中想要达到继承公用成员的目的，需要采取一系列措施。JS属于原型式继承，得益于这种灵活性，我们既可以使用标准的基于类的继承，也可以使用更微妙一些的原型式继承。在JS中应该要明确一点，一切继承都是通过prototype来进行的，且JS是基于对象来继承的。（这话">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简单聊聊javascript的继承；">
+<meta property="og:title" content="简单聊聊javascript的继承">
 <meta property="og:url" content="http://sky-xsk.github.io/2017/05/09/简单聊聊javascript的继承；/index.html">
 <meta property="og:site_name" content="殖民的博客">
 <meta property="og:description" content="在JS中继承是一个非常复杂的话题，比其他任何面向对象语言中的继承都复杂得多。在大多数其他面向对象语言中，继承一个类只需使用一个关键字即可。在JS中想要达到继承公用成员的目的，需要采取一系列措施。JS属于原型式继承，得益于这种灵活性，我们既可以使用标准的基于类的继承，也可以使用更微妙一些的原型式继承。在JS中应该要明确一点，一切继承都是通过prototype来进行的，且JS是基于对象来继承的。（这话">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4155235-9aee6ba236710093.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:updated_time" content="2017-05-14T23:31:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简单聊聊javascript的继承；">
+<meta name="twitter:title" content="简单聊聊javascript的继承">
 <meta name="twitter:description" content="在JS中继承是一个非常复杂的话题，比其他任何面向对象语言中的继承都复杂得多。在大多数其他面向对象语言中，继承一个类只需使用一个关键字即可。在JS中想要达到继承公用成员的目的，需要采取一系列措施。JS属于原型式继承，得益于这种灵活性，我们既可以使用标准的基于类的继承，也可以使用更微妙一些的原型式继承。在JS中应该要明确一点，一切继承都是通过prototype来进行的，且JS是基于对象来继承的。（这话">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4155235-9aee6ba236710093.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
@@ -136,7 +138,7 @@
 
 
 
-  <title>简单聊聊javascript的继承； | 殖民的博客</title>
+  <title>简单聊聊javascript的继承 | 殖民的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -177,6 +179,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
+
   <div class="site-meta ">
     
 
@@ -218,16 +221,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -244,6 +237,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
           </a>
         </li>
       
@@ -327,7 +330,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">简单聊聊javascript的继承；</h2>
+          <h2 class="post-title" itemprop="name headline">简单聊聊javascript的继承</h2>
         
 
         <div class="post-meta">
@@ -388,6 +391,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  954
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
 
           
 
@@ -410,6 +444,34 @@
 <p>简单解释一下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"> for (var i in Person.prototype) &#123;</div><div class="line">       Worker.prototype[i] = Person.prototype[i];</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
 <p>这里只是用不同方法，通过原型链来继承父级的方法，原理是一样的！</p>
 <p></p><h1>call与apply的区别</h1><br>js中call和apply都可以实现继承，唯一的一点参数不同，func.call(func1,var1,var2,var3)对应的apply写法为：func.apply(func1,[var1,var2,var3])。<br>说简单一点，这两函数的作用其实就是更改对象的内部指针，即改变对象的this指向的内容。这在面向对象的js编程过程中有时是很有用的。<br>如有错误请私信本人！<p></p>
+<blockquote>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script></blockquote>
 
       
     </div>
@@ -457,6 +519,21 @@
     <div>
       
         
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      殖民
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://sky-xsk.github.io/2017/05/09/简单聊聊javascript的继承；/" title="简单聊聊javascript的继承">http://sky-xsk.github.io/2017/05/09/简单聊聊javascript的继承；/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
 
       
     </div>
@@ -478,8 +555,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/10/vue2-0，jsonp的一个小案例-请求百度搜索的接口/" rel="next" title="vue2.0，jsonp的一个小案例 请求百度搜索的接口">
-                <i class="fa fa-chevron-left"></i> vue2.0，jsonp的一个小案例 请求百度搜索的接口
+              <a href="/2017/05/09/高度复用的弹出框组件的写法-vue2.0/" rel="next" title="高度复用的弹出框组件的写法  vue2.0">
+                <i class="fa fa-chevron-left"></i> 高度复用的弹出框组件的写法  vue2.0
               </a>
             
           </div>
@@ -487,6 +564,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/11/vue2-0-自己开发一个全局定义的公用组件（插件）/" rel="prev" title="vue2.0,自己开发一个全局定义的公用组件（插件）">
+                vue2.0,自己开发一个全局定义的公用组件（插件） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -534,10 +615,9 @@
       <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
-
+  
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
-
       
 
       
@@ -550,7 +630,6 @@
           </li>
         </ul>
       
-
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
@@ -566,7 +645,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -577,7 +656,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -588,7 +667,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -596,6 +675,13 @@
 
         </nav>
 
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
         
 
         <div class="links-of-author motion-element">
@@ -637,6 +723,15 @@
                 </a>
               </span>
             
+              <span class="links-of-author-item">
+                <a href="http://shang.qq.com/email/stop/email_stop.html?qq=871855637&sig=a1c657365db7e82805ea4b2351081fc3ebcde159f8ae49b1&tttt=1" target="_blank" title="Contact">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                  Contact
+                </a>
+              </span>
+            
           
         </div>
 
@@ -648,7 +743,7 @@
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
-              一些很牛的博客/网址
+              一些博客/网址
             </div>
             <ul class="links-of-blogroll-list">
               
@@ -702,6 +797,9 @@
       
 
     </div>
+
+     
+
   </aside>
 
 
@@ -719,14 +817,13 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">殖民</span>
-   <p style="margin:0">版权所有：殖民的博客</p>
+ 
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"5","bdPos":"left","bdTop":"178.5"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+  <p style="margin:0">版权所有：殖民的博客</p>
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 
-</div>
 
 <div class="theme-info">
   主题 -
@@ -1216,8 +1313,33 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.1"></script>
+
 
   
 
