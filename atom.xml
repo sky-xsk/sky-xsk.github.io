@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sky-xsk.github.io/"/>
-  <updated>2017-05-18T08:49:39.575Z</updated>
+  <updated>2017-05-18T16:08:17.000Z</updated>
   <id>http://sky-xsk.github.io/</id>
   
   <author>
@@ -20,13 +20,13 @@
     <link href="http://sky-xsk.github.io/2017/05/18/js%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%BA%9B%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%BC%E5%AE%B9%E4%BA%8B%E4%BB%B6%E6%96%B9%E6%B3%95/"/>
     <id>http://sky-xsk.github.io/2017/05/18/js实现一些跨浏览器的兼容事件方法/</id>
     <published>2017-05-18T15:56:19.000Z</published>
-    <updated>2017-05-18T08:49:39.575Z</updated>
+    <updated>2017-05-18T16:08:17.000Z</updated>
     
     <content type="html"><![CDATA[<p>用JavaScript实现事件的绑定，移除，以及一些常用的事件属性的获取，时常要考虑到在不同浏览器下的兼容性，下面给出了一个跨浏览器的事件对象：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">var EventUtil = &#123;</div><div class="line">    on: function(element, type, handler) &#123;/* 添加事件 */</div><div class="line">        if (element.addEventListener) &#123;</div><div class="line">            element.addEventListener(type, handler, false);</div><div class="line">        &#125; else if (element.attachEvent) &#123;//IE  注意：此时事件处理程序会在全局作用域中运行，因此用attachEvent绑定的事件，此时在事件处理函数里的this 等于window，使用时要注意</div><div class="line"></div><div class="line">            element.attachEvent(&quot;on&quot; + type, handler);</div><div class="line">        &#125; else &#123;</div><div class="line">            element[&quot;on&quot; + type] = handler;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    off: function(element, type, handler) &#123;/* 移除事件 */</div><div class="line">        if (element.removeEventListener) &#123;</div><div class="line">            element.removeEventListener(type, handler, false);</div><div class="line">        &#125; else if (element.detachEvent) &#123;</div><div class="line">            element.detachEvent(&quot;on&quot; + type, handler);</div><div class="line">        &#125; else &#123;</div><div class="line">            element[&quot;on&quot; + type] = null;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    getEvent: function(event) &#123;/* 返回对event对象的引用 */</div><div class="line">        return event ? event : window.event;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    getTarget: function(event) &#123;/* 返回事件的目标 */</div><div class="line">        return event.target || event.srcElement;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    preventDefault: function(event) &#123; /* 取消事件的默认行为 */</div><div class="line">        if (event.preventDefault) &#123;</div><div class="line">            event.preventDefault();</div><div class="line">        &#125; else &#123;</div><div class="line">            event.returnValue = false;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    stopPropagation: function(event) &#123;/* 阻止事件冒泡 */</div><div class="line">        if (event.stopPropagation) &#123;</div><div class="line">            event.stopPropagation();</div><div class="line">        &#125; else &#123;</div><div class="line">            event.cancelBubble = true;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    /* mouseover 和mouserout 这两个事件都会涉及把鼠标指针从一个元素的边界之内移动到另一个元素的边界之内。*/</div><div class="line">    getRelatedTarget: function(event) &#123;</div><div class="line">        if (event.relatedTarget) &#123;</div><div class="line">            return event.relatedTarget;</div><div class="line">        &#125; else if (event.toElement) &#123;//IE8 mouserout事件</div><div class="line">            return event.toElement;</div><div class="line">        &#125; else if (event.fromElement) &#123;//IE8 mouseover事件</div><div class="line">            return event.fromElement;</div><div class="line">        &#125; else &#123;</div><div class="line">            return null;//其他事件</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>调用如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">EventUtil.on(document, &quot;click&quot;, function(event)&#123;//为document元素绑定click事件</div><div class="line">    event = EventUtil.getEvent(event);//获取event事件对象</div><div class="line">    alert(&quot;Screen coordinates: &quot; + event.screenX + &quot;,&quot; + event.screenY);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -70,7 +70,7 @@
     <link href="http://sky-xsk.github.io/2017/05/16/%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3-forEach-call-%EF%BC%9F/"/>
     <id>http://sky-xsk.github.io/2017/05/16/怎么理解-forEach-call-？/</id>
     <published>2017-05-16T13:35:17.000Z</published>
-    <updated>2017-05-18T08:50:09.661Z</updated>
+    <updated>2017-05-18T16:08:01.000Z</updated>
     
     <content type="html"><![CDATA[<p>今天，在网上看到javascript的[].forEach.call()写法，刚看到的时候有点蒙，不是太明白是什么意思！后来到网上查了一下，其实这东西是个简写的写法。如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function forEach(elems, callback) &#123;</div><div class="line">  if([].forEach) &#123;</div><div class="line">    [].forEach.call(elems, callback);</div><div class="line">  &#125; else &#123;</div><div class="line">    for(var i = 0; i &lt; elems.length; i++) &#123;</div><div class="line">      callback(elems[i], i);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
  <a id="more"></a>
@@ -81,7 +81,7 @@
 <p>因此， [].forEach.call() 是一种快速的方法访问 forEach ，并将空数组的 this 换成想要遍历的list。</p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -125,7 +125,7 @@
     <link href="http://sky-xsk.github.io/2017/05/15/%E7%AE%80%E5%8D%95-Vue-2-0%E6%B8%90%E8%BF%9B%E5%BC%8F%E5%89%8D%E7%AB%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%88Vue-js%E4%BD%9C%E8%80%85%E5%B0%A4%E9%9B%A8%E6%BA%AA%EF%BC%89-%E8%BD%AC%E8%BD%BD/"/>
     <id>http://sky-xsk.github.io/2017/05/15/简单-Vue-2-0渐进式前端解决方案（Vue-js作者尤雨溪）-转载/</id>
     <published>2017-05-15T15:09:28.000Z</published>
-    <updated>2017-05-18T08:48:20.320Z</updated>
+    <updated>2017-05-18T16:07:32.000Z</updated>
     
     <content type="html"><![CDATA[<p><code>(转载)</code></p>
 <p>本人的新博客上线了：<br><a href="https://sky-xsk.github.io/">https://sky-xsk.github.io/</a></p>
@@ -152,7 +152,7 @@
 <p>Vue2.0同时支持服务端，服务端渲染支持流式渲染。因为HTTP请求也是流式，Vue 的服务端渲染结果可以直接 pipe 到返回的请求里面。这样一来，就可以更早地在浏览器中呈现给用户内容，通过合理的缓存策略，可以有效地提升服务端渲染的性能。<br>除了服务端渲染还有原生渲染，这里的原生渲染是指阿里巴巴的项目Weex。在架构层面，通过编译一个 Weex 源文件（类似于 Vue 单文件组建的格式）然后运行。界面节点的操作都是抽象的，这些抽象操作会派发到不同的目标引擎做实际的渲染，同时支持 iOS, Android 和 Web。<br>Vue和Weex现在有一个合作，Vue 2.0 将会正式成为 Weex 的 JavaScript 运行时。这样的合作可以使得符合功能交集的Vue组件可以跨平台使用。<br><code>(转载)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">本人的github，里面有vue2.0的小项目练习，包括仿饿了么的客户端，vue2.0写的，基本功能已经实现，部分bug在修改中;如果觉得有用的话，请给个“star”；</div><div class="line">https://github.com/sky-xsk</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -216,7 +216,7 @@
 <p>如有错误，请指正！</p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -280,7 +280,7 @@
 <p></p><h1>call与apply的区别</h1><br>js中call和apply都可以实现继承，唯一的一点参数不同，func.call(func1,var1,var2,var3)对应的apply写法为：func.apply(func1,[var1,var2,var3])。<br>说简单一点，这两函数的作用其实就是更改对象的内部指针，即改变对象的this指向的内容。这在面向对象的js编程过程中有时是很有用的。<br>如有错误请私信本人！<p></p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -385,7 +385,7 @@
     <link href="http://sky-xsk.github.io/2017/04/17/vue2-0-Webpack-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84todolist%E5%AE%9E%E4%BE%8B/"/>
     <id>http://sky-xsk.github.io/2017/04/17/vue2-0-Webpack-一个简单的todolist实例/</id>
     <published>2017-04-17T15:55:53.000Z</published>
-    <updated>2017-05-18T08:50:42.463Z</updated>
+    <updated>2017-05-18T16:08:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>用的vue-cli,这里就不写过程了，直接上代码吧！同样自己用webpack自己搭一个项目实例！</p>
  <a id="more"></a>
@@ -396,7 +396,7 @@
 <p>效果如截图：<br><img src="http://upload-images.jianshu.io/upload_images/4155235-561bedd249824704.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -469,7 +469,7 @@
 <p></p><h1>到github上面看一下，代码推送成功！</h1><p></p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -523,7 +523,7 @@
 <p>以后搜索，直接打开就可以了！</p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -599,7 +599,7 @@
 <p>~~~后期会继续更新的;</p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -664,7 +664,7 @@
 <p>14）你妈爱美，又跑到韩国整形，整到你妈他妈都认不出来，即使你妈头发换回飘柔了，但隔壁邻居还是叫你金毛狮王子。因为没人认出你妈，整形后的你妈已经回炉再造了，这就是原型的整体重写。(转载！)</p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -729,7 +729,7 @@
 <p>返回的值为​Boolean 类型的值，是数组则返回一个“true”，反之“false”<br>成了！​<br>行就到这吧！希望大家多多支持！</p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -782,7 +782,7 @@
 <p>例子有问题的话可以私信我！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">这里说一下例子的使用方法：</div><div class="line">1.先去config去配置服务器的地址，前提是在服务器上已经配置好了MQTT协议，</div><div class="line">2.配置好后，将index.html在浏览器中打开，打开两份，这样你在一个页面发送信息，另一个页面就可以收到了！</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -838,7 +838,7 @@
 <p></p><h1>最后</h1><br>希望初学者可以掌握这两种框架，还有推荐一个js库，zepto.js,这个框架在开发移动端的时候，很便利，和jQ很像，但又有所不同，但是zepto.js更小，更便捷，zepto.js还提供了手机端的touch的api，真心很棒！<p></p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
@@ -899,7 +899,7 @@
 <p>如有错误，请大家多多指教！</p>
 <blockquote>
 <p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
       function sTime(){ 
