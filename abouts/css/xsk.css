@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+#index_main{ margin-top:20px;}
+#index_main .title{ height:20px; line-height:20px; overflow:hidden; text-align:center; background:url(../images/line.jpg) 0 center repeat-x;}
+#index_main .title span{ height:20px; line-height:20px; overflow:hidden;display:inline-block; background:url(../images/line2.jpg) 0 center no-repeat #fff; padding-left:56px;}
+#index_main .title span i{ height:20px; line-height:20px; overflow:hidden; display:inline-block; background:url(../images/line3.jpg) right center no-repeat #fff; padding-right:56px; font-size:24px; color:#23a7cf; font-style:normal; text-transform:uppercase;}
+#index_main .w1003{ overflow:hidden; padding-top:5px;}
+.video_list{overflow-y: auto; height:650px; margin-top:30px; }
+.video_list li{ float:left; padding-top:20px; width:325px; margin-right:90px; position:relative; height:280px; overflow:hidden; cursor:pointer; margin-top:24px;}
+.video_list li .video_name{ padding-bottom:30px; height:43px; line-height:43px; overflow:hidden; text-align:center; background:#f8f8f8; font-size:16px;}
+.video_list li .video_name a{ color:#4a4a4a;}
+.video_list li .video_name a i.en{ font-size:14px; font-style:normal; text-transform:uppercase; padding-left:5px;}
+.video_list li .video_icon{ position:absolute; left:145px; top:207px; background:url(../images/icon02.png) 0 0 no-repeat; width:35px; height:35px;}
+.video_list li .video_bg{ background:url(../images/bg01.png) 0 0 repeat; display:block; width:325px; height:204px; overflow:hidden; padding:0 44px; position:absolute; left:0; top:-204px; overflow:hidden; color:#fff;}
+.video_list li .video_bg .p1{ text-align:center; font-size:22px; margin-top:30px; padding-top:5px; height:50px; line-height:50px; overflow:hidden; font-weight:bold; border-bottom:solid 1px #fff;}
+.video_list li .video_bg .p2{ text-align:center; font-size:14px; text-transform:uppercase; height:38px; line-height:38px; overflow:hidden;}
+.video_list li .video_bg .p3{ text-align:center; padding-top:24px;}
+.video_list li a.aa01{ display:block; width:100%; height:100%; left:0; top:0; position:absolute;}
+.video_list li.other01 .video_bg{ background:url(../images/bg02.png) 0 0 repeat;}
+.video_list li.other02 .video_bg{ background:url(../images/bg03.png) 0 0 repeat;}
+.video_list li.other03 .video_bg{ background:url(../images/bg04.png) 0 0 repeat;}
+.video_list li:hover .video_name a{ color:#1f89d4;}
+.app{margin-top:30px;  }
+.app_titles{ text-align:center;}
