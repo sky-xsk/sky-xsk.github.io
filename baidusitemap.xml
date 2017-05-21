@@ -68,9 +68,9 @@
         
         <tag>vue2.0</tag>
          
-        <tag>转载</tag>
-         
         <tag>es6</tag>
+         
+        <tag>转载</tag>
          
          
            
@@ -205,6 +205,43 @@
     
     
   <url>
+    <loc>http://sky-xsk.github.io/2017/03/10/vue2-0%EF%BC%8Cjsonp%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%A1%88%E4%BE%8B-%E8%AF%B7%E6%B1%82%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E7%9A%84%E6%8E%A5%E5%8F%A3/</loc>
+    <lastmod>2017-05-14T23:31:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>vue2.0，jsonp的一个小案例 请求百度搜索的接口</title>
+        <pubTime>2017-03-09T16:12:23.000Z</pubTime>
+        
+        <tag>vue2.0</tag>
+         
+         
+           
+             
+              <breadCrumb title="js" url="http://sky-xsk.github.io/categories/js/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://sky-xsk.github.io/2016/08/13/%E7%94%A8-CSS3-%E6%80%8E%E4%B9%88%E7%BB%98%E5%88%B6%E9%9C%80%E8%A6%81%E7%9A%84%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2/</loc>
+    <lastmod>2017-05-14T23:31:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>用 CSS3 怎么绘制需要的几何图形</title>
+        <pubTime>2016-08-13T10:17:52.000Z</pubTime>
+        
+        <tag>css3.0</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://sky-xsk.github.io/2017/04/15/%E7%94%A8sourceTree%EF%BC%8C%E5%B0%86%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E5%88%B0github%E4%B8%8A%E5%8E%BB/</loc>
     <lastmod>2017-05-14T23:31:53.000Z</lastmod>
     <data>
@@ -256,43 +293,6 @@
              
               <breadCrumb title="js" url="http://sky-xsk.github.io/categories/js/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://sky-xsk.github.io/2017/03/10/vue2-0%EF%BC%8Cjsonp%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%A1%88%E4%BE%8B-%E8%AF%B7%E6%B1%82%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E7%9A%84%E6%8E%A5%E5%8F%A3/</loc>
-    <lastmod>2017-05-14T23:31:53.000Z</lastmod>
-    <data>
-        <display>
-        <title>vue2.0，jsonp的一个小案例 请求百度搜索的接口</title>
-        <pubTime>2017-03-09T16:12:23.000Z</pubTime>
-        
-        <tag>vue2.0</tag>
-         
-         
-           
-             
-              <breadCrumb title="js" url="http://sky-xsk.github.io/categories/js/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://sky-xsk.github.io/2016/08/13/%E7%94%A8-CSS3-%E6%80%8E%E4%B9%88%E7%BB%98%E5%88%B6%E9%9C%80%E8%A6%81%E7%9A%84%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2/</loc>
-    <lastmod>2017-05-14T23:31:53.000Z</lastmod>
-    <data>
-        <display>
-        <title>用 CSS3 怎么绘制需要的几何图形</title>
-        <pubTime>2016-08-13T10:17:52.000Z</pubTime>
-        
-        <tag>css3.0</tag>
-         
-         
-           
         </display>
     </data>
     </url>
