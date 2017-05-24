@@ -816,18 +816,23 @@ pre .javascript .function {
   padding-right: 10px;
   border: 0;
   border-radius: 3px;
+  color: #fff;
 }
 .tag-cloud a:nth-child(odd) {
   background: #009688;
+  color: #fff;
 }
 .tag-cloud a:nth-child(even) {
   background: #ff5722;
+  color: #fff;
 }
 .tag-cloud a:nth-child(odd):hover {
   background: #393d49;
+  color: #fff;
 }
 .tag-cloud a:nth-child(even):hover {
   background: #1e9fff;
+  color: #fff;
 }
 .btn {
   display: inline-block;
@@ -940,6 +945,7 @@ pre .javascript .function {
 .tag-cloud a {
   display: inline-block;
   margin: 10px;
+  color: #fff;
 }
 .back-to-top {
   box-sizing: border-box;
@@ -1785,12 +1791,12 @@ pre .javascript .function {
   font-size: 16px;
 }
 .posts-expand .post-meta {
-  margin: 3px 0 60px 0;
+  margin: 3px 0 40px 0;
   color: #999;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
   text-align: center;
-  background: #f2f2f2;
+  background: #e9f5bd;
 }
 .posts-expand .post-meta .post-category-list {
   display: inline-block;
@@ -1853,13 +1859,14 @@ pre .javascript .function {
   height: 21px;
   padding-top: 7px;
   align-self: center;
+  box-shadow: 0 0 10px #ccc;
 }
 .fb_like {
   height: 30px;
   align-self: center;
 }
 .post-button {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 .post-button .btn {
   color: #fff;
@@ -2265,7 +2272,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #81ad7d;
+  background: #c836a7;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3134,4 +3141,7 @@ embed {
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
+}
+#main {
+  background: #fbffed;
 }

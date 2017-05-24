@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="当听到这个问题的时候，肯定有人第一个想法就是用“typeof”来判断，实则，并不能实现；很忧伤！下面咱先来说一说“typeof”，在js中，对于Function， String， Number ，Undefined 等几种类型的对象来说，他完全可以胜任​，大家都懂的！">
+<meta name="description" content="在JavaScript 中，函数及变量的声明都将被提升到函数的最顶部，变量可以在使用后声明，也就是变量可以先使用再声明。变量提升：函数声明和变量声明总是会被解释器悄悄地被”提升”到方法体的最顶部。虽然，通常我们在每个作用域开始前声明这些变量，这也是正常的 JavaScript 解析步骤，易于我们理解；但是理解变量提升还是很有用的！">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js如何判断一个对象是不是Array？">
-<meta property="og:url" content="http://sky-xsk.github.io/2016/12/26/js如何判断一个对象是不是Array？/index.html">
+<meta property="og:title" content="js的变量提升">
+<meta property="og:url" content="http://sky-xsk.github.io/2017/05/24/js的变量提升/index.html">
 <meta property="og:site_name" content="殖民的博客">
-<meta property="og:description" content="当听到这个问题的时候，肯定有人第一个想法就是用“typeof”来判断，实则，并不能实现；很忧伤！下面咱先来说一说“typeof”，在js中，对于Function， String， Number ，Undefined 等几种类型的对象来说，他完全可以胜任​，大家都懂的！">
-<meta property="og:updated_time" content="2017-05-14T23:31:53.000Z">
+<meta property="og:description" content="在JavaScript 中，函数及变量的声明都将被提升到函数的最顶部，变量可以在使用后声明，也就是变量可以先使用再声明。变量提升：函数声明和变量声明总是会被解释器悄悄地被”提升”到方法体的最顶部。虽然，通常我们在每个作用域开始前声明这些变量，这也是正常的 JavaScript 解析步骤，易于我们理解；但是理解变量提升还是很有用的！">
+<meta property="og:updated_time" content="2017-05-24T02:48:48.231Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js如何判断一个对象是不是Array？">
-<meta name="twitter:description" content="当听到这个问题的时候，肯定有人第一个想法就是用“typeof”来判断，实则，并不能实现；很忧伤！下面咱先来说一说“typeof”，在js中，对于Function， String， Number ，Undefined 等几种类型的对象来说，他完全可以胜任​，大家都懂的！">
+<meta name="twitter:title" content="js的变量提升">
+<meta name="twitter:description" content="在JavaScript 中，函数及变量的声明都将被提升到函数的最顶部，变量可以在使用后声明，也就是变量可以先使用再声明。变量提升：函数声明和变量声明总是会被解释器悄悄地被”提升”到方法体的最顶部。虽然，通常我们在每个作用域开始前声明这些变量，这也是正常的 JavaScript 解析步骤，易于我们理解；但是理解变量提升还是很有用的！">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://sky-xsk.github.io/2016/12/26/js如何判断一个对象是不是Array？/"/>
+  <link rel="canonical" href="http://sky-xsk.github.io/2017/05/24/js的变量提升/"/>
 
 
 
 
 
-  <title>js如何判断一个对象是不是Array？ | 殖民的博客</title>
+  <title>js的变量提升 | 殖民的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -329,7 +329,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2016/12/26/js如何判断一个对象是不是Array？/">
+    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/05/24/js的变量提升/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殖民">
@@ -346,7 +346,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">js如何判断一个对象是不是Array？</h2>
+          <h2 class="post-title" itemprop="name headline">js的变量提升</h2>
         
 
         <div class="post-meta">
@@ -358,8 +358,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-26T22:57:03+08:00">
-                2016-12-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T09:09:42Z">
+                2017-05-24
               </time>
             
 
@@ -368,28 +368,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -417,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  929
+                  832
                 </span>
               
 
@@ -433,7 +411,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  4
+                  3
                 </span>
               
             </div>
@@ -451,23 +429,23 @@
       
 
       
-        <p>当听到这个问题的时候，肯定有人第一个想法就是用“typeof”来判断，实则，并不能实现；很忧伤！<br>下面咱先来说一说“typeof”，在js中，对于Function， String， Number ，Undefined 等几种类型的对象来说，他完全可以胜任​，大家都懂的！<br> <a id="more"></a></p>
-<p></p><h1>typeof</h1>​<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr=new Array(&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;);​​</div><div class="line">alert(typeof(arr));</div></pre></td></tr></table></figure><p></p>
-<p>你会收到一个object ；什么破玩意；是不是这个时候想把键盘摔了，摔了没关系，再买吧！往下看：</p>
-<p></p><h1>instanceof</h1><br>咱不能一条道走到黑，咱们得找其他的路子啊，对不对？<br>JavaScript中instanceof运算符会返回一个 Boolean 类型的值，指出对象是否是特定类的一个实例。<br> 使用方法：<strong>result = object instanceof class</strong>,还是刚刚的数组，成功的返回 true。​请看下面，看实际代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arrayStr=new Array(&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;);</div><div class="line">alert(arrayStr instanceof Array);</div></pre></td></tr></table></figure><p></p>
-<p>啊，成功了！高兴吧！这样真的可以了吗？是吗？<br>其实​instanceof还是有一定的局限性的，一想到这，不是验证正确了吗？没毛病啊！<br>事实上在多个frame中穿梭就会产生大问题了​？？？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var iframe = document.createElement_x(&apos;iframe&apos;);   </div><div class="line">document.body.appendChild(iframe);   </div><div class="line">xArray = window.frames[window.frames.length-1].Array;      </div><div class="line">var arr = new xArray(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;);//这个写法老古董IE下是不支持的，FF下才有;</div><div class="line">alert(arr instanceof Array); // false</div><div class="line">alert(arr.constructor === Array); // false</div></pre></td></tr></table></figure></p>
-<p>返回结果为两个False，让人大失所望。为毛？</p>
-<p></p><h1>​Object.prototype.toString( )</h1> <p></p>
+        <p>在JavaScript 中，函数及变量的声明都将被提升到函数的最顶部，变量可以在使用后声明，也就是变量可以先使用再声明。<br>变量提升：函数声明和变量声明总是会被解释器悄悄地被”提升”到方法体的最顶部。<br>虽然，通常我们在每个作用域开始前声明这些变量，这也是正常的 JavaScript 解析步骤，易于我们理解；但是理解变量提升还是很有用的！<br> <a id="more"></a><br> <b>实例1</b><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x=5;    //设置x的值为5</div><div class="line">console.log(x);  //5</div><div class="line">var x;  //声明变量x</div></pre></td></tr></table></figure></p>
+<p> 注意看看，下面的例子，和实例1是相同的，但是写法是不同的；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var x;   //声明变量x</div><div class="line">x=5;     //设置x的值为5</div><div class="line">console.log(x)  //5</div></pre></td></tr></table></figure></p>
+<p>从上面2个例子，就大概知道变量提升了（hoisting）;<br>为了更好的理解，看一下面的例子；<br><b>实例2</b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var x=5;  //初始化</div><div class="line">var y=1;  //初始化</div><div class="line">console.log(x);  //5</div><div class="line">console.log(y);  //1</div></pre></td></tr></table></figure></p>
+<p>换一下位置<br><b>实例3</b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var x=5;  //初始化</div><div class="line">console.log(x); //5</div><div class="line">console.log(y); //undefined</div><div class="line">var y=1;  //初始化</div></pre></td></tr></table></figure></p>
+<p>实例3的代码。等同于以下写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var x=5;  //初始化</div><div class="line">var y     //这里y提升了，初始化的var y = 1 不会提升</div><div class="line">console.log(x); //5</div><div class="line">console.log(y); //undefined</div><div class="line">y=1;  //初始化</div></pre></td></tr></table></figure></p>
+<p>从实例2和实例3的对比可以看出， 在js中，只有声明的变量会提升，初始化的不会。<br>再看一下，函数声明；<br><b>实例4</b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    var x;</div><div class="line">    console.log(x)</div><div class="line">    x=5;</div><div class="line">&#125;</div><div class="line">foo()  //undefined</div></pre></td></tr></table></figure></p>
+<p>和上面的例子差不多相同，接着往下看；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function test() &#123;  </div><div class="line">    foo(); // TypeError &quot;foo is not a function&quot;  </div><div class="line">    bar(); // 0</div><div class="line">    var foo = function () &#123; // 变量指向函数表达式  </div><div class="line">        alert(1);  </div><div class="line">    &#125;  </div><div class="line">    function bar() &#123; // 函数声明 函数名为bar  </div><div class="line">        alert(0);  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">test();</div></pre></td></tr></table></figure></p>
+<p>命名函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">foo(); // TypeError &quot;foo is not a function&quot;  </div><div class="line">bar(); // valid  </div><div class="line">baz(); // TypeError &quot;baz is not a function&quot;  </div><div class="line">spam(); // ReferenceError &quot;spam is not defined&quot;  </div><div class="line">  </div><div class="line">var foo = function () &#123;&#125;; // foo指向匿名函数  </div><div class="line">function bar() &#123;&#125;; // 函数声明  </div><div class="line">var baz = function spam() &#123;&#125;; // 命名函数，只有baz被提升，spam不会被提升。</div></pre></td></tr></table></figure></p>
+<p>上面可以看出，只有函数式的声明才会连同函数体一起被提升。foo的声明会被提升，但是它指向的函数体只会在执行的时候才被赋值。 //函数声明：像这种形式：function foo(){}；</p>
+<p>接下来，看看函数的声明和变量的声明的优先级；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function a()&#123;     </div><div class="line">&#125;  </div><div class="line">var a;  </div><div class="line">alert(a);//打印出a的函数体  </div><div class="line">-------------------</div><div class="line">var a;  </div><div class="line">function a()&#123;     </div><div class="line">&#125;  </div><div class="line">alert(a);//打印出a的函数体  </div><div class="line">-------------------</div><div class="line">var a=1;  </div><div class="line">function a()&#123;     </div><div class="line">&#125;  </div><div class="line">alert(a);//打印出1  </div><div class="line">-------------------</div><div class="line">function a()&#123;     </div><div class="line">&#125;  </div><div class="line">var a=1;    </div><div class="line">alert(a);//打印出1</div></pre></td></tr></table></figure></p>
+<p>由此可以看出来什么？函数的声明比变量的声明具有高的优先级！</p>
+<p><b>ECMAScript参考文档上说</b></p>
 <blockquote>
-<p>ECMA-262 写道<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Object.prototype.toString( ) When the toString method is called, the following steps are taken:</div><div class="line">Get the [[Class]] property of this object.</div><div class="line">Compute a string value by concatenating the three strings “[object “, Result (1), and “]”.</div><div class="line">Return Result (2)</div></pre></td></tr></table></figure></p>
+<p>如果变量在函数体类声明，则它是函数作用域。否则，它是全局作用域（作为global的属性）。变量将会在执行进入作用域的时候被创建。块不会定义新的作用域，只有函数声明和程序才会创造新的作用域。变量在创建的时候会被初始化为undefined。如果变量声明语句里面带有赋值操作，则赋值操作只有被执行到的时候才会发生，而不是创建的时候。(方便理解)</p>
 </blockquote>
-<p>上面的规范定义了Object.prototype.toString的行为：首先，取得对象的一个内部属性[[Class]]，然后依据这个属性，返回一个类似于”[object Array]”的字符串作为结果（看过ECMA标准的应该都知道，[[]]用来表示语言内部用到的、外部不可直接访问的属性，称为“内部属性”）。利用这个方法，再配合call，我们可以取得任何对象的内部属性[[Class]]，然后把类型检测转化为字符串比较，以达到我们的目的。还是先来看看在ECMA标准中Array的描述吧。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">new Array([ item0[, item1 [,…]]])</div><div class="line">The [[Class]] property of the newly constructed object is set to “Array”.</div></pre></td></tr></table></figure></p>
-<p>于是利用这点，第三种方法登场了。<br>call改变toString的this引用为待检测的对象，返回此对象的字符串表示，然后对比此字符串是否是’[object Array]’，以判断其是否是Array的实例。也许你要问了，为什么不直接o.toString()？嗯，虽然Array继承自Object，也会有toString方法，但是这个方法有可能会被改写而达不到我们的要求，而Object.prototype则是老虎的屁股，很少有人敢去碰它的，所以能一定程度保证其“纯洁性”：）</p>
-<p>与前面几个方案不同，这个方法很好的解决了跨frame对象构建的问题，经过测试，各大浏览器兼容性也很好，可以放心使用。一个好消息是，很多框架，比如jQuery、Base2等等，都计划借鉴此方法以实现某些特殊的，比如数组、正则表达式等对象的类型判定，不用我们自己写了。<br>另外Ext3 也已经换成这样的写法了;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">isArray : function (v)&#123;         </div><div class="line">return toString.apply(v) === &apos;[object Array]&apos;;&#125;</div></pre></td></tr></table></figure></p>
-<p></p><h1>4.JQ中$isArray();</h1><br>话不多说，直接上代码吧！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function()&#123;</div><div class="line">        var Arr = [&quot;4&quot;,&quot;8&quot;,&quot;1&quot;,&quot;3&quot;];</div><div class="line">        alert($.isArray(Arr));​</div><div class="line">&#125;)​</div></pre></td></tr></table></figure><p></p>
-<p>返回的值为​Boolean 类型的值，是数组则返回一个“true”，反之“false”<br>成了！​<br>行就到这吧！希望大家多多支持！</p>
-<blockquote>
-<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p>
+
 <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
      var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
@@ -493,8 +471,7 @@
           document.getElementById("vositortimes").innerText = ts;
       }
       getDate();
-</script></blockquote>
-
+</script>
       
     </div>
 
@@ -548,7 +525,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://sky-xsk.github.io/2016/12/26/js如何判断一个对象是不是Array？/" title="js如何判断一个对象是不是Array？">http://sky-xsk.github.io/2016/12/26/js如何判断一个对象是不是Array？/</a>
+      <a href="http://sky-xsk.github.io/2017/05/24/js的变量提升/" title="js的变量提升">http://sky-xsk.github.io/2017/05/24/js的变量提升/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -577,8 +554,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/20/浅谈，实例mttq；/" rel="next" title="浅谈，实例mttq；">
-                <i class="fa fa-chevron-left"></i> 浅谈，实例mttq；
+              <a href="/2017/05/23/怎么用vue-cli构建自己的vue2-0的项目/" rel="next" title="怎么用vue-cli构建自己的vue2.0的项目">
+                <i class="fa fa-chevron-left"></i> 怎么用vue-cli构建自己的vue2.0的项目
               </a>
             
           </div>
@@ -586,10 +563,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/26/来来来，通俗的理解一下原型，原型链/" rel="prev" title="来来来，通俗的理解一下原型，原型链......">
-                来来来，通俗的理解一下原型，原型链...... <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -643,16 +616,7 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/headers.png"
@@ -798,22 +762,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">typeof</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">instanceof</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">​Object.prototype.toString( )</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">4.JQ中$isArray();</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
