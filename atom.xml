@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sky-xsk.github.io/"/>
-  <updated>2017-05-24T16:06:34.000Z</updated>
+  <updated>2017-05-31T02:18:52.073Z</updated>
   <id>http://sky-xsk.github.io/</id>
   
   <author>
@@ -14,6 +14,161 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>简单聊一下js闭包</title>
+    <link href="http://sky-xsk.github.io/2017/05/31/%E7%AE%80%E5%8D%95%E8%81%8A%E4%B8%80%E4%B8%8Bjs%E9%97%AD%E5%8C%85/"/>
+    <id>http://sky-xsk.github.io/2017/05/31/简单聊一下js闭包/</id>
+    <published>2017-05-31T08:54:08.000Z</published>
+    <updated>2017-05-31T02:18:52.073Z</updated>
+    
+    <content type="html"><![CDATA[<p> js闭包，阮老师说：‘闭包就是能够读取其他函数内部变量的函数。由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。’ 这里可能要先去理解一下全局 变量和局部变量，这里先不做过多的解释！<br> <a id="more"></a><br> 接下来通过几个例子，谈一下对比包的理解以及各种闭包的写法，下面的例子可能不够专业，但是对于闭包的理解个人认为还是有很大的帮助的!<br> <b>例子1：</b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function a()&#123;</div><div class="line">   var b = 1;</div><div class="line">   return function c()&#123;</div><div class="line">       console.log(b)</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line">a()();  //1</div></pre></td></tr></table></figure></p>
+<p>这个函数调用时，a()(),有两个括号，第一个是调用a函数，第二个是执行c函数。 如果单独执行a();返回的就是c函数的函数体，这里就是把c函数，缓存了一下，并没有立即执行！<br> <b>例子2：</b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function a()&#123;</div><div class="line">    return function()&#123;</div><div class="line">        console.log(0)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">a()(); //0</div></pre></td></tr></table></figure></p>
+<p>这种写法，和上面一种写法差不多，但是缓存的时候是匿名函数，但是调用的方法是相同的！<br> <b>例子3：</b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"> function a() &#123;　　　　</div><div class="line">    var b = 1;　　　　</div><div class="line">    function c() &#123;　　　　　　</div><div class="line">        alert(b);　　　　</div><div class="line">    &#125;　　　　</div><div class="line">    return c;　　</div><div class="line">&#125;　　</div><div class="line">var d = a();　　</div><div class="line">d(); // 1</div></pre></td></tr></table></figure></p>
+<p>分析一下例子3，应该可以看出c函数是一个闭包的形式，一个函数里面嵌套了另外一个函数，被嵌套的函数被缓存了，也就是c函数，但是此处的写法略有不同,var d = a();　d();等同于a()();这里只是进行了一次缓存，这样就好理解了；<br>还有要注意的是：这段代码有两个特点：<br>1、函数c嵌套在函数a内部；<br>2、函数a返回函数c。<br><b>例子4：</b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;　　</div><div class="line">    var object = &#123;　　　　</div><div class="line">        name: &quot;My Object&quot;,</div><div class="line">        getNameFunc: function() &#123;</div><div class="line">            return function() &#123;　　　　　　</div><div class="line">                return this.name;　　　　　　</div><div class="line">            &#125;;　　　　</div><div class="line">        &#125;　　</div><div class="line">    &#125;;　　</div><div class="line"> alert(object.getNameFunc()());  //The Window</div></pre></td></tr></table></figure></p>
+<p>解释一下，其实这块很简单，getNameFunc()第一次执行时，如果在里面打印出this的话，这个this指向的是object,就返回了function() {return this.name;};，当getNameFunc()()执行时，就是执行function() {return this.name};这样一句话，这里的this指向的就是window了，所以最后的结果就是The Window了;<br><b>例子5：</b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;</div><div class="line">　　var object = &#123;</div><div class="line">　　　　name : &quot;My Object&quot;,</div><div class="line">　　　　getNameFunc : function()&#123;</div><div class="line">　　　　　　var that = this;</div><div class="line">　　　　　　return function()&#123;</div><div class="line">　　　　　　　　return that.name;</div><div class="line">　　　　　　&#125;;</div><div class="line">　　　　&#125;</div><div class="line">　　&#125;;</div><div class="line">　　alert(object.getNameFunc()()); //My Object</div></pre></td></tr></table></figure></p>
+<p>这个例子的话，和上面的相比，多了<code>var that = this;</code>,然后返回的是<code>that.name;</code>;参考上面的解释，很明显可以看出，因为var that = this, 返回的that.name,改变了this的指向，that指向的就是object了，所以最后的结果就是My Object了；<br>使用闭包的注意点：<br>1）由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。<br>2）闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。<br>如果理解这些，我觉着闭包也就八九不离十了！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; js闭包，阮老师说：‘闭包就是能够读取其他函数内部变量的函数。由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。’ 这里可能要先去理解一下全局 变量和局部变量，这里先不做过多的解释！&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://sky-xsk.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js封装——封装一些小例（栗）子</title>
+    <link href="http://sky-xsk.github.io/2017/05/26/js%E5%B0%81%E8%A3%85%E2%80%94%E2%80%94%E5%B0%81%E8%A3%85%E4%B8%80%E4%BA%9B%E5%B0%8F%E4%BE%8B%EF%BC%88%E6%A0%97%EF%BC%89%E5%AD%90/"/>
+    <id>http://sky-xsk.github.io/2017/05/26/js封装——封装一些小例（栗）子/</id>
+    <published>2017-05-26T14:38:38.000Z</published>
+    <updated>2017-05-26T07:35:45.021Z</updated>
+    
+    <content type="html"><![CDATA[<p>在开发过程中，经常会遇到很多相同的效果和逻辑交互，相同的代码要写很多次，代码重复，这样会导致很多问题，具体问题就不说了，大家应该都懂！<br>今天，通过几个封装效果的几个实例，来实现代码的复用，让你的代码也变的简洁高效起来吧！请往下看：<br> <a id="more"></a><br>封装，就是把一个零零散散的东西做成一个组件。实现共同调用，但又不相互影响，实现代码复用！网上的关于这类文章的介绍很多，我这里就不多介绍，直接上手写几个小栗子，我想会更直接；<br><b>示例1</b><br>如图：仿的百度输入法的效果<br><img src="/img/1.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">css:</div><div class="line"> &lt;style&gt;</div><div class="line">        body,ul, li,</div><div class="line">        button &#123;</div><div class="line">            margin: 0; padding: 0;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        body &#123;</div><div class="line">            font: 12px/1.5 Tahoma;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        ul &#123;</div><div class="line">            list-style-type: none;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        button &#123;</div><div class="line">            cursor: pointer;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        #outer &#123;</div><div class="line">            width: 70px;</div><div class="line">            margin: 10px auto;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        .ime &#123;</div><div class="line">            margin-top: 5px;</div><div class="line">            background: #fff;</div><div class="line">            border: 1px solid #9a99ff;</div><div class="line">            display: none;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        .ime li &#123;</div><div class="line">            width: 100%;</div><div class="line">            line-height: 24px;</div><div class="line">            display: inline-block;</div><div class="line">            vertical-align: top;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        .close &#123;</div><div class="line">            border-top: 1px solid #9a99ff;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        .ime li a &#123;</div><div class="line">            color: #00c;</div><div class="line">            padding: 0 5px;</div><div class="line">            display: block;</div><div class="line">            text-decoration: none;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        .ime li a:hover &#123;</div><div class="line">            background: #d9e1f6;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line"></div><div class="line">    html:</div><div class="line">     &lt;div id=&quot;outer&quot;&gt;</div><div class="line">        &lt;button&gt;输入法&lt;/button&gt;</div><div class="line">        &lt;ul class=&quot;ime&quot;&gt;</div><div class="line">            &lt;li&gt;&lt;a href=&quot;javascript:;&quot;&gt;手写&lt;/a&gt;&lt;/li&gt;</div><div class="line">            &lt;li&gt;&lt;a href=&quot;javascript:;&quot;&gt;拼音&lt;/a&gt;&lt;/li&gt;</div><div class="line">            &lt;li class=&quot;close&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;关闭&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;/ul&gt;</div><div class="line">    &lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>重点js（未经封装的常规写法）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">window.onload = function() &#123;</div><div class="line">    var oBtn = document.getElementsByTagName(&quot;button&quot;)[0];</div><div class="line">    var oIme = document.getElementById(&quot;ime&quot;);</div><div class="line">    var oClose = document.getElementById(&quot;close&quot;);</div><div class="line">    var style = oIme.style;</div><div class="line">    oBtn.onclick = function() &#123;</div><div class="line">        style.display = style.display == &quot;block&quot; ? &quot;none&quot; : &quot;block&quot;</div><div class="line">    &#125;;</div><div class="line">    oClose.onclick = function() &#123;</div><div class="line">        style.display = &quot;none&quot;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>封装后的写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">window.onload = function() &#123;</div><div class="line">    new Writes(&quot;outer&quot;);    //调用方法，直接new一下就行了</div><div class="line">&#125;</div><div class="line">function Writes(id) &#123;</div><div class="line">    var oUter = document.getElementById(id);</div><div class="line">    this.oBtn = oUter.getElementsByTagName(&quot;button&quot;)[0];</div><div class="line">    this.oIme = oUter.getElementsByClassName(&quot;ime&quot;)[0];</div><div class="line">    this.oClose = oUter.getElementsByClassName(&quot;close&quot;)[0];</div><div class="line">    var _this = this;</div><div class="line">    this.style = this.oIme.style;</div><div class="line">    this.oBtn.onclick = function() &#123;</div><div class="line">        _this.shows(this);</div><div class="line">    &#125;;</div><div class="line">    this.oClose.onclick = function() &#123;</div><div class="line">        _this.hides(this);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line">Writes.prototype.shows = function() &#123;</div><div class="line">    this.style.display = this.style.display == &quot;block&quot; ? &quot;none&quot; : &quot;block&quot;</div><div class="line">&#125;;</div><div class="line">Writes.prototype.hides = function() &#123;</div><div class="line">    this.style.display = &quot;none&quot;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p><b>示例2</b><br>如图：弹出层效果，很常见的效果<br><img src="/img/2.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div></pre></td><td class="code"><pre><div class="line">css:</div><div class="line">&lt;style&gt;</div><div class="line">        html,</div><div class="line">        body &#123;</div><div class="line">            height: 100%;</div><div class="line">            overflow: hidden;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        body,</div><div class="line">        div,</div><div class="line">        h2 &#123;</div><div class="line">            margin: 0;</div><div class="line">            padding: 0;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        body &#123;</div><div class="line">            font: 12px/1.5 Tahoma;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        center &#123;</div><div class="line">            padding-top: 10px;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        button &#123;</div><div class="line">            cursor: pointer;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        .overlay &#123;</div><div class="line">            position: absolute;</div><div class="line">            top: 0;</div><div class="line">            left: 0;</div><div class="line">            width: 100%;</div><div class="line">            height: 100%;</div><div class="line">            background: #000;</div><div class="line">            opacity: 0.5;</div><div class="line">            filter: alpha(opacity=50);</div><div class="line">            display: none;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        .win &#123;</div><div class="line">            position: absolute;</div><div class="line">            top: 50%;</div><div class="line">            left: 50%;</div><div class="line">            width: 400px;</div><div class="line">            height: 200px;</div><div class="line">            background: #fff;</div><div class="line">            border: 4px solid #f90;</div><div class="line">            margin: -102px 0 0 -202px;</div><div class="line">            display: none;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        h2 &#123;</div><div class="line">            font-size: 12px;</div><div class="line">            text-align: right;</div><div class="line">            background: #FC0;</div><div class="line">            border-bottom: 3px solid #f90;</div><div class="line">            padding: 5px;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        h2 span &#123;</div><div class="line">            color: #f90;</div><div class="line">            cursor: pointer;</div><div class="line">            background: #fff;</div><div class="line">            border: 1px solid #f90;</div><div class="line">            padding: 0 2px;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">    html:</div><div class="line">    &lt;div id=&quot;cont&quot;&gt;</div><div class="line">        &lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;</div><div class="line">        &lt;div class=&quot;win&quot;&gt;</div><div class="line">            &lt;h2&gt;&lt;span class=&quot;close&quot;&gt;×&lt;/span&gt;&lt;/h2&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;button&gt;弹出层&lt;/button&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">未封装的写法：</div><div class="line">--------------------------</div><div class="line">window.onload = function() &#123;</div><div class="line">    var cont = document.getElementById(&apos;cont&apos;);</div><div class="line">    var oWin = document.getElementsByClassName(&quot;win&quot;)[0];</div><div class="line">    var oLay = document.getElementsByClassName(&quot;overlay&quot;)[0];</div><div class="line">    var oBtn = document.getElementsByTagName(&quot;button&quot;)[0];</div><div class="line">    var oClose = document.getElementsByClassName(&quot;close&quot;)[0];</div><div class="line">    oBtn.onclick = function() &#123;</div><div class="line">        oLay.style.display = &quot;block&quot;;</div><div class="line">        oWin.style.display = &quot;block&quot;</div><div class="line">    &#125;;</div><div class="line">    oClose.onclick = function() &#123;</div><div class="line">        oLay.style.display = &quot;none&quot;;</div><div class="line">        oWin.style.display = &quot;none&quot;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">封装后的写法，对比一下</div><div class="line">--------------------------</div><div class="line">window.onload = function() &#123;</div><div class="line">      new shows(&apos;cont&apos;); //调用方法，直接new一下就行了</div><div class="line">&#125;;</div><div class="line">function shows(id) &#123;</div><div class="line">    var cont = document.getElementById(id);</div><div class="line">    this.oWin = cont.getElementsByClassName(&quot;win&quot;)[0];</div><div class="line">    this.oLay = cont.getElementsByClassName(&quot;overlay&quot;)[0];</div><div class="line">    this.oBtn = cont.getElementsByTagName(&quot;button&quot;)[0];</div><div class="line">    this.oClose = cont.getElementsByClassName(&quot;close&quot;)[0];</div><div class="line">    var _this = this;</div><div class="line">    this.oBtn.onclick = function() &#123;</div><div class="line">        _this.block();</div><div class="line">    &#125;;</div><div class="line">    this.oClose.onclick = function() &#123;</div><div class="line">        _this.none();</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">shows.prototype.block = function() &#123;</div><div class="line">    this.oLay.style.display = &quot;block&quot;;</div><div class="line">    this.oWin.style.display = &quot;block&quot;</div><div class="line">&#125;;</div><div class="line">shows.prototype.none = function() &#123;</div><div class="line">    this.oLay.style.display = &quot;none&quot;;</div><div class="line">    this.oWin.style.display = &quot;none&quot;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><b>简单总结：</b><br>1.不能存在函数嵌套，全局变量；<br>2.window.onload改写成构造函数的形式；<br>3.全局变量改写成属性；<br>4.函数改写成方法；<br>6.最后，注意一下this,事件方法，闭包，传参这几点注意一下，就ok了？</p>
+<blockquote>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在开发过程中，经常会遇到很多相同的效果和逻辑交互，相同的代码要写很多次，代码重复，这样会导致很多问题，具体问题就不说了，大家应该都懂！&lt;br&gt;今天，通过几个封装效果的几个实例，来实现代码的复用，让你的代码也变的简洁高效起来吧！请往下看：&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://sky-xsk.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于跨域jsonp</title>
+    <link href="http://sky-xsk.github.io/2017/05/26/%E5%85%B3%E4%BA%8E%E8%B7%A8%E5%9F%9Fjsonp/"/>
+    <id>http://sky-xsk.github.io/2017/05/26/关于跨域jsonp/</id>
+    <published>2017-05-25T16:22:45.000Z</published>
+    <updated>2017-05-25T08:41:54.232Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天没什么太忙的事，准备写一个关于jsonp的文章，参考了网上不少文章，感觉自己的理解没有网上一些文章理解的透彻，所以这里选了一篇比较好的文章，当自己的笔记吧！一边以后自己的查阅！<br><a id="more"></a><br><b>什么是JSONP？</b><br>1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准。 </p>
+<p>2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力。 script、img、iframe</p>
+<p>3、于是可以判断，当前阶段如果想通过纯web端（ActiveX控件、服务端代理、属于未来的HTML5之Websocket等方式不算）跨域访问数据就只有一种可能，那就是在远程服务器上设法把数据装进js格式的文件里，供客户端调用和进一步处理。<br>4、恰巧我们已经知道有一种叫做JSON的纯字符数据格式可以简洁的描述复杂数据，更妙的是JSON还被js原生支持，所以在客户端几乎可以随心所欲的处理这种格式的数据。 </p>
+<p>5、这样子解决方案就呼之欲出了，web客户端通过与调用脚本一模一样的方式，来调用跨域服务器上动态生成的js格式文件（一般以JSON为后缀），显而易见，服务器之所以要动态生成JSON文件，目的就在于把客户端需要的数据装入进去。 </p>
+<p>6、客户端在对JSON文件调用成功之后，也就获得了自己所需的数据，剩下的就是按照自己需求进行处理和展现了，这种获取远程数据的方式看起来非常像AJAX，但其实并不一样。 </p>
+<p>7、为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。<br>如果对于callback参数如何使用还有些模糊的话，我们后面会有具体的实例来讲解。<br><b>JSONP的客户端具体实现： </b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(&apos;我是远程文件&apos;);</div></pre></td></tr></table></figure></p>
+<p><b>本地服务器localserver.com下有个jsonp.html页面代码如下： </b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</div><div class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;http://remoteserver.com/remote.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p><b>现在我们在jsonp.html页面定义一个函数，然后在远程remote.js中传入数据进行调用</b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</div><div class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    var localHandler = function(data)&#123;</div><div class="line">        alert(&apos;我是本地函数，可以被跨域的remote.js文件调用，远程js带来的数据是：&apos; + data.result);</div><div class="line">    &#125;;</div><div class="line">    &lt;/script&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;http://remoteserver.com/remote.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>remote.js文件代码如下： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">localHandler(&#123;&quot;result&quot;:&quot;我是远程js带来的数据&quot;&#125;);</div></pre></td></tr></table></figure>
+<p>运行之后查看结果，页面成功弹出提示窗口，显示本地函数被跨域的远程js调用成功，并且还接收到了远程js带来的数据。<br>很欣喜，跨域远程获取数据的目的基本实现了，但是又一个问题出现了，我怎么让远程js知道它应该调用的本地函数叫什么名字呢？毕竟是jsonp的服务者都要面对很多服务对象，而这些服务对象各自的本地函数都不相同啊？我们接着往下看。<b>聪明的开发者很容易想到，只要服务端提供的js脚本是动态生成的就行了呗，这样调用者可以传一个参数过去告诉服务端 “我想要一段调用XXX函数的js代码，请你返回给我”，于是服务器就可以按照客户端的需求来生成js脚本并响应了</b><br>看jsonp.html页面的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</div><div class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    // 得到航班信息查询结果后的回调函数</div><div class="line">    var flightHandler = function(data)&#123;</div><div class="line">        alert(&apos;你查询的航班结果是：票价 &apos; + data.price + &apos; 元，&apos; + &apos;余票 &apos; + data.tickets + &apos; 张。&apos;);</div><div class="line">    &#125;;</div><div class="line">    // 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）</div><div class="line">    var url = &quot;http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&amp;callback=flightHandler&quot;;</div><div class="line">    // 创建script标签，设置其属性</div><div class="line">    var script = document.createElement(&apos;script&apos;);</div><div class="line">    script.setAttribute(&apos;src&apos;, url);</div><div class="line">    // 把script标签加入head，此时调用开始</div><div class="line">    document.getElementsByTagName(&apos;head&apos;)[0].appendChild(script); </div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>这次的代码变化比较大，不再直接把远程js文件写死，而是编码实现动态查询，而这也正是jsonp客户端实现的核心部分，本例中的重点也就在于如何完成jsonp调用的全过程。<br>我们看到调用的url中传递了一个code参数，告诉服务器我要查的是CA1998次航班的信息，而callback参数则告诉服务器，我的本地回调函数叫做flightHandler，所以请把查询结果传入这个函数中进行调用。<br>OK，服务器很聪明，这个叫做flightResult.aspx的页面生成了一段这样的代码提供给jsonp.html<br>（服务端的实现这里就不演示了，与你选用的语言无关，说到底就是拼接字符串）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">flightHandler(&#123;</div><div class="line">    &quot;code&quot;: &quot;CA1998&quot;,</div><div class="line">    &quot;price&quot;: 1780,</div><div class="line">    &quot;tickets&quot;: 5</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>我们看到，传递给flightHandler函数的是一个json，它描述了航班的基本信息。运行一下页面，成功弹出提示窗口，jsonp的执行全过程顺利完成！<br><b>到这里为止的话，相信你已经能够理解jsonp的客户端实现原理了吧？剩下的就是如何把代码封装一下，以便于与用户界面交互，从而实现多次和重复调用</b><br>jQuery如何实现jsonp调用？ </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</div><div class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;</div><div class="line">&lt;head&gt;</div><div class="line">     &lt;title&gt;Untitled Page&lt;/title&gt;</div><div class="line">      &lt;script type=&quot;text/javascript&quot; src=jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">      &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">     jQuery(document).ready(function()&#123; </div><div class="line">        $.ajax(&#123;</div><div class="line">             type: &quot;get&quot;,</div><div class="line">             async: false,</div><div class="line">             url: &quot;http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&quot;,</div><div class="line">             dataType: &quot;jsonp&quot;,</div><div class="line">             jsonp: &quot;callback&quot;,//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)</div><div class="line">             jsonpCallback:&quot;flightHandler&quot;,//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写&quot;?&quot;，jQuery会自动为你处理数据</div><div class="line">             success: function(json)&#123;</div><div class="line">                 alert(&apos;您查询到航班信息：票价： &apos; + json.price + &apos; 元，余票： &apos; + json.tickets + &apos; 张。&apos;);</div><div class="line">             &#125;,</div><div class="line">             error: function()&#123;</div><div class="line">                 alert(&apos;fail&apos;);</div><div class="line">             &#125;</div><div class="line">         &#125;);</div><div class="line">     &#125;);</div><div class="line">     &lt;/script&gt;</div><div class="line">     &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>是不是有点奇怪？为什么我这次没有写flightHandler这个函数呢？而且竟然也运行成功了！<br>这就是jQuery的功劳了，jquery在处理jsonp类型的ajax时（，虽然jquery也把jsonp归入了ajax，但其实它们真的不是一回事儿），自动帮你生成回调函数并把数据取出来供success属性方法来调用，是不是很爽呀？<br>这里针对ajax与jsonp的异同再做一些补充说明： </p>
+<p>1、ajax和jsonp这两种技术在调用方式上”看起来”很像，目的也一样，都是请求一个url，然后把服务器返回的数据进行处理，因此jquery和ext等框架都把jsonp作为ajax的一种形式进行了封装。 </p>
+<p>2、但ajax和jsonp其实本质上是不同的东西。ajax的核心是通过XmlHttpRequest获取非本页内容，而jsonp的核心则是动态添加script标签来调用服务器提供的js脚本。 </p>
+<p>3、所以说，其实ajax与jsonp的区别不在于是否跨域，ajax通过服务端代理一样可以实现跨域，jsonp本身也不排斥同域的数据的获取。 </p>
+<p>4、还有就是，jsonp是一种方式或者说非强制性协议，如同ajax一样，它也不一定非要用json格式来传递数据，如果你愿意，字符串都行，只不过这样不利于用jsonp提供公开服务。 </p>
+<p>总而言之，jsonp不是ajax的一个特例，哪怕jquery等巨头把jsonp封装进了ajax，也不能改变这一点！</p>
+<blockquote>
+<p>个人感觉，这篇文章写的还是比较全面的，挺好的！</p>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script>
+
+
+
+
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天没什么太忙的事，准备写一个关于jsonp的文章，参考了网上不少文章，感觉自己的理解没有网上一些文章理解的透彻，所以这里选了一篇比较好的文章，当自己的笔记吧！一边以后自己的查阅！&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://sky-xsk.github.io/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>理解前端语义化（转载）</title>
@@ -1054,61 +1209,6 @@
       <category term="Bootstrap" scheme="http://sky-xsk.github.io/tags/Bootstrap/"/>
     
       <category term="jQuery Mobile" scheme="http://sky-xsk.github.io/tags/jQuery-Mobile/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用 CSS3 怎么绘制需要的几何图形</title>
-    <link href="http://sky-xsk.github.io/2016/08/13/%E7%94%A8-CSS3-%E6%80%8E%E4%B9%88%E7%BB%98%E5%88%B6%E9%9C%80%E8%A6%81%E7%9A%84%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2/"/>
-    <id>http://sky-xsk.github.io/2016/08/13/用-CSS3-怎么绘制需要的几何图形/</id>
-    <published>2016-08-13T10:17:52.000Z</published>
-    <updated>2017-05-14T23:31:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p></p><h1>圆形</h1><br>思路：给任何正方形元素设置一个足够大的 border-radius ，就可以把它变成一个圆形.代码如下：<br> <a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div class=&quot;size example1&quot;&gt;&lt;/div&gt;</div><div class="line">css:​​ </div><div class="line">.size&#123;width:200px; heigh: 200px;background​:#8BC34A;&#125;</div><div class="line">​.example1&#123;border-radius:100px;&#125;</div></pre></td></tr></table></figure><p></p>
-<p></p><h1>自适应椭圆</h1><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div class=&quot;example3&quot;&gt;&lt;/div&gt;</div><div class="line">css:</div><div class="line">.example3&#123; width:200px;  height:150px; border-radius:50%;  background:#8BC34A;&#125;</div></pre></td></tr></table></figure><p></p>
-<p></p><h1>自适应的半椭圆:沿横轴劈开的半椭圆</h1><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div class=&quot;example4&quot;&gt;&lt;/div&gt;</div><div class="line">css:</div><div class="line">.example4&#123;width:200px;height:150px; border-radius:50%/100%100%00; background:#8BC34A;&#125;</div></pre></td></tr></table></figure><p></p>
-<p></p><h1>自适应的半椭圆:沿纵轴劈开的半椭圆</h1><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div class=&quot;example5&quot;&gt;&lt;/div&gt;</div><div class="line">css：</div><div class="line">.example5&#123;width:200px; height:150px;  border-radius:100%00100%/50%; background:#8BC34A;&#125;</div></pre></td></tr></table></figure><p></p>
-<p></p><h1>四分之一椭圆</h1><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div class=&quot;example６&quot;&gt;&lt;/div&gt;</div><div class="line">css：</div><div class="line">.example6&#123; width:160px; height:100px;border-radius:100% 0 0 0;background:#8BC34A;&#125;</div></pre></td></tr></table></figure><p></p>
-<p></p><h1>用椭圆绘制opera浏览器的logo（示例借鉴）</h1><br>思路：绘制opera浏览器的logo,分析起来不难，就只有两个图层，一个是最底部的椭圆，一个是最上面那层的椭圆。先确定一下最底层的椭圆宽高，量了一下，水平宽度为258px，垂直高度为275px，因为其是一个对称的椭圆，没有倾斜度，故4个角均为水平半径为258px，垂直半径为275px的4个相等椭圆，用同样的办法确定最里面的椭圆的半径，因此，四个角均为水平半径120px，垂直半径为229px的椭圆，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div class=&quot;opera&quot;&gt;</div><div class="line">     &lt;div ​class=&quot;opera-top&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">css:</div><div class="line">.opera&#123;</div><div class="line">    width:258px;</div><div class="line">    height:275px;</div><div class="line">    background:#F22629;</div><div class="line">    border-radius:258px258px258px258px/275px275px275px275px;</div><div class="line">    position:relative;</div><div class="line">&#125;</div><div class="line">.opera-top&#123;</div><div class="line">    width:112px;</div><div class="line">    height:231px;</div><div class="line">    background:#FFFFFF;</div><div class="line">    border-radius:112px112px112px112px/231px231px231px231px;</div><div class="line">    position:absolute;</div><div class="line">    left:50%;</div><div class="line">    right:50%;</div><div class="line">    top:50%;</div><div class="line">    bottom:50%;</div><div class="line">    margin-left:-56px;</div><div class="line">    margin-top:-115px;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p></p>
-<p>如有错误，请大家多多指教！</p>
-<blockquote>
-<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-<script type="text/javascript">
-     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
-      function sTime(){ 
-      var d = new Date(); 
-      var s = d.getHours();
-      var m = d.getMinutes();
-      var se = d.getSeconds();
-      if(s<10){
-         s="0"+s; 
-      }else if(m<10){
-          m="0"+m; 
-      }else if(se<10){
-          se="0"+se; 
-      }
-      var tt = s +":"+ m +":"+ se; 
-      document.getElementById("vositortime").innerText = tt;
-      return tt; 
-      } 
-      var showTime = setInterval(sTime,1000);   
-      function getDate(){
-          var ts = sTime();
-          document.getElementById("vositortimes").innerText = ts;
-      }
-      getDate();
-</script></blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;/p&gt;&lt;h1&gt;圆形&lt;/h1&gt;&lt;br&gt;思路：给任何正方形元素设置一个足够大的 border-radius ，就可以把它变成一个圆形.代码如下：&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="css3.0" scheme="http://sky-xsk.github.io/tags/css3-0/"/>
     
   </entry>
   
