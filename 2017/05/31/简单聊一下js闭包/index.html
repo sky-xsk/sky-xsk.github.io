@@ -16,6 +16,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
@@ -99,7 +100,7 @@
 <meta property="og:url" content="http://sky-xsk.github.io/2017/05/31/简单聊一下js闭包/index.html">
 <meta property="og:site_name" content="殖民的博客">
 <meta property="og:description" content="js闭包，阮老师说：‘闭包就是能够读取其他函数内部变量的函数。由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。’ 这里可能要先去理解一下全局 变量和局部变量，这里先不做过多的解释！">
-<meta property="og:updated_time" content="2017-05-31T02:18:52.073Z">
+<meta property="og:updated_time" content="2017-07-19T07:53:50.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单聊一下js闭包">
 <meta name="twitter:description" content="js闭包，阮老师说：‘闭包就是能够读取其他函数内部变量的函数。由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。’ 这里可能要先去理解一下全局 变量和局部变量，这里先不做过多的解释！">
@@ -358,7 +359,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T08:54:08Z">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T16:54:08+08:00">
                 2017-05-31
               </time>
             
@@ -395,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  888
+                  905
                 </span>
               
 
@@ -435,6 +436,34 @@
 <p>分析一下例子3，应该可以看出c函数是一个闭包的形式，一个函数里面嵌套了另外一个函数，被嵌套的函数被缓存了，也就是c函数，但是此处的写法略有不同,var d = a();　d();等同于a()();这里只是进行了一次缓存，这样就好理解了；<br>还有要注意的是：这段代码有两个特点：<br>1、函数c嵌套在函数a内部；<br>2、函数a返回函数c。<br><b>例子4：</b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;　　</div><div class="line">    var object = &#123;　　　　</div><div class="line">        name: &quot;My Object&quot;,</div><div class="line">        getNameFunc: function() &#123;</div><div class="line">            return function() &#123;　　　　　　</div><div class="line">                return this.name;　　　　　　</div><div class="line">            &#125;;　　　　</div><div class="line">        &#125;　　</div><div class="line">    &#125;;　　</div><div class="line"> alert(object.getNameFunc()());  //The Window</div></pre></td></tr></table></figure></p>
 <p>解释一下，其实这块很简单，getNameFunc()第一次执行时，如果在里面打印出this的话，这个this指向的是object,就返回了function() {return this.name;};，当getNameFunc()()执行时，就是执行function() {return this.name};这样一句话，这里的this指向的就是window了，所以最后的结果就是The Window了;<br><b>例子5：</b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;</div><div class="line">　　var object = &#123;</div><div class="line">　　　　name : &quot;My Object&quot;,</div><div class="line">　　　　getNameFunc : function()&#123;</div><div class="line">　　　　　　var that = this;</div><div class="line">　　　　　　return function()&#123;</div><div class="line">　　　　　　　　return that.name;</div><div class="line">　　　　　　&#125;;</div><div class="line">　　　　&#125;</div><div class="line">　　&#125;;</div><div class="line">　　alert(object.getNameFunc()()); //My Object</div></pre></td></tr></table></figure></p>
 <p>这个例子的话，和上面的相比，多了<code>var that = this;</code>,然后返回的是<code>that.name;</code>;参考上面的解释，很明显可以看出，因为var that = this, 返回的that.name,改变了this的指向，that指向的就是object了，所以最后的结果就是My Object了；<br>使用闭包的注意点：<br>1）由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。<br>2）闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。<br>如果理解这些，我觉着闭包也就八九不离十了！</p>
+<blockquote>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script></blockquote>
 
       
     </div>
@@ -528,6 +557,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/06/01/解决百度分享不支持https的问题/" rel="prev" title="解决百度分享不支持https的问题">
+                解决百度分享不支持https的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -595,7 +628,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -617,7 +650,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -710,11 +743,43 @@
                 </li>
               
                 <li class="links-of-blogroll-item">
-                  <a href="http://www.aoao.org.cn/" title="嗷嗷 淘宝网" target="_blank">嗷嗷 淘宝网</a>
+                  <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript" title="MDNDOS(js)" target="_blank">MDNDOS(js)</a>
                 </li>
               
                 <li class="links-of-blogroll-item">
                   <a href="http://www.jianshu.com/u/2fb92d7e3f03" title="我的简书(除外)" target="_blank">我的简书(除外)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://cnodejs.org/" title="nodejs" target="_blank">nodejs</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.w3cplus.com/" title="W3Cplus" target="_blank">W3Cplus</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.qianduan.net/" title="前端观察" target="_blank">前端观察</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/peterli2013/archive/2014/01/22/3530070.html" title="值得收藏的前端大牛博客（推荐）" target="_blank">值得收藏的前端大牛博客（推荐）</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/sofish" title="sofish" target="_blank">sofish</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.zhaojie.me/" title="老赵点滴 - 追求编程之美" target="_blank">老赵点滴 - 追求编程之美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://evanyou.me/" title="尤小右" target="_blank">尤小右</a>
                 </li>
               
             </ul>
@@ -756,8 +821,12 @@
 window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"5","bdPos":"left","bdTop":"178.5"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://sky-xsk.github.io/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
-  <p style="margin:0">版权所有：殖民的博客</p>
+
+
+<p style="margin:0">版权所有：殖民的博客</p>
+<button onclick="TogetherJS(this); return false;" style="background:red;border:0; color:#ffffff;">获取实时帮助,耐心等待右下角的弹窗哦！</button>
 </div>
+
 
 
 
@@ -768,9 +837,6 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     NexT.Muse
   </a>
 </div>
-
-
-
 
 
         
@@ -871,7 +937,6 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
 
 
   

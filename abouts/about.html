@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="css/xsk.css" />
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/dataurl.css" />
+    <script src="js/pace.min.js"></script>
 
     <!-- <link rel="stylesheet" href="css/style.css"/> -->
 
@@ -21,6 +23,28 @@
     <![endif]-->
 </head>
 
+<style>
+.tans{ filter: contrast(20);}
+.tans h1{font-family: Righteous;color: white;text-transform: uppercase;line-height: 1;animation: letterspacing 5s infinite alternate ease-in-out;display: block;letter-spacing: -2.2rem;}
+
+@keyframes letterspacing {
+    0% {
+        letter-spacing: -2.2rem;
+        filter: blur(.3rem);
+    }
+
+    50% {
+        filter: blur(.5rem);
+    }
+
+    100% {
+        letter-spacing: .5rem;
+        filter: blur(0rem);
+        color: #fff;
+    }
+}
+
+</style>
 <body>
 
     <a class="u-menu-btn" title="导航">

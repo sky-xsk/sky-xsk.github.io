@@ -1,0 +1,1355 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vue2.0," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="殖民的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/f.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="今天，准备写一个关于前后台数据交互，用vue2.0 + Element + vue-cli + resource开发的一个增删改查的实例！注意：项目源码：1https://github.com/sky-xsk/element-vue-resource- 还有一点注意的是：我用的是公司内部提供的api，所以不在公司内部，是看不到效果的，最主要的还是对源码的参考！放心我会附上图片效果的!">
+<meta name="keywords" content="vue2.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue2.0 + Element + vue-cli + resource ,增删改查实例">
+<meta property="og:url" content="http://sky-xsk.github.io/2017/07/10/vue2-0-Element-vue-cli-增删改查实例/index.html">
+<meta property="og:site_name" content="殖民的博客">
+<meta property="og:description" content="今天，准备写一个关于前后台数据交互，用vue2.0 + Element + vue-cli + resource开发的一个增删改查的实例！注意：项目源码：1https://github.com/sky-xsk/element-vue-resource- 还有一点注意的是：我用的是公司内部提供的api，所以不在公司内部，是看不到效果的，最主要的还是对源码的参考！放心我会附上图片效果的!">
+<meta property="og:image" content="http://sky-xsk.github.io/img/3.png">
+<meta property="og:image" content="http://sky-xsk.github.io/img/4.png">
+<meta property="og:image" content="http://sky-xsk.github.io/img/5.png">
+<meta property="og:image" content="http://sky-xsk.github.io/img/6.png">
+<meta property="og:updated_time" content="2017-07-10T08:17:49.352Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue2.0 + Element + vue-cli + resource ,增删改查实例">
+<meta name="twitter:description" content="今天，准备写一个关于前后台数据交互，用vue2.0 + Element + vue-cli + resource开发的一个增删改查的实例！注意：项目源码：1https://github.com/sky-xsk/element-vue-resource- 还有一点注意的是：我用的是公司内部提供的api，所以不在公司内部，是看不到效果的，最主要的还是对源码的参考！放心我会附上图片效果的!">
+<meta name="twitter:image" content="http://sky-xsk.github.io/img/3.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://sky-xsk.github.io/2017/07/10/vue2-0-Element-vue-cli-增删改查实例/"/>
+
+
+
+
+
+  <title>vue2.0 + Element + vue-cli + resource ,增删改查实例 | 殖民的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b6637084bfaebb9774949026f4134c6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">殖民的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Don't Be Same！Be Better！</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+        
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/abouts/about.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+        
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+        
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+        
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+        
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+<div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200  src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66">
+    </iframe>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/07/10/vue2-0-Element-vue-cli-增删改查实例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殖民">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/headers.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殖民的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">vue2.0 + Element + vue-cli + resource ,增删改查实例</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-10T15:54:48Z">
+                2017-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">阅读量 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,776
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天，准备写一个关于前后台数据交互，用vue2.0 + Element + vue-cli + resource开发的一个增删改查的实例！<br>注意：项目源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://github.com/sky-xsk/element-vue-resource-</div></pre></td></tr></table></figure></p>
+<p>还有一点注意的是：我用的是公司内部提供的api，所以不在公司内部，是看不到效果的，最主要的还是对源码的参考！放心我会附上图片效果的!<br><a id="more"></a><br>这个简单实例的开发环境是vue2.0 + Element + vue-cli + resource;至于具体安装步骤和环境的搭建我这里不做过多的赘述！直接会把代码写出来，必要时做一些详细的分析！</p>
+<p>1.首先是模板代码，这里用到的就是ElementUI；地址<a href="http://element.eleme.io/，最近又出了react的版本！" target="_blank" rel="external">http://element.eleme.io/，最近又出了react的版本！</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div id=&quot;app&quot;&gt;</div><div class="line">        &lt;div class=&quot;col-md-12&quot;&gt;</div><div class="line">             &lt;!-- 操作 --&gt;</div><div class="line">            &lt;ul class=&quot;btn-edit fr&quot;&gt;</div><div class="line">                &lt;li &gt;</div><div class="line">                    &lt;el-button type=&quot;primary&quot; @click=&quot;dialogCreateVisible = true&quot;&gt;添加用户&lt;/el-button&gt;</div><div class="line">                    &lt;el-button type=&quot;primary&quot; icon=&quot;delete&quot; :disabled=&quot;selected.length == 0&quot; @click=&quot;del_all()&quot;&gt;删除&lt;/el-button&gt;</div><div class="line">                &lt;/li&gt;</div><div class="line">            &lt;/ul&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line">        &lt;div class=&quot;col-md-12&quot;&gt;</div><div class="line">            &lt;el-table</div><div class="line">                :data=&quot;users&quot;</div><div class="line">                v-loading=&quot;loading&quot;</div><div class="line">                element-loading-text=&quot;拼命加载中...&quot;</div><div class="line">                @sort-change=&quot;tableSortChange&quot;</div><div class="line">                @selection-change=&quot;tableSelectionChange&quot;</div><div class="line">                border</div><div class="line">                stripe</div><div class="line">                width=&quot;100%&quot;</div><div class="line">                height=&quot;443&quot;&gt;</div><div class="line">                 &lt;el-table-column</div><div class="line">                type=&quot;selection&quot;</div><div class="line">                width=&quot;60&quot;&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line">                &lt;el-table-column</div><div class="line">                prop=&quot;username&quot;</div><div class="line">                sortable</div><div class="line">                label=&quot;姓名&quot;&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line"></div><div class="line">                &lt;el-table-column</div><div class="line">                prop=&quot;email&quot;</div><div class="line">                label=&quot;邮箱&quot;&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line"></div><div class="line">                &lt;el-table-column</div><div class="line">                prop=&quot;name&quot;</div><div class="line">                label=&quot;姓名&quot;&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line"></div><div class="line">                &lt;el-table-column</div><div class="line">                prop=&quot;phone&quot;</div><div class="line">                label=&quot;手机&quot;&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line"></div><div class="line">                &lt;el-table-column inline-template </div><div class="line">                    prop=&quot;create_time&quot;</div><div class="line">                    sortable</div><div class="line">                    label=&quot;时间&quot;&gt;</div><div class="line">                &lt;div&gt;&#123;&#123; row.create_time | moment(&apos;YYYY年MM月DD日 HH:mm:ss&apos;)&#125;&#125;&lt;/div&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line"></div><div class="line">                &lt;el-table-column inline-template label=&quot;操作&quot;&gt;</div><div class="line">                    &lt;span&gt;</div><div class="line">                        &lt;el-button type=&quot;primary&quot; size=&quot;small&quot; @click=&quot;removed(row)&quot;&gt;删除&lt;/el-button&gt;</div><div class="line">                        &lt;el-button type=&quot;danger&quot; size=&quot;small&quot;  @click=&quot;setCurrent(row)&quot;&gt;编辑&lt;/el-button&gt;</div><div class="line">                    &lt;/span&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line">            &lt;/el-table&gt;</div><div class="line">        </div><div class="line">        &lt;!--分页begin--&gt;</div><div class="line">            &lt;el-pagination class=&quot;tc mg&quot;</div><div class="line">                            :current-page=&quot;filter.page&quot;</div><div class="line">                            :page-sizes=&quot;[10, 20, 50]&quot;</div><div class="line">                            :page-size=&quot;filter.per_page&quot;</div><div class="line">                            layout=&quot;total, sizes, prev, pager, next, jumper&quot;</div><div class="line">                            :total=&quot;total_rows&quot;</div><div class="line">                            @size-change=&quot;pageSizeChange&quot;</div><div class="line">                            @current-change=&quot;pageCurrentChange&quot;&gt;</div><div class="line">            &lt;/el-pagination&gt;</div><div class="line">            &lt;!--分页end--&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">         &lt;!-- 修改用户 begin--&gt;</div><div class="line">        &lt;el-dialog title=&quot;修改用户信息&quot; v-model=&quot;dialogUpdateVisible&quot;  :close-on-click-modal=&quot;false&quot; :close-on-press-escape=&quot;false&quot;&gt;</div><div class="line">            &lt;el-form id=&quot;#update&quot; :model=&quot;update&quot; ref=&quot;update&quot; label-width=&quot;100px&quot;&gt;</div><div class="line">                &lt;el-form-item label=&quot;姓名&quot; prop=&quot;name&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;update.name&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;电话&quot; prop=&quot;phone&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;update.phone&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;邮箱&quot; prop=&quot;email&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;update.email&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">            &lt;/el-form&gt;</div><div class="line">            &lt;div slot=&quot;footer&quot; class=&quot;dialog-footer&quot;&gt;</div><div class="line">                &lt;el-button @click=&quot;dialogUpdateVisible = false&quot;&gt;取 消&lt;/el-button&gt;</div><div class="line">                &lt;el-button type=&quot;primary&quot; :loading=&quot;updateLoading&quot; @click=&quot;updateUser&quot;&gt;确 定&lt;/el-button&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/el-dialog&gt;</div><div class="line"></div><div class="line">          &lt;!-- 创建用户 begin--&gt;</div><div class="line">        &lt;el-dialog title=&quot;创建用户&quot; v-model=&quot;dialogCreateVisible&quot; :close-on-click-modal=&quot;false&quot; :close-on-press-escape=&quot;false&quot; @close=&quot;reset&quot; &gt;</div><div class="line">            &lt;el-form id=&quot;#create&quot; :model=&quot;create&quot; :rules=&quot;rules&quot; ref=&quot;create&quot; label-width=&quot;100px&quot;&gt;</div><div class="line">                &lt;el-form-item label=&quot;用户名&quot; prop=&quot;username&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;create.username&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;姓名&quot; prop=&quot;name&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;create.name&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;密码&quot; prop=&quot;password&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;create.password&quot; type=&quot;password&quot; auto-complete=&quot;off&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;确认密码&quot; prop=&quot;checkpass&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;create.checkpass&quot; type=&quot;password&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;电话&quot; prop=&quot;phone&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;create.phone&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;邮箱&quot; prop=&quot;email&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;create.email&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">            &lt;/el-form&gt;</div><div class="line">            &lt;div slot=&quot;footer&quot; class=&quot;dialog-footer&quot;&gt;</div><div class="line">                &lt;el-button @click=&quot;dialogCreateVisible = false&quot;&gt;取 消&lt;/el-button&gt;</div><div class="line">                &lt;el-button type=&quot;primary&quot; :loading=&quot;createLoading&quot; @click=&quot;createUser&quot;&gt;确 定&lt;/el-button&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/el-dialog&gt;</div><div class="line">        </div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure></p>
+<p>2.接下来是js部分，同时也是比较重要的地方</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">function getuuid()&#123;</div><div class="line">    var uid = [];</div><div class="line">    var hexDigits = &quot;0123456789abcdefghijklmnopqrst&quot;;</div><div class="line">    for (var i = 0; i &lt; 32; i++) &#123;</div><div class="line">        uid[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);</div><div class="line">    &#125;</div><div class="line">    uid[6] = &quot;4&quot;;</div><div class="line">    uid[15] = hexDigits.substr((uid[15] &amp; 0x3) | 0x8, 1);</div><div class="line">    var uuid = uid.join(&quot;&quot;);</div><div class="line">    return uuid;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default &#123;</div><div class="line">  name: &apos;app&apos;,</div><div class="line">  data: function() &#123;  //表单验证</div><div class="line">        var validatePass = (rule, value, callback) =&gt; &#123;</div><div class="line">          if (value === &apos;&apos;) &#123;</div><div class="line">              callback(new Error(&apos;请再次输入密码&apos;));</div><div class="line">          &#125; else if (value !== this.create.password) &#123;</div><div class="line">              callback(new Error(&apos;两次输入密码不一致!&apos;));</div><div class="line">          &#125; else &#123;</div><div class="line">              callback();</div><div class="line">          &#125;</div><div class="line">      &#125;;</div><div class="line">      return &#123;</div><div class="line">          url: &apos;&apos;, //此处是api的地址，因为此处是公司内部地址，这里就不写上了</div><div class="line">          users: [],</div><div class="line">          keywords:&apos;&apos;,</div><div class="line">          select:&apos;&apos;,</div><div class="line">          filter:&#123;  </div><div class="line">              name:&apos;&apos;,</div><div class="line">              username:&apos;&apos;,</div><div class="line">              phone:&apos;&apos;,</div><div class="line">              per_page: 10, // 页大小</div><div class="line">              page: 1, // 当前页</div><div class="line">              sorts:&apos;&apos;</div><div class="line">          &#125;,</div><div class="line">           loading: true,</div><div class="line">           selected:[],</div><div class="line">           dialogCreateVisible: false, //创建对话框的显示状态</div><div class="line">           dialogUpdateVisible: false, //编辑对话框的显示状态</div><div class="line">           createLoading: false,</div><div class="line">           updateLoading: false,</div><div class="line">          update:&#123;</div><div class="line">              name: &apos;&apos;,</div><div class="line">              phone: &apos;&apos;,</div><div class="line">              email: &apos;&apos;,</div><div class="line">              is_active: true</div><div class="line">          &#125;,</div><div class="line">            total_rows: 0,</div><div class="line">             create: &#123;</div><div class="line">              id: &apos;&apos;,</div><div class="line">              username: &apos;&apos;,</div><div class="line">              name: &apos;&apos;,</div><div class="line">              password: &apos;&apos;,</div><div class="line">              checkpass: &apos;&apos;,</div><div class="line">              phone: &apos;&apos;,</div><div class="line">              email: &apos;&apos;,</div><div class="line">              is_active: true</div><div class="line">          &#125;,</div><div class="line">           rules: &#123;  //表单验证规则</div><div class="line">              name: [</div><div class="line">                  &#123; required: true, message: &apos;请输入姓名&apos;, trigger: &apos;blur&apos; &#125;,</div><div class="line">                  &#123; min: 3, max: 15, message: &apos;长度在 3 到 15 个字符&apos;&#125;</div><div class="line">              ],</div><div class="line">              username: [</div><div class="line">                  &#123; required: true, message: &apos;请输入用户名&apos;, trigger: &apos;blur&apos; &#125;,</div><div class="line">                  &#123; min: 3, max: 25, message: &apos;长度在 3 到 25 个字符&apos;&#125;,</div><div class="line">                  &#123; pattern:/^[A-Za-z0-9]+$/, message: &apos;用户名只能为字母和数字&apos;&#125;</div><div class="line">              ],</div><div class="line">              password: [</div><div class="line">                  &#123; required: true, message: &apos;请输入密码&apos;, trigger: &apos;blur&apos; &#125;,</div><div class="line">                  &#123; min: 6, max: 25, message: &apos;长度在 6 到 25 个字符&apos;&#125;</div><div class="line">              ],</div><div class="line">              checkpass: [</div><div class="line">                  &#123; required: true, message: &apos;请再次输入密码&apos;, trigger: &apos;blur&apos; &#125;,</div><div class="line">                  &#123; validator: validatePass&#125;</div><div class="line">              ],</div><div class="line">              email: [</div><div class="line">                  &#123; type: &apos;email&apos;, message: &apos;邮箱格式不正确&apos;&#125;</div><div class="line">              ],</div><div class="line">              phone:[</div><div class="line">                  &#123; pattern:/^1[34578]\d&#123;9&#125;$/, message: &apos;请输入中国国内的手机号码&apos;&#125;</div><div class="line">              ]</div><div class="line">          &#125;,</div><div class="line">      &#125;;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  mounted()&#123;</div><div class="line">    this.getUsers();</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  methods:&#123;</div><div class="line">    //分页</div><div class="line">      searchFieldChange(val) &#123;</div><div class="line">          this.placeholder=placeholders[val];</div><div class="line">          console.log(`搜索字段： $&#123;val&#125; `);</div><div class="line">      &#125;,</div><div class="line">      pageSizeChange(val) &#123;</div><div class="line">          console.log(`每页 $&#123;val&#125; 条`);</div><div class="line">          this.filter.per_page = val;</div><div class="line">          this.getUsers();</div><div class="line">      &#125;,</div><div class="line">      pageCurrentChange(val) &#123;</div><div class="line">          console.log(`当前页: $&#123;val&#125;`);</div><div class="line">          this.filter.page = val;</div><div class="line">          this.getUsers();</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">    //选则相关</div><div class="line">    tableSelectionChange(val) &#123;</div><div class="line">        this.selected = val;</div><div class="line">        //console.log(val)</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">   //和排序相关</div><div class="line">    tableSortChange(val) &#123;</div><div class="line">        //console.log(`排序属性: $&#123;val.prop&#125;`);</div><div class="line">        //console.log(`排序: $&#123;val.order&#125;`);</div><div class="line">        if(val.prop!=null)&#123;</div><div class="line">            if(val.order==&apos;descending&apos;)&#123;</div><div class="line">                this.filter.sorts = &apos;-&apos;+val.prop;</div><div class="line">            &#125;</div><div class="line">            else&#123;</div><div class="line">                this.filter.sorts = &apos;&apos;+val.prop;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">            this.filter.sorts = &apos;&apos;;</div><div class="line">        &#125;</div><div class="line">        this.getUsers();</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">        // 创建用户</div><div class="line">      createUser()&#123;</div><div class="line">          // 主动校验</div><div class="line">          this.$refs.create.validate((valid) =&gt; &#123;</div><div class="line">              if (valid) &#123;</div><div class="line">                  this.create.id=getuuid();</div><div class="line">                  this.createLoading=true;</div><div class="line">                  var resource = this.$resource(this.url);</div><div class="line">                  resource.save(this.create)</div><div class="line">                      .then((response) =&gt; &#123;</div><div class="line">                      this.$message.success(&apos;创建用户成功！&apos;);</div><div class="line">                      this.dialogCreateVisible=false;</div><div class="line">                      this.createLoading=false;</div><div class="line">                      this.reset();</div><div class="line">                      this.getUsers();</div><div class="line">              &#125;)</div><div class="line">              .catch((response) =&gt; &#123;</div><div class="line">                      var data=response.data;</div><div class="line">                      if(data instanceof Array)&#123;</div><div class="line">                          this.$message.error(data[0][&quot;message&quot;]);</div><div class="line">                      &#125;</div><div class="line">                      else if(data instanceof Object)&#123;</div><div class="line">                          this.$message.error(data[&quot;message&quot;]);</div><div class="line">                      &#125;</div><div class="line">                      this.createLoading=false;</div><div class="line">                  &#125;);</div><div class="line">              &#125;</div><div class="line">              else &#123;</div><div class="line">                return false;</div><div class="line">              &#125;</div><div class="line">          &#125;);</div><div class="line">      &#125;,</div><div class="line">    // 重置表单</div><div class="line">      reset() &#123;</div><div class="line">          this.$refs.create.resetFields();</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">      setCurrent(user)&#123;</div><div class="line">          this.currentId=user.id;</div><div class="line">          this.update.name=user.name;</div><div class="line">          this.update.phone=user.phone;</div><div class="line">          this.update.email=user.email;</div><div class="line">          this.update.is_active=user.is_active;</div><div class="line">          this.dialogUpdateVisible=true;</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">       // 更新用户资料</div><div class="line">      updateUser() &#123;</div><div class="line">          this.$refs.update.validate((valid) =&gt; &#123;</div><div class="line">              if (valid) &#123;</div><div class="line">                  this.updateLoading=true;</div><div class="line">                  var actions = &#123;</div><div class="line">                      update: &#123;method: &apos;patch&apos;&#125;</div><div class="line">                  &#125;</div><div class="line">                  var resource = this.$resource(this.url,&#123;&#125;,actions);</div><div class="line">                  resource.update(&#123;&quot;ids&quot;:this.currentId&#125;,this.update)</div><div class="line">                      .then((response) =&gt; &#123;</div><div class="line">                      this.$message.success(&apos;修改用户资料成功！&apos;);</div><div class="line">                      this.dialogUpdateVisible=false;</div><div class="line">                      this.updateLoading=false;</div><div class="line">                      this.getUsers();</div><div class="line">              &#125;)</div><div class="line">              .catch((response) =&gt; &#123;</div><div class="line">                  var data=response.data;</div><div class="line">                  console.log(data);</div><div class="line">                  if(data instanceof Array)&#123;</div><div class="line">                      this.$message.error(data[0][&quot;message&quot;]);</div><div class="line">                  &#125;</div><div class="line">                  else if(data instanceof Object)&#123;</div><div class="line">                      this.$message.error(data[&quot;message&quot;]);</div><div class="line">                  &#125;</div><div class="line">                  this.updateLoading=false;</div><div class="line">              &#125;);</div><div class="line">              &#125;</div><div class="line">              else &#123;</div><div class="line">                  return false;</div><div class="line">              &#125;</div><div class="line">          &#125;);</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">     //批量删除</div><div class="line">        del_all()&#123;</div><div class="line">            this.$confirm(&apos;此操作将永久删除 &apos; + this.selected.length + &apos; 条分区信息, 是否继续?&apos;, &apos;提示&apos;, &#123;</div><div class="line">                type: &apos;warning&apos;</div><div class="line">            &#125;)</div><div class="line">            .then(() =&gt; &#123;</div><div class="line">                var ids = [];</div><div class="line">                //提取选中项的id</div><div class="line">                $.each(this.selected, (i, alarm) =&gt; &#123;</div><div class="line">                    ids.push(alarm.id);</div><div class="line">                &#125;);</div><div class="line">                // 向请求服务端删除</div><div class="line">                var resource = this.$resource(this.url);</div><div class="line">                resource.remove(&#123;</div><div class="line">                        ids: ids.join(&quot;,&quot;)</div><div class="line">                    &#125;)</div><div class="line">                    .then((response) =&gt; &#123;</div><div class="line">                        this.$message.success(&apos;删除了&apos; + this.selected.length + &apos;条分区信息!&apos;);</div><div class="line">                        this.getUsers();</div><div class="line">                    &#125;)</div><div class="line">                    .catch((response) =&gt; &#123;</div><div class="line">                        this.$message.error(&apos;删除失败!&apos;);</div><div class="line">                    &#125;);</div><div class="line">            &#125;)</div><div class="line">            .catch(() =&gt; &#123;</div><div class="line">                this.$Message(&apos;已取消操作!&apos;);</div><div class="line">            &#125;);</div><div class="line">        &#125;, </div><div class="line"></div><div class="line">    //删除单个用户</div><div class="line">    removed(user)&#123;</div><div class="line">          this.$confirm(&apos;此操作将永久删除用户 &apos; + user.username + &apos;, 是否继续?&apos;, &apos;提示&apos;, &#123; type: &apos;warning&apos; &#125;)</div><div class="line">              .then(() =&gt; &#123;</div><div class="line">              // 向请求服务端删除</div><div class="line">              var resource = this.$resource(this.url + &quot;&#123;/id&#125;&quot;);</div><div class="line">              resource.delete(&#123; id: user.id &#125;)</div><div class="line">                  .then((response) =&gt; &#123;</div><div class="line">                  this.$message.success(&apos;成功删除了用户&apos; + user.username + &apos;!&apos;);</div><div class="line">                  this.getUsers();</div><div class="line">              &#125;)</div><div class="line">              .catch((response) =&gt; &#123;</div><div class="line">                      this.$message.error(&apos;删除失败!&apos;);</div><div class="line">               &#125;);</div><div class="line">          &#125;)</div><div class="line">          .catch(() =&gt; &#123;</div><div class="line">              this.$message.info(&apos;已取消操作!&apos;);</div><div class="line">          &#125;);</div><div class="line">    &#125;,</div><div class="line">    //筛选</div><div class="line">    query()&#123;</div><div class="line">        this.filter.name=&apos;&apos;;</div><div class="line">        this.filter.username=&apos;&apos;;</div><div class="line">        this.filter.phone=&apos;&apos;;</div><div class="line">        this.filter[this.select]=this.keywords;</div><div class="line">        this.getUsers();</div><div class="line">    &#125;,</div><div class="line">    //获取用户列表</div><div class="line">     getUsers() &#123;</div><div class="line">          this.loading = true;</div><div class="line">          var resource = this.$resource(this.url);</div><div class="line">          resource.query(this.filter)</div><div class="line">              .then((response) =&gt; &#123;</div><div class="line">              this.users = response.data.datas;</div><div class="line">               this.total_rows = response.data.total_rows;</div><div class="line">              this.loading = false;</div><div class="line">          &#125;)</div><div class="line">          .catch((response)=&gt; &#123;</div><div class="line">                  this.$message.error(&apos;错了哦，这是一条错误消息&apos;);</div><div class="line">              this.loading = false;</div><div class="line">          &#125;);</div><div class="line">         &#125;</div><div class="line">     &#125;,</div><div class="line">   </div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>具体解析，我就写在注释里！<br>下面上几张效果图！<br><img src="/img/3.png" alt=""><br><img src="/img/4.png" alt=""><br><img src="/img/5.png" alt=""><br><img src="/img/6.png" alt=""><br>注意：项目源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://github.com/sky-xsk/element-vue-resource-</div></pre></td></tr></table></figure></p>
+<p>如果有帮助，请要吝啬，给个‘star’，就是对我的鼓励！</p>
+<blockquote>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script></blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/xskewm.jpg" alt="殖民 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>打赏不在多少，请鼓励一下！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wx.png" alt="殖民 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/1494766982934.jpg" alt="殖民 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      殖民
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://sky-xsk.github.io/2017/07/10/vue2-0-Element-vue-cli-增删改查实例/" title="vue2.0 + Element + vue-cli + resource ,增删改查实例">http://sky-xsk.github.io/2017/07/10/vue2-0-Element-vue-cli-增删改查实例/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue2-0/" rel="tag"># vue2.0</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/07/总结几种数组去重的方法，敲一遍代码/" rel="next" title="总结几种数组去重的方法，敲一遍代码">
+                <i class="fa fa-chevron-left"></i> 总结几种数组去重的方法，敲一遍代码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/19/火星文-正则表达式（学习）转载/" rel="prev" title="火星文-正则表达式（学习）转载">
+                火星文-正则表达式（学习）转载 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODY1Ny81MjI4"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+
+      
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/headers.png"
+               alt="殖民" />
+          <p class="site-author-name" itemprop="name">殖民</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sky-xsk" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/2fb92d7e3f03" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/5362683665/home?wvr=5&sudaref=graph.qq.com" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://user.qzone.qq.com/871855637/infocenter?ptsig=oVI05tNefxuMfj1TzR1I-WoNWxHU8aHaTlkzapJe*RI_" target="_blank" title="QQ空间">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                  QQ空间
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://shang.qq.com/email/stop/email_stop.html?qq=871855637&sig=a1c657365db7e82805ea4b2351081fc3ebcde159f8ae49b1&tttt=1" target="_blank" title="Contact">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                  Contact
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              一些博客/网址
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.try8.cn/" title="程序员网址大全" target="_blank">程序员网址大全</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰的网络日志" target="_blank">阮一峰的网络日志</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.zhangxinxu.com/wordpress/" title="张鑫旭的博客" target="_blank">张鑫旭的博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript" title="MDNDOS(js)" target="_blank">MDNDOS(js)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/u/2fb92d7e3f03" title="我的简书(除外)" target="_blank">我的简书(除外)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://cnodejs.org/" title="nodejs" target="_blank">nodejs</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.w3cplus.com/" title="W3Cplus" target="_blank">W3Cplus</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.qianduan.net/" title="前端观察" target="_blank">前端观察</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/peterli2013/archive/2014/01/22/3530070.html" title="值得收藏的前端大牛博客（推荐）" target="_blank">值得收藏的前端大牛博客（推荐）</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/sofish" title="sofish" target="_blank">sofish</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.zhaojie.me/" title="老赵点滴 - 追求编程之美" target="_blank">老赵点滴 - 追求编程之美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://evanyou.me/" title="尤小右" target="_blank">尤小右</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+
+     
+
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">殖民</span>
+ 
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"5","bdPos":"left","bdTop":"178.5"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://sky-xsk.github.io/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+<p style="margin:0">版权所有：殖民的博客</p>
+<button onclick="TogetherJS(this); return false;" style="background:red;border:0; color:#ffffff;">获取实时帮助,耐心等待右下角的弹窗哦！</button>
+</div>
+
+
+
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数 <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量 <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

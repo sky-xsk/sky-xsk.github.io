@@ -16,6 +16,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
@@ -329,7 +330,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/05/31/简单聊一下js闭包/">
+    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/10/17/用axios-element-ui-增删改查小例子/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殖民">
@@ -348,7 +349,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/31/简单聊一下js闭包/" itemprop="url">简单聊一下js闭包</a></h2>
+                <a class="post-title-link" href="/2017/10/17/用axios-element-ui-增删改查小例子/" itemprop="url">用axios+element-ui 增删改查小例子</a></h2>
         
 
         <div class="post-meta">
@@ -360,8 +361,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T16:54:08+08:00">
-                2017-05-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T15:33:21Z">
+                2017-10-17
               </time>
             
 
@@ -392,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  888
+                  2,139
                 </span>
               
 
@@ -408,7 +409,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  3
+                  11
                 </span>
               
             </div>
@@ -427,10 +428,11 @@
 
       
         
-          <p> js闭包，阮老师说：‘闭包就是能够读取其他函数内部变量的函数。由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。’ 这里可能要先去理解一下全局 变量和局部变量，这里先不做过多的解释！<br>
+          <p>axios-elementui增删改查小例子，代码见github,给加个星星：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://github.com/sky-xsk/axios-elementui-</div></pre></td></tr></table></figure></p>
+<p>我用的是公司内部提供的api，所以不在公司内部，是看不到效果的，最主要的还是对源码的参考！<br>放心我会附上图片效果的!<br> 之前使用vue-reource写的，并且没有封装，这个例子用的是es6里的promise进行的封装，单独抽取出api接口；<br>代码如下：<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/31/简单聊一下js闭包/#more" rel="contents">
+            <a class="btn" href="/2017/10/17/用axios-element-ui-增删改查小例子/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -476,7 +478,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/05/26/js封装——封装一些小例（栗）子/">
+    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/09/06/es6语法特性进阶（8）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殖民">
@@ -495,7 +497,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/26/js封装——封装一些小例（栗）子/" itemprop="url">js封装——封装一些小例（栗）子</a></h2>
+                <a class="post-title-link" href="/2017/09/06/es6语法特性进阶（8）/" itemprop="url">es6语法特性进阶（8）</a></h2>
         
 
         <div class="post-meta">
@@ -507,8 +509,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-26T22:38:38+08:00">
-                2017-05-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T16:42:31Z">
+                2017-09-05
               </time>
             
 
@@ -539,7 +541,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  863
+                  971
                 </span>
               
 
@@ -574,10 +576,11 @@
 
       
         
-          <p>在开发过程中，经常会遇到很多相同的效果和逻辑交互，相同的代码要写很多次，代码重复，这样会导致很多问题，具体问题就不说了，大家应该都懂！<br>今天，通过几个封装效果的几个实例，来实现代码的复用，让你的代码也变的简洁高效起来吧！请往下看：<br>
+          <p><b>Babel</b></p>
+<p>到目前2017年为止，也不是所有的浏览器都支持ES6的特性。<br>所以我们需要把ES6转换成ES5的代码，就要用到所谓的转码器。Babel就是目前使用最广泛的把ES6代码转换成ES5及以前代码的转码器。<br>有了babel我们就可以放心的使用ES6的最新的语法，而不用担心浏览器不支持了！！！<br>为了方便使用，我直接使用webstorm的filewatcher功能<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/26/js封装——封装一些小例（栗）子/#more" rel="contents">
+            <a class="btn" href="/2017/09/06/es6语法特性进阶（8）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -623,7 +626,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/05/26/关于跨域jsonp/">
+    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/09/06/es6语法特性进阶（7）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殖民">
@@ -642,7 +645,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/26/关于跨域jsonp/" itemprop="url">关于跨域jsonp</a></h2>
+                <a class="post-title-link" href="/2017/09/06/es6语法特性进阶（7）/" itemprop="url">es6语法特性进阶（7）</a></h2>
         
 
         <div class="post-meta">
@@ -654,8 +657,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-25T16:22:45Z">
-                2017-05-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T16:24:40Z">
+                2017-09-05
               </time>
             
 
@@ -686,7 +689,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  2,228
+                  2,278
                 </span>
               
 
@@ -721,10 +724,10 @@
 
       
         
-          <p>今天没什么太忙的事，准备写一个关于jsonp的文章，参考了网上不少文章，感觉自己的理解没有网上一些文章理解的透彻，所以这里选了一篇比较好的文章，当自己的笔记吧！一边以后自己的查阅！<br>
+          <p><b>类</b><br>和大多数面向对象的语言（object-oriented programming language）不同，JavaScript 在诞生之初并不支持使用类和传统的类继承并作为主要的定义方式来创建相似或关联的对象。<br>这很令开发者困惑，而且在早于 ECMAScript 1 到 ECMAScript 5 这段时期，很多库都创建了一些实用工具（utility）来让 JavaScript 从表层上支持类。<br>尽管一些 JavaScript 开发者强烈主张该语言不需要类，但由于大量的库都对类做了实现，ECMAScript 6 也顺势将其引入。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/26/关于跨域jsonp/#more" rel="contents">
+            <a class="btn" href="/2017/09/06/es6语法特性进阶（7）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -770,7 +773,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/05/25/理解前端语义化/">
+    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/09/06/es6语法特性进阶（6）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殖民">
@@ -789,7 +792,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/25/理解前端语义化/" itemprop="url">理解前端语义化（转载）</a></h2>
+                <a class="post-title-link" href="/2017/09/06/es6语法特性进阶（6）/" itemprop="url">es6语法特性进阶（6）</a></h2>
         
 
         <div class="post-meta">
@@ -801,8 +804,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T23:50:39Z">
-                2017-05-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T16:06:21Z">
+                2017-09-05
               </time>
             
 
@@ -833,7 +836,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,332
+                  2,381
                 </span>
               
 
@@ -849,7 +852,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  5
+                  10
                 </span>
               
             </div>
@@ -868,10 +871,10 @@
 
       
         
-          <p> </p><h3>1.Web标准</h3><br>Web标准是由一系列标准组合而成。一个网页主要由三部分组成：结构层、表现层和行为层。对应的标准也分三方面：结构化标准语言主要包括XHTML和HTML以及XML，表现层标准语言主要包括CSS，行为标准主要包括对象模型，DOM、ECMAScript等。<br>结构化标准语言，就是W3C规定的那样;<br>
+          <p><b>Map数据结构</b><br>ECMAScript 6 中的 map 类型包含一组有序的键值对，其中键和值可以是任何类型。<br>​键的比较结果由 Object.is() 来决定，所以你可以同时使用 5 和 “5” 做为键来存储，因为它们是不同的类型。<br>​这和使用对象属性做为值的方法大相径庭，因为  对象的属性会被强制转换为字符串类型。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/25/理解前端语义化/#more" rel="contents">
+            <a class="btn" href="/2017/09/06/es6语法特性进阶（6）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -917,7 +920,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/05/24/js的变量提升/">
+    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/09/05/es6语法特性进阶（5）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殖民">
@@ -936,7 +939,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/24/js的变量提升/" itemprop="url">js的变量提升</a></h2>
+                <a class="post-title-link" href="/2017/09/05/es6语法特性进阶（5）/" itemprop="url">es6语法特性进阶（5）</a></h2>
         
 
         <div class="post-meta">
@@ -948,8 +951,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T09:09:42Z">
-                2017-05-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T15:57:11Z">
+                2017-09-05
               </time>
             
 
@@ -980,7 +983,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  832
+                  1,067
                 </span>
               
 
@@ -996,7 +999,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -1015,10 +1018,10 @@
 
       
         
-          <p>在JavaScript 中，函数及变量的声明都将被提升到函数的最顶部，变量可以在使用后声明，也就是变量可以先使用再声明。<br>变量提升：函数声明和变量声明总是会被解释器悄悄地被”提升”到方法体的最顶部。<br>虽然，通常我们在每个作用域开始前声明这些变量，这也是正常的 JavaScript 解析步骤，易于我们理解；但是理解变量提升还是很有用的！<br>
+          <p><b>Set数据结构</b><br>JavaScript 在绝大部分历史时期内只有一种集合类型，那就是数组。数组在 JavaScript 中的使用方式和其它语言很相似，但是其它集合类型的缺乏导致数组也经常被当作队列（queues）和栈（stacks）来使用。<br>​因为数组的索引只能是数字类型，当开发者觉得非数字类型的索引是必要的时候会使用非数组对象。这项用法促进了以非类数组对象为基础的 set 和 map 集合类型的实现。<br>Set是类似数组的一种结构，可以存储数据，与数组的区别主要是  Set中的元素不能重复，而数组中的元素可以重复。<br>一句话总结：Set类型是一个包含无重复元素的有序列表<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/24/js的变量提升/#more" rel="contents">
+            <a class="btn" href="/2017/09/05/es6语法特性进阶（5）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1064,7 +1067,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/05/23/怎么用vue-cli构建自己的vue2-0的项目/">
+    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/09/05/es6语法特性进阶（4）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殖民">
@@ -1083,7 +1086,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/23/怎么用vue-cli构建自己的vue2-0的项目/" itemprop="url">怎么用vue-cli构建自己的vue2.0的项目</a></h2>
+                <a class="post-title-link" href="/2017/09/05/es6语法特性进阶（4）/" itemprop="url">es6语法特性进阶（4）</a></h2>
         
 
         <div class="post-meta">
@@ -1095,8 +1098,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-23T09:05:46Z">
-                2017-05-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T15:43:50Z">
+                2017-09-05
               </time>
             
 
@@ -1127,7 +1130,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  726
+                  1,536
                 </span>
               
 
@@ -1143,7 +1146,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  3
+                  6
                 </span>
               
             </div>
@@ -1162,10 +1165,10 @@
 
       
         
-          <p>博客里的一些小示例都是在vue-cli的基础上构建的，为了方便学习，这里把vue-cli构建项目的方法说一下！怎样从零开始，构建一个简单的vue2.0项目！<br>
+          <p><b>数组解构基本语法</b><br>数据解构的语法和对象解构看起来类似，只是将对象字面量替换成了数组字面量，而且解构操作的是数组内部的位置（索引）而不是对象中的命名属性，例如：<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/23/怎么用vue-cli构建自己的vue2-0的项目/#more" rel="contents">
+            <a class="btn" href="/2017/09/05/es6语法特性进阶（4）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1211,7 +1214,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/05/18/js实现一些跨浏览器的兼容事件方法/">
+    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/09/05/es6语法特性进阶（3）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殖民">
@@ -1230,7 +1233,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/18/js实现一些跨浏览器的兼容事件方法/" itemprop="url">js实现一些跨浏览器的兼容事件方法</a></h2>
+                <a class="post-title-link" href="/2017/09/05/es6语法特性进阶（3）/" itemprop="url">es6语法特性进阶（3）</a></h2>
         
 
         <div class="post-meta">
@@ -1242,8 +1245,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T15:56:19Z">
-                2017-05-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T15:27:08Z">
+                2017-09-05
               </time>
             
 
@@ -1274,7 +1277,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  377
+                  2,038
                 </span>
               
 
@@ -1290,7 +1293,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  2
+                  8
                 </span>
               
             </div>
@@ -1309,10 +1312,10 @@
 
       
         
-          <p>用JavaScript实现事件的绑定，移除，以及一些常用的事件属性的获取，时常要考虑到在不同浏览器下的兼容性，下面给出了一个跨浏览器的事件对象：<br>
+          <p><b>字符串功能的增强</b><br>在以前在字符串中查找字符串的时候，都是使用indexOf方法。<br>ES6新增了三个方法来查找字符串。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/18/js实现一些跨浏览器的兼容事件方法/#more" rel="contents">
+            <a class="btn" href="/2017/09/05/es6语法特性进阶（3）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1358,7 +1361,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/05/16/怎么理解-forEach-call-？/">
+    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/09/05/es6语法特性进阶（2）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殖民">
@@ -1377,7 +1380,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/16/怎么理解-forEach-call-？/" itemprop="url"> 怎么理解[].forEach.call()？</a></h2>
+                <a class="post-title-link" href="/2017/09/05/es6语法特性进阶（2）/" itemprop="url">es6语法特性进阶（2）</a></h2>
         
 
         <div class="post-meta">
@@ -1389,8 +1392,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-16T13:35:17Z">
-                2017-05-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T15:11:43Z">
+                2017-09-05
               </time>
             
 
@@ -1421,7 +1424,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  330
+                  1,503
                 </span>
               
 
@@ -1437,7 +1440,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -1456,10 +1459,10 @@
 
       
         
-          <p>今天，在网上看到javascript的[].forEach.call()写法，刚看到的时候有点蒙，不是太明白是什么意思！后来到网上查了一下，其实这东西是个简写的写法。如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function forEach(elems, callback) &#123;</div><div class="line">  if([].forEach) &#123;</div><div class="line">    [].forEach.call(elems, callback);</div><div class="line">  &#125; else &#123;</div><div class="line">    for(var i = 0; i &lt; elems.length; i++) &#123;</div><div class="line">      callback(elems[i], i);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+          <p><b>对象功能的扩展</b><br>在JavaScript中，几乎所有的类型都是对象，所以使用好对象，对提示JavaScript的性能很重要。<br>ECMAScript 6 给对象的各个方面，从简单的语法扩展到操作与交互，都做了改进。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/16/怎么理解-forEach-call-？/#more" rel="contents">
+            <a class="btn" href="/2017/09/05/es6语法特性进阶（2）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1505,7 +1508,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/05/15/简单-Vue-2-0渐进式前端解决方案（Vue-js作者尤雨溪）-转载/">
+    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/09/05/es6语法特性进阶（1）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殖民">
@@ -1524,7 +1527,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/15/简单-Vue-2-0渐进式前端解决方案（Vue-js作者尤雨溪）-转载/" itemprop="url">简单-Vue 2.0渐进式前端解决方案（Vue.js作者尤雨溪）(转载)</a></h2>
+                <a class="post-title-link" href="/2017/09/05/es6语法特性进阶（1）/" itemprop="url">es6语法特性进阶（1）</a></h2>
         
 
         <div class="post-meta">
@@ -1536,8 +1539,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-15T15:09:28Z">
-                2017-05-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T14:51:58Z">
+                2017-09-05
               </time>
             
 
@@ -1568,7 +1571,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  4,670
+                  978
                 </span>
               
 
@@ -1584,7 +1587,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  16
+                  4
                 </span>
               
             </div>
@@ -1603,12 +1606,10 @@
 
       
         
-          <p><code>(转载)</code></p>
-<p>本人的新博客上线了：<br><a href="https://sky-xsk.github.io/">https://sky-xsk.github.io/</a></p>
-<p><strong>主流框架分析</strong><br>我们看一下现有的一些主流框架从少到多所解决的问题。这个多少并不是来评价框架的好坏，而是从设计的角度出发看它涵盖多少内容。<br><img src="http://upload-images.jianshu.io/upload_images/4155235-407dc7f60ed1d67e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>
+          <p>ECMAScript 6 最有意思的部分之一就是箭头函数。正如其名，箭头函数由 “箭头”（=&gt;）这种新的语法来定义。<br>其实在别的语言中早就有了这种语法结构，不过他们叫拉姆达表达式。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/15/简单-Vue-2-0渐进式前端解决方案（Vue-js作者尤雨溪）-转载/#more" rel="contents">
+            <a class="btn" href="/2017/09/05/es6语法特性进阶（1）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1654,7 +1655,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/05/11/vue2-0-自己开发一个全局定义的公用组件（插件）/">
+    <link itemprop="mainEntityOfPage" href="http://sky-xsk.github.io/2017/09/05/es6语法特性学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殖民">
@@ -1673,7 +1674,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/11/vue2-0-自己开发一个全局定义的公用组件（插件）/" itemprop="url">vue2.0,自己开发一个全局定义的公用组件（插件）</a></h2>
+                <a class="post-title-link" href="/2017/09/05/es6语法特性学习/" itemprop="url">es6语法特性学习</a></h2>
         
 
         <div class="post-meta">
@@ -1685,8 +1686,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T10:40:11Z">
-                2017-05-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T14:24:59Z">
+                2017-09-05
               </time>
             
 
@@ -1695,39 +1696,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue2-0/" itemprop="url" rel="index">
-                    <span itemprop="name">vue2.0</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue2-0/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1750,7 +1718,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  438
+                  2,517
                 </span>
               
 
@@ -1766,7 +1734,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  2
+                  10
                 </span>
               
             </div>
@@ -1785,11 +1753,10 @@
 
       
         
-          <p>今天，在群里看到有朋友问这样一个问题：“我在项目里，怎么能做一个全局调用的组件，不用每一次都import，注册组件？”看到这个问题，我思考了一下，讲一下我的思路！</p>
-<p>这个问题里，所说的组件，在我看来也可以叫做“插件”，为什么这么说呢？因为这个和vue-resource之类的插件开发的思路是一样的？只是一个放到的是本地，一个是通过“npm install vue-resource ”下载下来的？换一个思路，如果我把自己开发的组件放到网上，是不是别人可以直接用我开发的插件呢？回答是：“必须的”！<br>
+          <p><b>ES6简介</b><br>    历时将近6年的时间来制定的新 ECMAScript 标准 ECMAScript 6（亦称 ECMAScript Harmony，简称 ES6）终于在 2015 年 6 月正式发布。自从上一个标准版本 ES5 在 2009 年发布以后，ES6 就一直以新语法、新特性的优越性吸引著众多 JavaScript 开发者，驱使他们积极尝鲜。<br>​    由于ES6是在2015年发布的，所以也叫ES2015。<br>    以后ESCMAScript标准一年一更新，统一使用年份命名：ES2016、ES2017、….<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/11/vue2-0-自己开发一个全局定义的公用组件（插件）/#more" rel="contents">
+            <a class="btn" href="/2017/09/05/es6语法特性学习/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1830,7 +1797,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1873,7 +1840,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1895,7 +1862,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1988,11 +1955,43 @@
                 </li>
               
                 <li class="links-of-blogroll-item">
-                  <a href="http://www.aoao.org.cn/" title="嗷嗷 淘宝网" target="_blank">嗷嗷 淘宝网</a>
+                  <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript" title="MDNDOS(js)" target="_blank">MDNDOS(js)</a>
                 </li>
               
                 <li class="links-of-blogroll-item">
                   <a href="http://www.jianshu.com/u/2fb92d7e3f03" title="我的简书(除外)" target="_blank">我的简书(除外)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://cnodejs.org/" title="nodejs" target="_blank">nodejs</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.w3cplus.com/" title="W3Cplus" target="_blank">W3Cplus</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.qianduan.net/" title="前端观察" target="_blank">前端观察</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/peterli2013/archive/2014/01/22/3530070.html" title="值得收藏的前端大牛博客（推荐）" target="_blank">值得收藏的前端大牛博客（推荐）</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/sofish" title="sofish" target="_blank">sofish</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.zhaojie.me/" title="老赵点滴 - 追求编程之美" target="_blank">老赵点滴 - 追求编程之美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://evanyou.me/" title="尤小右" target="_blank">尤小右</a>
                 </li>
               
             </ul>
@@ -2034,8 +2033,12 @@
 window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"5","bdPos":"left","bdTop":"178.5"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://sky-xsk.github.io/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
-  <p style="margin:0">版权所有：殖民的博客</p>
+
+
+<p style="margin:0">版权所有：殖民的博客</p>
+<button onclick="TogetherJS(this); return false;" style="background:red;border:0; color:#ffffff;">获取实时帮助,耐心等待右下角的弹窗哦！</button>
 </div>
+
 
 
 
@@ -2046,9 +2049,6 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     NexT.Muse
   </a>
 </div>
-
-
-
 
 
         
