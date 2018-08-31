@@ -789,20 +789,17 @@
 
     
   <url>
-    <loc>http://sky-xsk.github.io/2017/05/09/%E7%AE%80%E5%8D%95%E8%81%8A%E8%81%8Ajavascript%E7%9A%84%E7%BB%A7%E6%89%BF%EF%BC%9B/</loc>
+    <loc>http://sky-xsk.github.io/2016/08/13/%E7%94%A8-CSS3-%E6%80%8E%E4%B9%88%E7%BB%98%E5%88%B6%E9%9C%80%E8%A6%81%E7%9A%84%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2/</loc>
     <lastmod>2017-05-14T23:31:53.000Z</lastmod>
     <data>
         <display>
-        <title>简单聊聊javascript的继承</title>
-        <pubTime>2017-05-09T15:10:13.000Z</pubTime>
+        <title>用 CSS3 怎么绘制需要的几何图形</title>
+        <pubTime>2016-08-13T10:17:52.000Z</pubTime>
         
-        <tag>js</tag>
+        <tag>css3.0</tag>
          
          
            
-             
-              <breadCrumb title="js" url="http://sky-xsk.github.io/categories/js/"/>
-          
         </display>
     </data>
     </url>
@@ -829,17 +826,20 @@
 
     
   <url>
-    <loc>http://sky-xsk.github.io/2016/08/13/%E7%94%A8-CSS3-%E6%80%8E%E4%B9%88%E7%BB%98%E5%88%B6%E9%9C%80%E8%A6%81%E7%9A%84%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2/</loc>
+    <loc>http://sky-xsk.github.io/2017/05/09/%E7%AE%80%E5%8D%95%E8%81%8A%E8%81%8Ajavascript%E7%9A%84%E7%BB%A7%E6%89%BF%EF%BC%9B/</loc>
     <lastmod>2017-05-14T23:31:53.000Z</lastmod>
     <data>
         <display>
-        <title>用 CSS3 怎么绘制需要的几何图形</title>
-        <pubTime>2016-08-13T10:17:52.000Z</pubTime>
+        <title>简单聊聊javascript的继承</title>
+        <pubTime>2017-05-09T15:10:13.000Z</pubTime>
         
-        <tag>css3.0</tag>
+        <tag>js</tag>
          
          
            
+             
+              <breadCrumb title="js" url="http://sky-xsk.github.io/categories/js/"/>
+          
         </display>
     </data>
     </url>
