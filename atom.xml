@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sky-xsk.github.io/"/>
-  <updated>2017-10-17T07:36:22.328Z</updated>
+  <updated>2018-08-31T05:44:31.097Z</updated>
   <id>http://sky-xsk.github.io/</id>
   
   <author>
@@ -14,6 +14,443 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue项目国际化，中英繁，三种语言切换</title>
+    <link href="http://sky-xsk.github.io/2018/08/31/vue%E9%A1%B9%E7%9B%AE%E5%9B%BD%E9%99%85%E5%8C%96%EF%BC%8C%E4%B8%AD%E8%8B%B1%E7%B9%81%EF%BC%8C%E4%B8%89%E7%A7%8D%E8%AF%AD%E8%A8%80%E5%88%87%E6%8D%A2/"/>
+    <id>http://sky-xsk.github.io/2018/08/31/vue项目国际化，中英繁，三种语言切换/</id>
+    <published>2018-08-31T13:42:36.000Z</published>
+    <updated>2018-08-31T05:44:31.097Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们的软件，为了满足不同地区的需求，我们的前端部分需要做，多语言的支持，这里做一个简单的分享！<br> <a id="more"></a><br> 1.首先，安装；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install vue-i18n</div></pre></td></tr></table></figure></p>
+<p>2.在与main.js同级目录下，新建文件夹，如图吧：<br><img src="https://upload-images.jianshu.io/upload_images/4155235-21dde0c56dbd60d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>3.看一下main.js,注意文件的目录结构，层级；<br><img src="https://upload-images.jianshu.io/upload_images/4155235-7546d8e5ac70196c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>4.看i18n.js；<br><img src="https://upload-images.jianshu.io/upload_images/4155235-09a98dd0224c78d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>5.看index.js<br><img src="https://upload-images.jianshu.io/upload_images/4155235-7aacc48386c521fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>6.cn.js<br><img src="https://upload-images.jianshu.io/upload_images/4155235-1874b71e69bb8bd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>7.en.js<br><img src="https://upload-images.jianshu.io/upload_images/4155235-05de5c19b3948b8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>8.tw.js<br><img src="https://upload-images.jianshu.io/upload_images/4155235-d0273fde3feff76c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>9.下面是在组件里切换语言；<br><img src="https://upload-images.jianshu.io/upload_images/4155235-ae9eef693166e651.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/4155235-1202ccdf5449ce98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/4155235-45b12b95994eae95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>截图，不上代码的原因，希望可以自己动手写一遍，不要复制粘贴！<br>其实吧! 截图也挺累！</p>
+<blockquote>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们的软件，为了满足不同地区的需求，我们的前端部分需要做，多语言的支持，这里做一个简单的分享！&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://sky-xsk.github.io/tags/js/"/>
+    
+      <category term="vue2.0" scheme="http://sky-xsk.github.io/tags/vue2-0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node+vue 项目，不断更新中。。。</title>
+    <link href="http://sky-xsk.github.io/2018/08/31/node-vue-%E9%A1%B9%E7%9B%AE%EF%BC%8C%E4%B8%8D%E6%96%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%E3%80%82%E3%80%82%E3%80%82/"/>
+    <id>http://sky-xsk.github.io/2018/08/31/node-vue-项目，不断更新中。。。/</id>
+    <published>2018-08-31T13:38:57.000Z</published>
+    <updated>2018-08-31T05:42:37.530Z</updated>
+    
+    <content type="html"><![CDATA[<p>请移步，github！<br><code>https://github.com/sky-xsk/node-vue-</code><br>记得给个“start”，谢谢！<br> <a id="more"></a><br> 请移步，github！<br><code>https://github.com/sky-xsk/node-vue-</code><br>记得给个“start”，谢谢！</p>
+<blockquote>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;请移步，github！&lt;br&gt;&lt;code&gt;https://github.com/sky-xsk/node-vue-&lt;/code&gt;&lt;br&gt;记得给个“start”，谢谢！&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://sky-xsk.github.io/tags/js/"/>
+    
+      <category term="vue2.0" scheme="http://sky-xsk.github.io/tags/vue2-0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue+iview+mqtt（mqttws31.js） 简单实例</title>
+    <link href="http://sky-xsk.github.io/2018/05/15/vue-iview-mqtt%EF%BC%88mqttws31-js%EF%BC%89-%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/"/>
+    <id>http://sky-xsk.github.io/2018/05/15/vue-iview-mqtt（mqttws31-js）-简单实例/</id>
+    <published>2018-05-15T13:21:46.000Z</published>
+    <updated>2018-08-31T05:41:35.017Z</updated>
+    
+    <content type="html"><![CDATA[<p>怎么新建一个项目工程，这里就不说了！主要说mqtt，怎么使用mqttws31.js，发送一个消息，怎么接收显示的问题！<br>代码会放到我的GitHub上，往后看！<br> <a id="more"></a></p>
+<p> ###index.html<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;zh-CN&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;消息队列&lt;/title&gt;</div><div class="line">    &lt;meta http-equiv=&quot;Access-Control-Allow-Origin&quot; content=&quot;*&quot; /&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot;&gt;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;/dist/main.css&quot;&gt;</div><div class="line">    &lt;script src=&quot;./tools/mqttws31.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;  //引入js</div><div class="line">    &lt;script src=&quot;./tools/config.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;       //引入主题配置文件</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;/dist/vendors.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;/dist/main.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p> ###config.js<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> host = &apos;222.73.204.54&apos;; // hostname or IP address ,自己配的消息队列服务，这里用的在线的服务，测试工具的话也会放到github；地址在最下方！</div><div class="line"> port = 9001;  //端口</div><div class="line"> addtopic = &apos;add&apos;; //约定的主题</div><div class="line">//下面暂时不用在意，下次会讲</div><div class="line"> useTLS = false;</div><div class="line"> username = null;</div><div class="line"> password = null;</div><div class="line"> cleansession = false;</div></pre></td></tr></table></figure></p>
+<p>上面东西配好后，下面就是重点了: 具体代码解释，会写到注释里！</p>
+<p>###app.vue<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">        &lt;p&gt;&#123;&#123;msg&#125;&#125;&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    export default &#123;</div><div class="line">        data() &#123;</div><div class="line">            return &#123;</div><div class="line">                reconnectTimeout: 2000,</div><div class="line">                mqtt: &#123;&#125;,</div><div class="line">                msg:&quot;&quot;,</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        mounted() &#123;</div><div class="line">            this.MQTTconnect();</div><div class="line">        &#125;,</div><div class="line">        methods: &#123;</div><div class="line">            //实时货柜变化</div><div class="line">            addtopic(msg) &#123;</div><div class="line">                this.msg = msg;</div><div class="line">            &#125;,</div><div class="line">            //实时通信</div><div class="line">            MQTTconnect() &#123;</div><div class="line">                this.mqtt = new Paho.MQTT.Client(  //实例化一个对象</div><div class="line">                    host,</div><div class="line">                    port,</div><div class="line">                    &quot;client&quot; + this.getuuid(),  //防止多个浏览器打开，导致的问题，保证唯一性</div><div class="line">                );</div><div class="line">                var options = &#123; </div><div class="line">                    timeout: 10,</div><div class="line">                    useSSL: useTLS,</div><div class="line">                    cleanSession: cleansession,</div><div class="line">                   //如果为false(flag=0)，Client断开连接后，Server应该保存Client的订阅信息。如果为true(flag=1)，表示Server应该立刻丢弃任何会话状态信息。</div><div class="line">                    onSuccess: this.onConnect,</div><div class="line">                    onFailure: function(message) &#123;</div><div class="line">                        //连接失败定时重连</div><div class="line">                        setTimeout(this.MQTTconnect, this.reconnectTimeout);</div><div class="line">                    &#125;</div><div class="line">                &#125;;</div><div class="line">                this.mqtt.onConnectionLost = this.onConnectionLost;</div><div class="line">                this.mqtt.onMessageArrived = this.onMessageArrived;</div><div class="line">                //用户名和密码的验证，我这里都为空；不加验证</div><div class="line">                if (username != null) &#123;</div><div class="line">                    options.userName = username;</div><div class="line">                    options.password = password;</div><div class="line">                &#125;</div><div class="line">                this.mqtt.connect(options);</div><div class="line">            &#125;,</div><div class="line">            //uuid随机生成</div><div class="line">            getuuid() &#123;</div><div class="line">                var uid = [];</div><div class="line">                var hexDigits = &quot;0123456789abcdefghijklmnopqrst&quot;;</div><div class="line">                for (var i = 0; i &lt; 32; i++) &#123;</div><div class="line">                    uid[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);</div><div class="line">                &#125;</div><div class="line">                uid[6] = &quot;4&quot;;</div><div class="line">                uid[15] = hexDigits.substr((uid[15] &amp; 0x3) | 0x8, 1);</div><div class="line">                var uuid = uid.join(&quot;&quot;);</div><div class="line">                return uuid;</div><div class="line">            &#125;,</div><div class="line">            //连接</div><div class="line">            onConnect() &#123;</div><div class="line">                //连接成功，订阅主题</div><div class="line">                this.mqtt.subscribe(addtopic, &#123;</div><div class="line">                    qos: 2  </div><div class="line">                  //QoS0，最多一次送达。也就是发出去就fire掉，没有后面的事情了。</div><div class="line">                 // QoS1，至少一次送达。发出去之后必须等待ack，没有ack，就要找时机重发</div><div class="line">                 // QoS2，准确一次送达。消息id将拥有一个简单的生命周期。</div><div class="line">                &#125;);</div><div class="line">               </div><div class="line">                //发布一个消息，再连接成功后，发送一个响应，确保连接没有问题；</div><div class="line">                this.mqtt.send(&quot;login&quot;, &quot;&#123;\&quot;command\&quot;:\&quot;login\&quot;,\&quot;clientId\&quot;:\&quot;&quot; + this.mqtt.clientId + &quot;\&quot;&#125;&quot;, 0);</div><div class="line">            &#125;,</div><div class="line">            //连接丢失</div><div class="line">            onConnectionLost(response) &#123;</div><div class="line">                //console.log(&quot;异常掉线，掉线信息为:&quot; + response.errorMessage);</div><div class="line">            &#125;,</div><div class="line">    </div><div class="line">            //接收到消息，处理</div><div class="line">            onMessageArrived(message) &#123;</div><div class="line">                var topics = message.destinationName;</div><div class="line">                var msg = $.parseJSON(message.payloadString);</div><div class="line">                //判断主题，调用方法，这里可以订阅多个主题，在此处判断，接受不同的主题，调用不同的方法！</div><div class="line">                if (topics == &quot;add&quot;) &#123;</div><div class="line">                    //添加</div><div class="line">                    this.addtopic(msg);</div><div class="line">                &#125;else &#123;</div><div class="line">                    return;</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">        &#125;,</div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;style&gt;</div><div class="line">    .apps &#123;</div><div class="line">        width: 100%;</div><div class="line">        overflow: hidden;</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></p>
+<p>###消息验证<br>提供一个这样的在线的测试工具；<br><img src="https://upload-images.jianshu.io/upload_images/4155235-dab43619d5103ea5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="(SJBLQ$O)6JCDOT13P65R1F.png"><br>介绍一下：<br>1.server： 消息队列服务所在的地址，保证和config.js里面的地址一样；<br>2.port：端口保证和config.js里面的地址一样；<br>3.订阅：是订阅主题的地方，要和config.js约定的主题相同，才可！<br>4.发布，填写topic，我们是“add”，payload,内容，如上图！随便写！<br>点击发布，在你的页面，就能看到你发送的信息了！<br><img src="https://upload-images.jianshu.io/upload_images/4155235-5c9ede47f1df9954.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1526366434(1).jpg"></p>
+<p>###ok，结束了！拿去用到项目里吧！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">github地址：https://github.com/sky-xsk/vue-iview-mqtt-mqttws31.js-</div></pre></td></tr></table></figure></p>
+<p>给个星星star，说明你看过！谢谢！</p>
+<blockquote>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;怎么新建一个项目工程，这里就不说了！主要说mqtt，怎么使用mqttws31.js，发送一个消息，怎么接收显示的问题！&lt;br&gt;代码会放到我的GitHub上，往后看！&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://sky-xsk.github.io/tags/js/"/>
+    
+      <category term="vue2.0" scheme="http://sky-xsk.github.io/tags/vue2-0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>总结几种常见的垂直居中布局</title>
+    <link href="http://sky-xsk.github.io/2018/04/27/%E6%80%BB%E7%BB%93%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E5%B8%83%E5%B1%80/"/>
+    <id>http://sky-xsk.github.io/2018/04/27/总结几种常见的垂直居中布局/</id>
+    <published>2018-04-26T17:09:38.000Z</published>
+    <updated>2018-04-26T09:10:50.221Z</updated>
+    
+    <content type="html"><![CDATA[<p>废话不多说，直接看代码！</p>
+<p>###1.margin: auto;实现绝对定位元素的水平垂直居中，IE7及以下低版本浏览器不兼容</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&apos;maps1&apos;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">* &#123;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">    border: 0;</div><div class="line">    list-style: none;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.maps1&#123;</div><div class="line">    width: 200px;</div><div class="line">    height: 200px;</div><div class="line">    background-color: #000;</div><div class="line">    position: absolute;</div><div class="line">    top: 0;</div><div class="line">    right: 0;</div><div class="line">    bottom: 0;</div><div class="line">    left: 0;</div><div class="line">    margin: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###2. margin的负间距实现绝对定位元素的水平垂直居中,兼容性比较好，比较常用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&apos;maps2&apos;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">* &#123;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">    border: 0;</div><div class="line">    list-style: none;</div><div class="line">&#125;</div><div class="line">.maps2&#123;</div><div class="line">    position: absolute;</div><div class="line">    left: 50%;</div><div class="line">    top: 50%;</div><div class="line">    width: 200px;</div><div class="line">    height: 200px;</div><div class="line">    background-color: green;</div><div class="line">    border: 10px solid #000;</div><div class="line">    margin: -110px 0 0 -110px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###3.通过transform偏移实现绝对定位元素的水平垂直居中， IE8及以下低版本浏览器不兼容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">* &#123;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">    border: 0;</div><div class="line">    list-style: none;</div><div class="line">&#125;</div><div class="line">.maps3&#123;</div><div class="line">    position: absolute;</div><div class="line">    left: 50%;</div><div class="line">    top: 50%;</div><div class="line">    width: 200px;</div><div class="line">    height: 200px;</div><div class="line">    background-color: gray;</div><div class="line">    -webkit-transform: translate(-50%, -50%);</div><div class="line">    -moz-transform: translate(-50%, -50%);</div><div class="line">    -o-transform: translate(-50%, -50%);</div><div class="line">    -ms-transform: translate(-50%, -50%);</div><div class="line">    transform: translate(-50%, -50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>###4.CSS3弹性盒模型布局不定宽高实现水平垂直居中 ，CSS3弹性盒模型布局本身就不支持低版本IE6-9浏览器的兼容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;maps4&quot;&gt;</div><div class="line">       &lt;div&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">body,</div><div class="line">html &#123;</div><div class="line">    height: 100%;</div><div class="line">&#125;</div><div class="line">* &#123;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">    border: 0;</div><div class="line">    list-style: none;</div><div class="line">&#125;</div><div class="line">.maps4&#123;</div><div class="line">    /** height:100%就是让页面撑满整个可视区 */</div><div class="line">    height: 100%;</div><div class="line">    /** 流行版弹性盒模型布局 */</div><div class="line">    display: flex;</div><div class="line">    display: -webkit-flex;</div><div class="line">    /** 老安卓版弹性盒模型布局 */</div><div class="line">   /** display: box;</div><div class="line">    display: -webkit-box;</div><div class="line">    /** 老安卓版的横向居中 */</div><div class="line">    /**box-pack: center;</div><div class="line">    -webkit-box-pack: center;</div><div class="line">    /** 老安卓版的垂直居中 */</div><div class="line">    /**box-align: center;</div><div class="line">    -webkit-box-align: center;</div><div class="line">    /** 流行版的横向居中 */</div><div class="line">    justify-content: center;</div><div class="line">    -webkit-justify-content: center;</div><div class="line">    /** 流行版的垂直居中 */</div><div class="line">    align-items: center;</div><div class="line">    -webkit-align-items: center;</div><div class="line">&#125;</div><div class="line">.maps4 div &#123;</div><div class="line">    width: 100px;</div><div class="line">    height: 100px;</div><div class="line">    background-color: black;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看代码应该是比较清晰的了，当自己的笔记，不喜勿喷！</p>
+<blockquote>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script></blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;废话不多说，直接看代码！&lt;/p&gt;
+&lt;p&gt;###1.margin: auto;实现绝对定位元素的水平垂直居中，IE7及以下低版本浏览器不兼容&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vue2.0 keep-alive</title>
+    <link href="http://sky-xsk.github.io/2018/04/27/vue2-0-keep-alive/"/>
+    <id>http://sky-xsk.github.io/2018/04/27/vue2-0-keep-alive/</id>
+    <published>2018-04-26T17:06:15.000Z</published>
+    <updated>2018-04-26T09:08:30.468Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考</p>
+<p>###1.用法<br>vue2.0提供了一个keep-alive组件<br>用来缓存组件,避免多次加载相应的组件,减少性能消耗<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;keep-alive&gt;</div><div class="line">      &lt;component&gt;</div><div class="line">          &lt;!-- 组件将被缓存 --&gt;</div><div class="line">      &lt;/component&gt;</div><div class="line">&lt;/keep-alive&gt;</div></pre></td></tr></table></figure></p>
+<p>有时候 可能需要缓存整个站点的所有页面,而页面一般一进去都要触发请求的<br><a id="more"></a><br>在使用keep-alive的情况下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;keep-alive&gt;</div><div class="line">    &lt;router-view&gt;&lt;/router-view&gt;</div><div class="line">&lt;/keep-alive&gt;</div></pre></td></tr></table></figure></p>
+<p>将首次触发请求写在created钩子函数中,就能实现缓存,<br>比如列表页,去了详情页 回来,还是在原来的页面</p>
+<p>###2.缓存部分页面或者组件</p>
+<p>####(1)使用router. meta属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 这是目前用的比较多的方式</div><div class="line">&lt;keep-alive&gt;</div><div class="line">    &lt;router-view v-if=&quot;$route.meta.keepAlive&quot;&gt;&lt;/router-view&gt;</div><div class="line">&lt;/keep-alive&gt;</div><div class="line">&lt;router-view v-if=&quot;!$route.meta.keepAlive&quot;&gt;&lt;/router-view&gt;</div></pre></td></tr></table></figure></p>
+<p>router设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">routes: [</div><div class="line">  &#123; path: &apos;/&apos;, redirect: &apos;/index&apos;,  component: Index, meta: &#123; keepAlive: true &#125;&#125;,</div><div class="line">  &#123;</div><div class="line">    path: &apos;/common&apos;,</div><div class="line">    component: TestParent,</div><div class="line">    children: [</div><div class="line">      &#123; path: &apos;/test2&apos;, component: Test2, meta: &#123; keepAlive: true &#125; &#125; </div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line"> // 表示index和test2都使用keep-alive</div></pre></td></tr></table></figure></p>
+<p>####(2).使用新增属性inlcude/exclude<br>2.1.0后提供了include/exclude两个属性 可以针对性缓存相应的组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!-- comma-delimited string --&gt;</div><div class="line">&lt;keep-alive include=&quot;a,b&quot;&gt;</div><div class="line">  &lt;component :is=&quot;view&quot;&gt;&lt;/component&gt;</div><div class="line">&lt;/keep-alive&gt;</div><div class="line">&lt;!-- regex (use v-bind) --&gt;</div><div class="line">&lt;keep-alive :include=&quot;/a|b/&quot;&gt;</div><div class="line">  &lt;component :is=&quot;view&quot;&gt;&lt;/component&gt;</div><div class="line">&lt;/keep-alive&gt;</div><div class="line"></div><div class="line">//其中a,b是组件的name</div></pre></td></tr></table></figure></p>
+<p>注意:这种方法都是预先知道组件的名称的<br>(2)动态判断<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;keep-alive :include=&quot;includedComponents&quot;&gt;</div><div class="line">  &lt;router-view&gt;&lt;/router-view&gt;</div><div class="line">&lt;/keep-alive&gt;</div></pre></td></tr></table></figure></p>
+<p><code>includedComponents</code>动态设置即可</p>
+<blockquote>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script></blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考&lt;/p&gt;
+&lt;p&gt;###1.用法&lt;br&gt;vue2.0提供了一个keep-alive组件&lt;br&gt;用来缓存组件,避免多次加载相应的组件,减少性能消耗&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;keep-alive&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &amp;lt;component&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          &amp;lt;!-- 组件将被缓存 --&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &amp;lt;/component&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/keep-alive&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;有时候 可能需要缓存整个站点的所有页面,而页面一般一进去都要触发请求的&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>解决vue打包时出现的错误（自己写的js，打包时出错）</title>
+    <link href="http://sky-xsk.github.io/2017/12/14/%E8%A7%A3%E5%86%B3vue%E6%89%93%E5%8C%85%E6%97%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E9%94%99%E8%AF%AF%EF%BC%88%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84js%EF%BC%8C%E6%89%93%E5%8C%85%E6%97%B6%E5%87%BA%E9%94%99%EF%BC%89/"/>
+    <id>http://sky-xsk.github.io/2017/12/14/解决vue打包时出现的错误（自己写的js，打包时出错）/</id>
+    <published>2017-12-14T14:44:52.000Z</published>
+    <updated>2017-12-14T06:49:18.181Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天，打包项目是遇到这样的报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ERROR in static/js/app.3229f4e0a68089746e5c.js from UglifyJs</div><div class="line">Unexpected token: punc (() [./static/js/tool.js:14,0][static/js/app.3229f4e0a68089746e5c.js:72,11]</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>这里说一下，static是自己新建的文件夹放置自己写js文件，tool.js就是自己写的，在vue文件里或者其他js文件里引用；<br><b>解决方法：</b><br>修改build文件夹下的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack.base.conf.js</div></pre></td></tr></table></figure></p>
+<p>找到module对象：<br>修改如下代码<br><b>修改前：</b><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   test: /\.js$/,</div><div class="line">   loader: &apos;babel-loader&apos;,</div><div class="line">   include: [resolve(&apos;src&apos;), resolve(&apos;test&apos;)]</div><div class="line"> &#125;,</div></pre></td></tr></table></figure></p>
+<p><b>修改后：</b></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">test: /\.js$/,</div><div class="line">loader: &apos;babel-loader&apos;,</div><div class="line">include: [resolve(&apos;src&apos;), resolve(&apos;test&apos;), resolve(&apos;static/js/tool.js&apos;)]</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p><b>再次打包，问题完美解决！</b></p>
+<blockquote>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script>
+
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天，打包项目是遇到这样的报错：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;ERROR in static/js/app.3229f4e0a68089746e5c.js from UglifyJs&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Unexpected token: punc (() [./static/js/tool.js:14,0][static/js/app.3229f4e0a68089746e5c.js:72,11]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="http://sky-xsk.github.io/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>理解js的运行机制</title>
+    <link href="http://sky-xsk.github.io/2017/12/08/%E7%90%86%E8%A7%A3js%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/"/>
+    <id>http://sky-xsk.github.io/2017/12/08/理解js的运行机制/</id>
+    <published>2017-12-08T09:23:31.000Z</published>
+    <updated>2017-12-08T01:26:47.515Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近比较忙，硬是没抽出时间总结一点小知识。最近在网上看到一篇不错的文章，转一下！<br>本文的目的就是要保证你彻底弄懂javascript的执行机制，如果读完本文还不懂，可以揍我。</p>
+<p>不论你是javascript新手还是老鸟，不论是面试求职，还是日常开发工作，我们经常会遇到这样的情况：给定的几行代码，我们需要知道其输出内容和顺序。因为javascript是一门单线程语言，所以我们可以得出结论：<br> <a id="more"></a></p>
+<p>javascript是按照语句出现的顺序执行的<br>看到这里读者要打人了：我难道不知道js是一行一行执行的？还用你说？稍安勿躁，正因为js是一行一行执行的，所以我们以为js都是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let a = &apos;1&apos;;</div><div class="line">console.log(a);</div><div class="line"></div><div class="line">let b = &apos;2&apos;;</div><div class="line">console.log(b);</div></pre></td></tr></table></figure></p>
+<p>然而实际上js是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">setTimeout(function()&#123;</div><div class="line">    console.log(&apos;定时器开始啦&apos;)</div><div class="line">&#125;);</div><div class="line"></div><div class="line">new Promise(function(resolve)&#123;</div><div class="line">    console.log(&apos;马上执行for循环啦&apos;);</div><div class="line">    for(var i = 0; i &lt; 10000; i++)&#123;</div><div class="line">        i == 99 &amp;&amp; resolve();</div><div class="line">    &#125;</div><div class="line">&#125;).then(function()&#123;</div><div class="line">    console.log(&apos;执行then函数啦&apos;)</div><div class="line">&#125;);</div><div class="line"></div><div class="line">console.log(&apos;代码执行结束&apos;);</div></pre></td></tr></table></figure></p>
+<p>依照js是按照语句出现的顺序执行这个理念，我自信的写下输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//&quot;定时器开始啦&quot;</div><div class="line">//&quot;马上执行for循环啦&quot;</div><div class="line">//&quot;执行then函数啦&quot;</div><div class="line">//&quot;代码执行结束&quot;</div></pre></td></tr></table></figure></p>
+<p>去chrome上验证下，结果完全不对，瞬间懵了，说好的一行一行执行的呢？<br>我们真的要彻底弄明白javascript的执行机制了。</p>
+<p>###1.关于javascript<br>javascript是一门单线程语言，在最新的HTML5中提出了Web-Worker，但javascript是单线程这一核心仍未改变。所以一切javascript版的”多线程”都是用单线程模拟出来的，一切javascript多线程都是纸老虎！</p>
+<p>###2.javascript事件循环<br>既然js是单线程，那就像只有一个窗口的银行，客户需要排队一个一个办理业务，同理js任务也要一个一个顺序执行。如果一个任务耗时过长，那么后一个任务也必须等着。那么问题来了，假如我们想浏览新闻，但是新闻包含的超清图片加载很慢，难道我们的网页要一直卡着直到图片完全显示出来？因此聪明的程序员将任务分为两类：</p>
+<p>同步任务<br>异步任务<br>当我们打开网站时，网页的渲染过程就是一大堆同步任务，比如页面骨架和页面元素的渲染。而像加载图片音乐之类占用资源大耗时久的任务，就是异步任务。关于这部分有严格的文字定义，但本文的目的是用最小的学习成本彻底弄懂执行机制，所以我们用导图来说明：</p>
+<p>导图要表达的内容用文字来表述的话：</p>
+<p>同步和异步任务分别进入不同的执行”场所”，同步的进入主线程，异步的进入Event Table并注册函数。<br>当指定的事情完成时，Event Table会将这个函数移入Event Queue。<br>    主线程内的任务执行完毕为空，会去Event Queue读取对应的函数，进入主线程执行。<br>    上述过程会不断重复，也就是常说的Event Loop(事件循环)。<br>    我们不禁要问了，那怎么知道主线程执行栈为空啊？js引擎存在monitoring process进程，会持续不断的检查主线程执行栈是否为空，一旦为空，就会去Event Queue那里检查是否有等待被调用的函数。<br>说了这么多文字，不如直接一段代码更直白：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">let data = [];</div><div class="line">$.ajax(&#123;</div><div class="line">    url:www.javascript.com,</div><div class="line">    data:data,</div><div class="line">    success:() =&gt; &#123;</div><div class="line">        console.log(&apos;发送成功!&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line">console.log(&apos;代码执行结束&apos;);</div></pre></td></tr></table></figure></p>
+<p>上面是一段简易的ajax请求代码：</p>
+<p>ajax进入Event Table，注册回调函数success。<br>执行console.log(‘代码执行结束’)。<br>ajax事件完成，回调函数success进入Event Queue。<br>主线程从Event Queue读取回调函数success并执行。<br>相信通过上面的文字和代码，你已经对js的执行顺序有了初步了解。接下来我们来研究进阶话题：setTimeout。</p>
+<p>###3.又爱又恨的setTimeout<br>大名鼎鼎的setTimeout无需再多言，大家对他的第一印象就是异步可以延时执行，我们经常这么实现延时3秒执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setTimeout(() =&gt; &#123;</div><div class="line">    console.log(&apos;延时3秒&apos;);</div><div class="line">&#125;,3000)</div></pre></td></tr></table></figure></p>
+<p>渐渐的setTimeout用的地方多了，问题也出现了，有时候明明写的延时3秒，实际却5，6秒才执行函数，这又咋回事啊？</p>
+<p>先看一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">setTimeout(() =&gt; &#123;</div><div class="line">    task();</div><div class="line">&#125;,3000)</div><div class="line">console.log(&apos;执行console&apos;);</div></pre></td></tr></table></figure></p>
+<p>根据前面我们的结论，setTimeout是异步的，应该先执行console.log这个同步任务，所以我们的结论是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//执行console</div><div class="line">//task()</div></pre></td></tr></table></figure></p>
+<p>去验证一下，结果正确！<br>然后我们修改一下前面的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">setTimeout(() =&gt; &#123;</div><div class="line">    task()</div><div class="line">&#125;,3000)</div><div class="line"></div><div class="line">sleep(10000000)</div></pre></td></tr></table></figure></p>
+<p>乍一看其实差不多嘛，但我们把这段代码在chrome执行一下，却发现控制台执行task()需要的时间远远超过3秒，说好的延时三秒，为啥现在需要这么长时间啊？</p>
+<p>这时候我们需要重新理解setTimeout的定义。我们先说上述代码是怎么执行的：</p>
+<p>task()进入Event Table并注册,计时开始。<br>执行sleep函数，很慢，非常慢，计时仍在继续。<br>3秒到了，计时事件timeout完成，task()进入Event Queue，但是sleep也太慢了吧，还没执行完，只好等着。<br>sleep终于执行完了，task()终于从Event Queue进入了主线程执行。<br>上述的流程走完，我们知道setTimeout这个函数，是经过指定时间后，把要执行的任务(本例中为task())加入到Event Queue中，又因为是单线程任务要一个一个执行，如果前面的任务需要的时间太久，那么只能等着，导致真正的延迟时间远远大于3秒。</p>
+<p>我们还经常遇到setTimeout(fn,0)这样的代码，0秒后执行又是什么意思呢？是不是可以立即执行呢？</p>
+<p>答案是不会的，setTimeout(fn,0)的含义是，指定某个任务在主线程最早可得的空闲时间执行，意思就是不用再等多少秒了，只要主线程执行栈内的同步任务全部执行完成，栈为空就马上执行。举例说明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//代码1</div><div class="line">console.log(&apos;先执行这里&apos;);</div><div class="line">setTimeout(() =&gt; &#123;</div><div class="line">    console.log(&apos;执行啦&apos;)</div><div class="line">&#125;,0);</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//代码2</div><div class="line">console.log(&apos;先执行这里&apos;);</div><div class="line">setTimeout(() =&gt; &#123;</div><div class="line">    console.log(&apos;执行啦&apos;)</div><div class="line">&#125;,3000);</div></pre></td></tr></table></figure>
+<p>代码1的输出结果是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//先执行这里</div><div class="line">//执行啦</div></pre></td></tr></table></figure></p>
+<p>代码2的输出结果是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//先执行这里</div><div class="line">// ... 3s later</div><div class="line">// 执行啦</div></pre></td></tr></table></figure></p>
+<p>关于setTimeout要补充的是，即便主线程为空，0毫秒实际上也是达不到的。根据HTML的标准，最低是4毫秒。有兴趣的同学可以自行了解。</p>
+<p>###4.又恨又爱的setInterval<br>上面说完了setTimeout，当然不能错过它的孪生兄弟setInterval。他俩差不多，只不过后者是循环的执行。对于执行顺序来说，setInterval会每隔指定的时间将注册的函数置入Event Queue，如果前面的任务耗时太久，那么同样需要等待。</p>
+<p>唯一需要注意的一点是，对于setInterval(fn,ms)来说，我们已经知道不是每过ms秒会执行一次fn，而是每过ms秒，会有fn进入Event Queue。一旦setInterval的回调函数fn执行时间超过了延迟时间ms，那么就完全看不出来有时间间隔了。这句话请读者仔细品味。</p>
+<p>###5.Promise与process.nextTick(callback)<br>传统的定时器我们已经研究过了，接着我们探究<code>Promise</code>与<code>process.nextTick(callback)</code>的表现。</p>
+<p><code>Promise</code>的定义和功能本文不再赘述，不了解的读者可以学习一下阮一峰老师的<a href="https://link.juejin.im/?target=http%3A%2F%2Fes6.ruanyifeng.com%2F%23docs%2Fpromise" target="_blank" rel="external">Promise</a>。而<code>process.nextTick(callback)</code>类似node.js版的”setTimeout”，在事件循环的下一次循环中调用 callback 回调函数。</p>
+<p>我们进入正题，除了广义的同步任务和异步任务，我们对任务有更精细的定义：</p>
+<ul>
+<li>macro-task(宏任务)：包括整体代码script，setTimeout，setInterval</li>
+<li>micro-task(微任务)：Promise，process.nextTick</li>
+</ul>
+<p>不同类型的任务会进入对应的Event Queue，比如<code>setTimeout</code>和<code>setInterval</code>会进入相同的Event Queue。</p>
+<p>事件循环的顺序，决定js代码的执行顺序。进入整体代码(宏任务)后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。听起来有点绕，我们用文章最开始的一段代码说明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">setTimeout(function() &#123;</div><div class="line">    console.log(&apos;setTimeout&apos;);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">new Promise(function(resolve) &#123;</div><div class="line">    console.log(&apos;promise&apos;);</div><div class="line">&#125;).then(function() &#123;</div><div class="line">    console.log(&apos;then&apos;);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">console.log(&apos;console&apos;);</div></pre></td></tr></table></figure></p>
+<p>这段代码作为宏任务，进入主线程。<br>先遇到setTimeout，那么将其回调函数注册后分发到宏任务Event Queue。(注册过程与上同，下文不再描述)<br>接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。<br>遇到console.log()，立即执行。<br>好啦，整体代码script作为第一个宏任务执行结束，看看有哪些微任务？我们发现了then在微任务Event Queue里面，执行。<br>ok，第一轮事件循环结束了，我们开始第二轮循环，当然要从宏任务Event Queue开始。我们发现了宏任务Event Queue中setTimeout对应的回调函数，立即执行。<br>结束。<br>事件循环，宏任务，微任务的关系如图所示：</p>
+<p>我们来分析一段较复杂的代码，看看你是否真的掌握了js的执行机制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;1&apos;);</div><div class="line"></div><div class="line">setTimeout(function() &#123;</div><div class="line">    console.log(&apos;2&apos;);</div><div class="line">    process.nextTick(function() &#123;</div><div class="line">        console.log(&apos;3&apos;);</div><div class="line">    &#125;)</div><div class="line">    new Promise(function(resolve) &#123;</div><div class="line">        console.log(&apos;4&apos;);</div><div class="line">        resolve();</div><div class="line">    &#125;).then(function() &#123;</div><div class="line">        console.log(&apos;5&apos;)</div><div class="line">    &#125;)</div><div class="line">&#125;)</div><div class="line">process.nextTick(function() &#123;</div><div class="line">    console.log(&apos;6&apos;);</div><div class="line">&#125;)</div><div class="line">new Promise(function(resolve) &#123;</div><div class="line">    console.log(&apos;7&apos;);</div><div class="line">    resolve();</div><div class="line">&#125;).then(function() &#123;</div><div class="line">    console.log(&apos;8&apos;)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">setTimeout(function() &#123;</div><div class="line">    console.log(&apos;9&apos;);</div><div class="line">    process.nextTick(function() &#123;</div><div class="line">        console.log(&apos;10&apos;);</div><div class="line">    &#125;)</div><div class="line">    new Promise(function(resolve) &#123;</div><div class="line">        console.log(&apos;11&apos;);</div><div class="line">        resolve();</div><div class="line">    &#125;).then(function() &#123;</div><div class="line">        console.log(&apos;12&apos;)</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>第一轮事件循环流程分析如下：</p>
+<p>整体script作为第一个宏任务进入主线程，遇到console.log，输出1。<br>遇到setTimeout，其回调函数被分发到宏任务Event Queue中。我们暂且记为setTimeout1。<br>遇到process.nextTick()，其回调函数被分发到微任务Event Queue中。我们记为process1。<br>遇到Promise，new Promise直接执行，输出7。then被分发到微任务Event Queue中。我们记为then1。<br>又遇到了setTimeout，其回调函数被分发到宏任务Event Queue中，我们记为setTimeout2。<br>宏任务Event Queue    微任务Event Queue<br>setTimeout1    process1<br>setTimeout2    then1<br>上表是第一轮事件循环宏任务结束时各Event Queue的情况，此时已经输出了1和7。</p>
+<p>我们发现了process1和then1两个微任务。</p>
+<p>执行process1,输出6。<br>执行then1，输出8。<br>好了，第一轮事件循环正式结束，这一轮的结果是输出1，7，6，8。那么第二轮时间循环从setTimeout1宏任务开始：</p>
+<p>首先输出2。接下来遇到了process.nextTick()，同样将其分发到微任务Event Queue中，记为process2。new Promise立即执行输出4，then也分发到微任务Event Queue中，记为then2。<br>宏任务Event Queue    微任务Event Queue<br>setTimeout2    process2<br>then2<br>第二轮事件循环宏任务结束，我们发现有process2和then2两个微任务可以执行。<br>输出3。<br>输出5。<br>第二轮事件循环结束，第二轮输出2，4，3，5。<br>第三轮事件循环开始，此时只剩setTimeout2了，执行。<br>直接输出9。<br>将process.nextTick()分发到微任务Event Queue中。记为process3。<br>直接执行new Promise，输出11。<br>将then分发到微任务Event Queue中，记为then3。<br>宏任务Event Queue    微任务Event Queue<br>process3<br>then3<br>第三轮事件循环宏任务执行结束，执行两个微任务process3和then3。<br>输出10。<br>输出12。<br>第三轮事件循环结束，第三轮输出9，11，10，12。<br>整段代码，共进行了三次事件循环，完整的输出为1，7，6，8，2，4，3，5，9，11，10，12。<br>(请注意，node环境下的事件监听依赖libuv与前端环境不完全相同，输出顺序可能会有误差)</p>
+<p>###6.写在最后<br>(1)js的异步<br>我们从最开头就说javascript是一门单线程语言，不管是什么新框架新语法糖实现的所谓异步，其实都是用同步的方法去模拟的，牢牢把握住单线程这点非常重要。</p>
+<p>(2)事件循环Event Loop<br>事件循环是js实现异步的一种方法，也是js的执行机制。</p>
+<p>(3)javascript的执行和运行<br>执行和运行有很大的区别，javascript在不同的环境下，比如node，浏览器，Ringo等等，执行方式是不同的。而运行大多指javascript解析引擎，是统一的。</p>
+<p>(4)setImmediate<br>微任务和宏任务还有很多种类，比如setImmediate等等，执行都是有共同点的，有兴趣的同学可以自行了解。</p>
+<p>(5)最后的最后<br>javascript是一门单线程语言<br>Event Loop是javascript的执行机制<br>牢牢把握两个基本点，以认真学习javascript为中心，早日实现成为前端高手的伟大梦想！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">转自http://www.zhangxinxu.com/php/myRecommBackup.php?id=js-excude-detail</div></pre></td></tr></table></figure>
+<blockquote>
+<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
+      function sTime(){ 
+      var d = new Date(); 
+      var s = d.getHours();
+      var m = d.getMinutes();
+      var se = d.getSeconds();
+      if(s<10){
+         s="0"+s; 
+      }else if(m<10){
+          m="0"+m; 
+      }else if(se<10){
+          se="0"+se; 
+      }
+      var tt = s +":"+ m +":"+ se; 
+      document.getElementById("vositortime").innerText = tt;
+      return tt; 
+      } 
+      var showTime = setInterval(sTime,1000);   
+      function getDate(){
+          var ts = sTime();
+          document.getElementById("vositortimes").innerText = ts;
+      }
+      getDate();
+</script></blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近比较忙，硬是没抽出时间总结一点小知识。最近在网上看到一篇不错的文章，转一下！&lt;br&gt;本文的目的就是要保证你彻底弄懂javascript的执行机制，如果读完本文还不懂，可以揍我。&lt;/p&gt;
+&lt;p&gt;不论你是javascript新手还是老鸟，不论是面试求职，还是日常开发工作，我们经常会遇到这样的情况：给定的几行代码，我们需要知道其输出内容和顺序。因为javascript是一门单线程语言，所以我们可以得出结论：&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://sky-xsk.github.io/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>用axios+element-ui 增删改查小例子</title>
@@ -962,372 +1399,6 @@
     
     
       <category term="转载" scheme="http://sky-xsk.github.io/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue2.0 + Element + vue-cli + resource ,增删改查实例</title>
-    <link href="http://sky-xsk.github.io/2017/07/10/vue2-0-Element-vue-cli-%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%AE%9E%E4%BE%8B/"/>
-    <id>http://sky-xsk.github.io/2017/07/10/vue2-0-Element-vue-cli-增删改查实例/</id>
-    <published>2017-07-10T15:54:48.000Z</published>
-    <updated>2017-07-10T08:17:49.352Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天，准备写一个关于前后台数据交互，用vue2.0 + Element + vue-cli + resource开发的一个增删改查的实例！<br>注意：项目源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://github.com/sky-xsk/element-vue-resource-</div></pre></td></tr></table></figure></p>
-<p>还有一点注意的是：我用的是公司内部提供的api，所以不在公司内部，是看不到效果的，最主要的还是对源码的参考！放心我会附上图片效果的!<br><a id="more"></a><br>这个简单实例的开发环境是vue2.0 + Element + vue-cli + resource;至于具体安装步骤和环境的搭建我这里不做过多的赘述！直接会把代码写出来，必要时做一些详细的分析！</p>
-<p>1.首先是模板代码，这里用到的就是ElementUI；地址<a href="http://element.eleme.io/，最近又出了react的版本！" target="_blank" rel="external">http://element.eleme.io/，最近又出了react的版本！</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div id=&quot;app&quot;&gt;</div><div class="line">        &lt;div class=&quot;col-md-12&quot;&gt;</div><div class="line">             &lt;!-- 操作 --&gt;</div><div class="line">            &lt;ul class=&quot;btn-edit fr&quot;&gt;</div><div class="line">                &lt;li &gt;</div><div class="line">                    &lt;el-button type=&quot;primary&quot; @click=&quot;dialogCreateVisible = true&quot;&gt;添加用户&lt;/el-button&gt;</div><div class="line">                    &lt;el-button type=&quot;primary&quot; icon=&quot;delete&quot; :disabled=&quot;selected.length == 0&quot; @click=&quot;del_all()&quot;&gt;删除&lt;/el-button&gt;</div><div class="line">                &lt;/li&gt;</div><div class="line">            &lt;/ul&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line">        &lt;div class=&quot;col-md-12&quot;&gt;</div><div class="line">            &lt;el-table</div><div class="line">                :data=&quot;users&quot;</div><div class="line">                v-loading=&quot;loading&quot;</div><div class="line">                element-loading-text=&quot;拼命加载中...&quot;</div><div class="line">                @sort-change=&quot;tableSortChange&quot;</div><div class="line">                @selection-change=&quot;tableSelectionChange&quot;</div><div class="line">                border</div><div class="line">                stripe</div><div class="line">                width=&quot;100%&quot;</div><div class="line">                height=&quot;443&quot;&gt;</div><div class="line">                 &lt;el-table-column</div><div class="line">                type=&quot;selection&quot;</div><div class="line">                width=&quot;60&quot;&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line">                &lt;el-table-column</div><div class="line">                prop=&quot;username&quot;</div><div class="line">                sortable</div><div class="line">                label=&quot;姓名&quot;&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line"></div><div class="line">                &lt;el-table-column</div><div class="line">                prop=&quot;email&quot;</div><div class="line">                label=&quot;邮箱&quot;&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line"></div><div class="line">                &lt;el-table-column</div><div class="line">                prop=&quot;name&quot;</div><div class="line">                label=&quot;姓名&quot;&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line"></div><div class="line">                &lt;el-table-column</div><div class="line">                prop=&quot;phone&quot;</div><div class="line">                label=&quot;手机&quot;&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line"></div><div class="line">                &lt;el-table-column inline-template </div><div class="line">                    prop=&quot;create_time&quot;</div><div class="line">                    sortable</div><div class="line">                    label=&quot;时间&quot;&gt;</div><div class="line">                &lt;div&gt;&#123;&#123; row.create_time | moment(&apos;YYYY年MM月DD日 HH:mm:ss&apos;)&#125;&#125;&lt;/div&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line"></div><div class="line">                &lt;el-table-column inline-template label=&quot;操作&quot;&gt;</div><div class="line">                    &lt;span&gt;</div><div class="line">                        &lt;el-button type=&quot;primary&quot; size=&quot;small&quot; @click=&quot;removed(row)&quot;&gt;删除&lt;/el-button&gt;</div><div class="line">                        &lt;el-button type=&quot;danger&quot; size=&quot;small&quot;  @click=&quot;setCurrent(row)&quot;&gt;编辑&lt;/el-button&gt;</div><div class="line">                    &lt;/span&gt;</div><div class="line">                &lt;/el-table-column&gt;</div><div class="line">            &lt;/el-table&gt;</div><div class="line">        </div><div class="line">        &lt;!--分页begin--&gt;</div><div class="line">            &lt;el-pagination class=&quot;tc mg&quot;</div><div class="line">                            :current-page=&quot;filter.page&quot;</div><div class="line">                            :page-sizes=&quot;[10, 20, 50]&quot;</div><div class="line">                            :page-size=&quot;filter.per_page&quot;</div><div class="line">                            layout=&quot;total, sizes, prev, pager, next, jumper&quot;</div><div class="line">                            :total=&quot;total_rows&quot;</div><div class="line">                            @size-change=&quot;pageSizeChange&quot;</div><div class="line">                            @current-change=&quot;pageCurrentChange&quot;&gt;</div><div class="line">            &lt;/el-pagination&gt;</div><div class="line">            &lt;!--分页end--&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">         &lt;!-- 修改用户 begin--&gt;</div><div class="line">        &lt;el-dialog title=&quot;修改用户信息&quot; v-model=&quot;dialogUpdateVisible&quot;  :close-on-click-modal=&quot;false&quot; :close-on-press-escape=&quot;false&quot;&gt;</div><div class="line">            &lt;el-form id=&quot;#update&quot; :model=&quot;update&quot; ref=&quot;update&quot; label-width=&quot;100px&quot;&gt;</div><div class="line">                &lt;el-form-item label=&quot;姓名&quot; prop=&quot;name&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;update.name&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;电话&quot; prop=&quot;phone&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;update.phone&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;邮箱&quot; prop=&quot;email&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;update.email&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">            &lt;/el-form&gt;</div><div class="line">            &lt;div slot=&quot;footer&quot; class=&quot;dialog-footer&quot;&gt;</div><div class="line">                &lt;el-button @click=&quot;dialogUpdateVisible = false&quot;&gt;取 消&lt;/el-button&gt;</div><div class="line">                &lt;el-button type=&quot;primary&quot; :loading=&quot;updateLoading&quot; @click=&quot;updateUser&quot;&gt;确 定&lt;/el-button&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/el-dialog&gt;</div><div class="line"></div><div class="line">          &lt;!-- 创建用户 begin--&gt;</div><div class="line">        &lt;el-dialog title=&quot;创建用户&quot; v-model=&quot;dialogCreateVisible&quot; :close-on-click-modal=&quot;false&quot; :close-on-press-escape=&quot;false&quot; @close=&quot;reset&quot; &gt;</div><div class="line">            &lt;el-form id=&quot;#create&quot; :model=&quot;create&quot; :rules=&quot;rules&quot; ref=&quot;create&quot; label-width=&quot;100px&quot;&gt;</div><div class="line">                &lt;el-form-item label=&quot;用户名&quot; prop=&quot;username&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;create.username&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;姓名&quot; prop=&quot;name&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;create.name&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;密码&quot; prop=&quot;password&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;create.password&quot; type=&quot;password&quot; auto-complete=&quot;off&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;确认密码&quot; prop=&quot;checkpass&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;create.checkpass&quot; type=&quot;password&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;电话&quot; prop=&quot;phone&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;create.phone&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">                &lt;el-form-item label=&quot;邮箱&quot; prop=&quot;email&quot;&gt;</div><div class="line">                    &lt;el-input v-model=&quot;create.email&quot;&gt;&lt;/el-input&gt;</div><div class="line">                &lt;/el-form-item&gt;</div><div class="line">            &lt;/el-form&gt;</div><div class="line">            &lt;div slot=&quot;footer&quot; class=&quot;dialog-footer&quot;&gt;</div><div class="line">                &lt;el-button @click=&quot;dialogCreateVisible = false&quot;&gt;取 消&lt;/el-button&gt;</div><div class="line">                &lt;el-button type=&quot;primary&quot; :loading=&quot;createLoading&quot; @click=&quot;createUser&quot;&gt;确 定&lt;/el-button&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/el-dialog&gt;</div><div class="line">        </div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure></p>
-<p>2.接下来是js部分，同时也是比较重要的地方</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">function getuuid()&#123;</div><div class="line">    var uid = [];</div><div class="line">    var hexDigits = &quot;0123456789abcdefghijklmnopqrst&quot;;</div><div class="line">    for (var i = 0; i &lt; 32; i++) &#123;</div><div class="line">        uid[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);</div><div class="line">    &#125;</div><div class="line">    uid[6] = &quot;4&quot;;</div><div class="line">    uid[15] = hexDigits.substr((uid[15] &amp; 0x3) | 0x8, 1);</div><div class="line">    var uuid = uid.join(&quot;&quot;);</div><div class="line">    return uuid;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default &#123;</div><div class="line">  name: &apos;app&apos;,</div><div class="line">  data: function() &#123;  //表单验证</div><div class="line">        var validatePass = (rule, value, callback) =&gt; &#123;</div><div class="line">          if (value === &apos;&apos;) &#123;</div><div class="line">              callback(new Error(&apos;请再次输入密码&apos;));</div><div class="line">          &#125; else if (value !== this.create.password) &#123;</div><div class="line">              callback(new Error(&apos;两次输入密码不一致!&apos;));</div><div class="line">          &#125; else &#123;</div><div class="line">              callback();</div><div class="line">          &#125;</div><div class="line">      &#125;;</div><div class="line">      return &#123;</div><div class="line">          url: &apos;&apos;, //此处是api的地址，因为此处是公司内部地址，这里就不写上了</div><div class="line">          users: [],</div><div class="line">          keywords:&apos;&apos;,</div><div class="line">          select:&apos;&apos;,</div><div class="line">          filter:&#123;  </div><div class="line">              name:&apos;&apos;,</div><div class="line">              username:&apos;&apos;,</div><div class="line">              phone:&apos;&apos;,</div><div class="line">              per_page: 10, // 页大小</div><div class="line">              page: 1, // 当前页</div><div class="line">              sorts:&apos;&apos;</div><div class="line">          &#125;,</div><div class="line">           loading: true,</div><div class="line">           selected:[],</div><div class="line">           dialogCreateVisible: false, //创建对话框的显示状态</div><div class="line">           dialogUpdateVisible: false, //编辑对话框的显示状态</div><div class="line">           createLoading: false,</div><div class="line">           updateLoading: false,</div><div class="line">          update:&#123;</div><div class="line">              name: &apos;&apos;,</div><div class="line">              phone: &apos;&apos;,</div><div class="line">              email: &apos;&apos;,</div><div class="line">              is_active: true</div><div class="line">          &#125;,</div><div class="line">            total_rows: 0,</div><div class="line">             create: &#123;</div><div class="line">              id: &apos;&apos;,</div><div class="line">              username: &apos;&apos;,</div><div class="line">              name: &apos;&apos;,</div><div class="line">              password: &apos;&apos;,</div><div class="line">              checkpass: &apos;&apos;,</div><div class="line">              phone: &apos;&apos;,</div><div class="line">              email: &apos;&apos;,</div><div class="line">              is_active: true</div><div class="line">          &#125;,</div><div class="line">           rules: &#123;  //表单验证规则</div><div class="line">              name: [</div><div class="line">                  &#123; required: true, message: &apos;请输入姓名&apos;, trigger: &apos;blur&apos; &#125;,</div><div class="line">                  &#123; min: 3, max: 15, message: &apos;长度在 3 到 15 个字符&apos;&#125;</div><div class="line">              ],</div><div class="line">              username: [</div><div class="line">                  &#123; required: true, message: &apos;请输入用户名&apos;, trigger: &apos;blur&apos; &#125;,</div><div class="line">                  &#123; min: 3, max: 25, message: &apos;长度在 3 到 25 个字符&apos;&#125;,</div><div class="line">                  &#123; pattern:/^[A-Za-z0-9]+$/, message: &apos;用户名只能为字母和数字&apos;&#125;</div><div class="line">              ],</div><div class="line">              password: [</div><div class="line">                  &#123; required: true, message: &apos;请输入密码&apos;, trigger: &apos;blur&apos; &#125;,</div><div class="line">                  &#123; min: 6, max: 25, message: &apos;长度在 6 到 25 个字符&apos;&#125;</div><div class="line">              ],</div><div class="line">              checkpass: [</div><div class="line">                  &#123; required: true, message: &apos;请再次输入密码&apos;, trigger: &apos;blur&apos; &#125;,</div><div class="line">                  &#123; validator: validatePass&#125;</div><div class="line">              ],</div><div class="line">              email: [</div><div class="line">                  &#123; type: &apos;email&apos;, message: &apos;邮箱格式不正确&apos;&#125;</div><div class="line">              ],</div><div class="line">              phone:[</div><div class="line">                  &#123; pattern:/^1[34578]\d&#123;9&#125;$/, message: &apos;请输入中国国内的手机号码&apos;&#125;</div><div class="line">              ]</div><div class="line">          &#125;,</div><div class="line">      &#125;;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  mounted()&#123;</div><div class="line">    this.getUsers();</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  methods:&#123;</div><div class="line">    //分页</div><div class="line">      searchFieldChange(val) &#123;</div><div class="line">          this.placeholder=placeholders[val];</div><div class="line">          console.log(`搜索字段： $&#123;val&#125; `);</div><div class="line">      &#125;,</div><div class="line">      pageSizeChange(val) &#123;</div><div class="line">          console.log(`每页 $&#123;val&#125; 条`);</div><div class="line">          this.filter.per_page = val;</div><div class="line">          this.getUsers();</div><div class="line">      &#125;,</div><div class="line">      pageCurrentChange(val) &#123;</div><div class="line">          console.log(`当前页: $&#123;val&#125;`);</div><div class="line">          this.filter.page = val;</div><div class="line">          this.getUsers();</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">    //选则相关</div><div class="line">    tableSelectionChange(val) &#123;</div><div class="line">        this.selected = val;</div><div class="line">        //console.log(val)</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">   //和排序相关</div><div class="line">    tableSortChange(val) &#123;</div><div class="line">        //console.log(`排序属性: $&#123;val.prop&#125;`);</div><div class="line">        //console.log(`排序: $&#123;val.order&#125;`);</div><div class="line">        if(val.prop!=null)&#123;</div><div class="line">            if(val.order==&apos;descending&apos;)&#123;</div><div class="line">                this.filter.sorts = &apos;-&apos;+val.prop;</div><div class="line">            &#125;</div><div class="line">            else&#123;</div><div class="line">                this.filter.sorts = &apos;&apos;+val.prop;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">            this.filter.sorts = &apos;&apos;;</div><div class="line">        &#125;</div><div class="line">        this.getUsers();</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">        // 创建用户</div><div class="line">      createUser()&#123;</div><div class="line">          // 主动校验</div><div class="line">          this.$refs.create.validate((valid) =&gt; &#123;</div><div class="line">              if (valid) &#123;</div><div class="line">                  this.create.id=getuuid();</div><div class="line">                  this.createLoading=true;</div><div class="line">                  var resource = this.$resource(this.url);</div><div class="line">                  resource.save(this.create)</div><div class="line">                      .then((response) =&gt; &#123;</div><div class="line">                      this.$message.success(&apos;创建用户成功！&apos;);</div><div class="line">                      this.dialogCreateVisible=false;</div><div class="line">                      this.createLoading=false;</div><div class="line">                      this.reset();</div><div class="line">                      this.getUsers();</div><div class="line">              &#125;)</div><div class="line">              .catch((response) =&gt; &#123;</div><div class="line">                      var data=response.data;</div><div class="line">                      if(data instanceof Array)&#123;</div><div class="line">                          this.$message.error(data[0][&quot;message&quot;]);</div><div class="line">                      &#125;</div><div class="line">                      else if(data instanceof Object)&#123;</div><div class="line">                          this.$message.error(data[&quot;message&quot;]);</div><div class="line">                      &#125;</div><div class="line">                      this.createLoading=false;</div><div class="line">                  &#125;);</div><div class="line">              &#125;</div><div class="line">              else &#123;</div><div class="line">                return false;</div><div class="line">              &#125;</div><div class="line">          &#125;);</div><div class="line">      &#125;,</div><div class="line">    // 重置表单</div><div class="line">      reset() &#123;</div><div class="line">          this.$refs.create.resetFields();</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">      setCurrent(user)&#123;</div><div class="line">          this.currentId=user.id;</div><div class="line">          this.update.name=user.name;</div><div class="line">          this.update.phone=user.phone;</div><div class="line">          this.update.email=user.email;</div><div class="line">          this.update.is_active=user.is_active;</div><div class="line">          this.dialogUpdateVisible=true;</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">       // 更新用户资料</div><div class="line">      updateUser() &#123;</div><div class="line">          this.$refs.update.validate((valid) =&gt; &#123;</div><div class="line">              if (valid) &#123;</div><div class="line">                  this.updateLoading=true;</div><div class="line">                  var actions = &#123;</div><div class="line">                      update: &#123;method: &apos;patch&apos;&#125;</div><div class="line">                  &#125;</div><div class="line">                  var resource = this.$resource(this.url,&#123;&#125;,actions);</div><div class="line">                  resource.update(&#123;&quot;ids&quot;:this.currentId&#125;,this.update)</div><div class="line">                      .then((response) =&gt; &#123;</div><div class="line">                      this.$message.success(&apos;修改用户资料成功！&apos;);</div><div class="line">                      this.dialogUpdateVisible=false;</div><div class="line">                      this.updateLoading=false;</div><div class="line">                      this.getUsers();</div><div class="line">              &#125;)</div><div class="line">              .catch((response) =&gt; &#123;</div><div class="line">                  var data=response.data;</div><div class="line">                  console.log(data);</div><div class="line">                  if(data instanceof Array)&#123;</div><div class="line">                      this.$message.error(data[0][&quot;message&quot;]);</div><div class="line">                  &#125;</div><div class="line">                  else if(data instanceof Object)&#123;</div><div class="line">                      this.$message.error(data[&quot;message&quot;]);</div><div class="line">                  &#125;</div><div class="line">                  this.updateLoading=false;</div><div class="line">              &#125;);</div><div class="line">              &#125;</div><div class="line">              else &#123;</div><div class="line">                  return false;</div><div class="line">              &#125;</div><div class="line">          &#125;);</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">     //批量删除</div><div class="line">        del_all()&#123;</div><div class="line">            this.$confirm(&apos;此操作将永久删除 &apos; + this.selected.length + &apos; 条分区信息, 是否继续?&apos;, &apos;提示&apos;, &#123;</div><div class="line">                type: &apos;warning&apos;</div><div class="line">            &#125;)</div><div class="line">            .then(() =&gt; &#123;</div><div class="line">                var ids = [];</div><div class="line">                //提取选中项的id</div><div class="line">                $.each(this.selected, (i, alarm) =&gt; &#123;</div><div class="line">                    ids.push(alarm.id);</div><div class="line">                &#125;);</div><div class="line">                // 向请求服务端删除</div><div class="line">                var resource = this.$resource(this.url);</div><div class="line">                resource.remove(&#123;</div><div class="line">                        ids: ids.join(&quot;,&quot;)</div><div class="line">                    &#125;)</div><div class="line">                    .then((response) =&gt; &#123;</div><div class="line">                        this.$message.success(&apos;删除了&apos; + this.selected.length + &apos;条分区信息!&apos;);</div><div class="line">                        this.getUsers();</div><div class="line">                    &#125;)</div><div class="line">                    .catch((response) =&gt; &#123;</div><div class="line">                        this.$message.error(&apos;删除失败!&apos;);</div><div class="line">                    &#125;);</div><div class="line">            &#125;)</div><div class="line">            .catch(() =&gt; &#123;</div><div class="line">                this.$Message(&apos;已取消操作!&apos;);</div><div class="line">            &#125;);</div><div class="line">        &#125;, </div><div class="line"></div><div class="line">    //删除单个用户</div><div class="line">    removed(user)&#123;</div><div class="line">          this.$confirm(&apos;此操作将永久删除用户 &apos; + user.username + &apos;, 是否继续?&apos;, &apos;提示&apos;, &#123; type: &apos;warning&apos; &#125;)</div><div class="line">              .then(() =&gt; &#123;</div><div class="line">              // 向请求服务端删除</div><div class="line">              var resource = this.$resource(this.url + &quot;&#123;/id&#125;&quot;);</div><div class="line">              resource.delete(&#123; id: user.id &#125;)</div><div class="line">                  .then((response) =&gt; &#123;</div><div class="line">                  this.$message.success(&apos;成功删除了用户&apos; + user.username + &apos;!&apos;);</div><div class="line">                  this.getUsers();</div><div class="line">              &#125;)</div><div class="line">              .catch((response) =&gt; &#123;</div><div class="line">                      this.$message.error(&apos;删除失败!&apos;);</div><div class="line">               &#125;);</div><div class="line">          &#125;)</div><div class="line">          .catch(() =&gt; &#123;</div><div class="line">              this.$message.info(&apos;已取消操作!&apos;);</div><div class="line">          &#125;);</div><div class="line">    &#125;,</div><div class="line">    //筛选</div><div class="line">    query()&#123;</div><div class="line">        this.filter.name=&apos;&apos;;</div><div class="line">        this.filter.username=&apos;&apos;;</div><div class="line">        this.filter.phone=&apos;&apos;;</div><div class="line">        this.filter[this.select]=this.keywords;</div><div class="line">        this.getUsers();</div><div class="line">    &#125;,</div><div class="line">    //获取用户列表</div><div class="line">     getUsers() &#123;</div><div class="line">          this.loading = true;</div><div class="line">          var resource = this.$resource(this.url);</div><div class="line">          resource.query(this.filter)</div><div class="line">              .then((response) =&gt; &#123;</div><div class="line">              this.users = response.data.datas;</div><div class="line">               this.total_rows = response.data.total_rows;</div><div class="line">              this.loading = false;</div><div class="line">          &#125;)</div><div class="line">          .catch((response)=&gt; &#123;</div><div class="line">                  this.$message.error(&apos;错了哦，这是一条错误消息&apos;);</div><div class="line">              this.loading = false;</div><div class="line">          &#125;);</div><div class="line">         &#125;</div><div class="line">     &#125;,</div><div class="line">   </div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>具体解析，我就写在注释里！<br>下面上几张效果图！<br><img src="/img/3.png" alt=""><br><img src="/img/4.png" alt=""><br><img src="/img/5.png" alt=""><br><img src="/img/6.png" alt=""><br>注意：项目源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://github.com/sky-xsk/element-vue-resource-</div></pre></td></tr></table></figure></p>
-<p>如果有帮助，请要吝啬，给个‘star’，就是对我的鼓励！</p>
-<blockquote>
-<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-<script type="text/javascript">
-     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
-      function sTime(){ 
-      var d = new Date(); 
-      var s = d.getHours();
-      var m = d.getMinutes();
-      var se = d.getSeconds();
-      if(s<10){
-         s="0"+s; 
-      }else if(m<10){
-          m="0"+m; 
-      }else if(se<10){
-          se="0"+se; 
-      }
-      var tt = s +":"+ m +":"+ se; 
-      document.getElementById("vositortime").innerText = tt;
-      return tt; 
-      } 
-      var showTime = setInterval(sTime,1000);   
-      function getDate(){
-          var ts = sTime();
-          document.getElementById("vositortimes").innerText = ts;
-      }
-      getDate();
-</script></blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天，准备写一个关于前后台数据交互，用vue2.0 + Element + vue-cli + resource开发的一个增删改查的实例！&lt;br&gt;注意：项目源码：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;https://github.com/sky-xsk/element-vue-resource-&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;还有一点注意的是：我用的是公司内部提供的api，所以不在公司内部，是看不到效果的，最主要的还是对源码的参考！放心我会附上图片效果的!&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="vue2.0" scheme="http://sky-xsk.github.io/tags/vue2-0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>总结几种数组去重的方法，敲一遍代码</title>
-    <link href="http://sky-xsk.github.io/2017/07/07/%E6%80%BB%E7%BB%93%E5%87%A0%E7%A7%8D%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E6%95%B2%E4%B8%80%E9%81%8D%E4%BB%A3%E7%A0%81/"/>
-    <id>http://sky-xsk.github.io/2017/07/07/总结几种数组去重的方法，敲一遍代码/</id>
-    <published>2017-07-07T15:20:47.000Z</published>
-    <updated>2017-07-07T08:04:55.111Z</updated>
-    
-    <content type="html"><![CDATA[<p>这里总结集中数组去重的方法：自己动手敲一敲，精神一整天！<br> <a id="more"></a><br>1.第一种方法：（我经常用的，好理解）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function arrAlong(arr) &#123;</div><div class="line">    for (var i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">        for (var j = i + 1; j &lt; arr.length; j++) &#123;</div><div class="line">            if (arr[i] == arr[j]) &#123;</div><div class="line">                arr.splice(j, 1);</div><div class="line">                j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return arr;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>利用对数组的进行双重遍历，对数组的位置的数值进行比较，删除相同的元素，返回去重之后的数组！<br>2.第二种方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function arrAlong(arr) &#123;</div><div class="line">    var ret = [];</div><div class="line">    for (var i = 0, j = arr.length; i &lt; j; i++) &#123;</div><div class="line">        if (ret.indexOf(arr[i]) === -1) &#123;</div><div class="line">            ret.push(arr[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return ret;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>利用indexof的特性，进行操作！<br>3.第三种方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function arrAlong(arr) &#123;</div><div class="line">    var ret = [];</div><div class="line">    arr.forEach(function(e, i, arr) &#123;</div><div class="line">        if (arr.indexOf(e) === i) &#123;</div><div class="line">            ret.push(e);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    return ret;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>数组下标判断法, 遍历数组，利用indexOf判断元素的值是否与当前索引相等，如相等则加入<br>4.第四中方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function arrAlong(arr) &#123;</div><div class="line">    var tmp = &#123;&#125;,</div><div class="line">        ret = [];</div><div class="line">    for (var i = 0, j = arr.length; i &lt; j; i++) &#123;</div><div class="line">        if (!tmp[arr[i]]) &#123;</div><div class="line">            tmp[arr[i]] = 1;</div><div class="line">            ret.push(arr[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return ret;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>遍历数组，利用object对象保存数组值，判断数组值是否已经保存在object中，未保存则push到新数组并用object[arrayItem]=1的方式记录保存</p>
-<blockquote>
-<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-<script type="text/javascript">
-     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
-      function sTime(){ 
-      var d = new Date(); 
-      var s = d.getHours();
-      var m = d.getMinutes();
-      var se = d.getSeconds();
-      if(s<10){
-         s="0"+s; 
-      }else if(m<10){
-          m="0"+m; 
-      }else if(se<10){
-          se="0"+se; 
-      }
-      var tt = s +":"+ m +":"+ se; 
-      document.getElementById("vositortime").innerText = tt;
-      return tt; 
-      } 
-      var showTime = setInterval(sTime,1000);   
-      function getDate(){
-          var ts = sTime();
-          document.getElementById("vositortimes").innerText = ts;
-      }
-      getDate();
-</script></blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这里总结集中数组去重的方法：自己动手敲一敲，精神一整天！&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="js" scheme="http://sky-xsk.github.io/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>双飞翼布局</title>
-    <link href="http://sky-xsk.github.io/2017/06/23/%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80/"/>
-    <id>http://sky-xsk.github.io/2017/06/23/双飞翼布局/</id>
-    <published>2017-06-23T09:08:59.000Z</published>
-    <updated>2017-06-23T01:12:59.335Z</updated>
-    
-    <content type="html"><![CDATA[<p>双飞翼布局：直接上代码,不做过多解释，自己敲一遍就理解了！<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;wrap&quot;&gt;</div><div class="line">    &lt;div class=&quot;main&quot;&gt;</div><div class="line">        &lt;div class=&quot;mainin&quot;&gt;main&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;left&quot;&gt;left&lt;/div&gt;</div><div class="line">    &lt;div class=&quot;right&quot;&gt;right&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line"></div><div class="line">.main,</div><div class="line">    .left,</div><div class="line">    .right &#123;</div><div class="line">        float: left;</div><div class="line">        height: 200px;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    .main &#123;</div><div class="line">        width: 100%;</div><div class="line">        background: #ace;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    .left &#123;</div><div class="line">        width: 20%;</div><div class="line">        background: #eee;</div><div class="line">        margin-left: -100%;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    .right &#123;</div><div class="line">        width: 30%;</div><div class="line">        background: #ddd;</div><div class="line">        margin-left: -30%;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    .mainin &#123;</div><div class="line">        margin: 0 30% 0 20%;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-<script type="text/javascript">
-     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
-      function sTime(){ 
-      var d = new Date(); 
-      var s = d.getHours();
-      var m = d.getMinutes();
-      var se = d.getSeconds();
-      if(s<10){
-         s="0"+s; 
-      }else if(m<10){
-          m="0"+m; 
-      }else if(se<10){
-          se="0"+se; 
-      }
-      var tt = s +":"+ m +":"+ se; 
-      document.getElementById("vositortime").innerText = tt;
-      return tt; 
-      } 
-      var showTime = setInterval(sTime,1000);   
-      function getDate(){
-          var ts = sTime();
-          document.getElementById("vositortimes").innerText = ts;
-      }
-      getDate();
-</script></blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;双飞翼布局：直接上代码,不做过多解释，自己敲一遍就理解了！&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="html/css" scheme="http://sky-xsk.github.io/tags/html-css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>html+css布局之--左边固定宽，右侧自适应（4种方法）</title>
-    <link href="http://sky-xsk.github.io/2017/06/07/html-css%E5%B8%83%E5%B1%80%E4%B9%8B-%E5%B7%A6%E8%BE%B9%E5%9B%BA%E5%AE%9A%E5%AE%BD%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%EF%BC%884%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%89/"/>
-    <id>http://sky-xsk.github.io/2017/06/07/html-css布局之-左边固定宽，右侧自适应（4种方法）/</id>
-    <published>2017-06-07T09:47:40.000Z</published>
-    <updated>2017-06-07T01:55:40.898Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天，在网上看到一个题目，关于布局的，左边固定宽，右侧自适应（不少于3种方法），看到问题手痒自己试了一下，想了四种方法，码一下。<br>有好的方法，可以告诉我！<br><a id="more"></a><br>html:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;第一种:定位+margin-left&lt;/h3&gt;</div><div class="line">  &lt;div class=&quot;cont&quot;&gt;</div><div class="line">      &lt;div class=&quot;one&quot;&gt;左侧定宽200px&lt;/div&gt;</div><div class="line">      &lt;div class=&quot;two&quot;&gt;右侧自适应&lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;h3&gt;第二种：flex&lt;/h3&gt;</div><div class="line">  &lt;div class=&quot;cont1&quot;&gt;</div><div class="line">      &lt;div class=&quot;a&quot;&gt;左侧定宽200px&lt;/div&gt;</div><div class="line">      &lt;div class=&quot;b&quot;&gt;右侧自适应&lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;h3&gt;第三种：定位+浮动+padding-left+ box-sizing&lt;/h3&gt;</div><div class="line">  &lt;div class=&quot;cont2&quot;&gt;</div><div class="line">      &lt;div class=&quot;a1&quot;&gt;左侧定宽200px&lt;/div&gt;</div><div class="line">      &lt;div class=&quot;b1&quot;&gt;右侧自适应&lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;h3&gt;第四种:浮动&lt;/h3&gt;</div><div class="line">  &lt;div class=&quot;cont3&quot;&gt;</div><div class="line">      &lt;div class=&quot;a2&quot;&gt;左侧定宽200px&lt;/div&gt;</div><div class="line">      &lt;div class=&quot;b2&quot;&gt;右侧自适应&lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div></pre></td></tr></table></figure></p>
-<p>css:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">    * &#123;</div><div class="line">        margin: 0;</div><div class="line">        padding: 0;</div><div class="line">    &#125;</div><div class="line">    /*****第一种******/</div><div class="line">    </div><div class="line">    .cont &#123;</div><div class="line">        height: 200px;</div><div class="line">        overflow: hidden;</div><div class="line">        border: 1px solid #000;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    .one &#123;</div><div class="line">        width: 200px;</div><div class="line">        height: 200px;</div><div class="line">        background: #ccc;</div><div class="line">        position: absolute;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    .two &#123;</div><div class="line">        height: 200px;</div><div class="line">        background: #f60;</div><div class="line">        margin-left: 200px;</div><div class="line">    &#125;</div><div class="line">    /*****第二种******/</div><div class="line">    </div><div class="line">    .cont1 &#123;</div><div class="line">        height: 200px;</div><div class="line">        overflow: hidden;</div><div class="line">        border: 1px solid #000;</div><div class="line">        display: flex;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    .a &#123;</div><div class="line">        width: 200px;</div><div class="line">        height: 200px;</div><div class="line">        background: #ccc;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    .b &#123;</div><div class="line">        height: 200px;</div><div class="line">        background: #f60;</div><div class="line">        flex: 1;</div><div class="line">    &#125;</div><div class="line">    /****第三种*******/</div><div class="line">    </div><div class="line">    .cont2 &#123;</div><div class="line">        height: 200px;</div><div class="line">        border: 1px solid #000;</div><div class="line">        position: relative;</div><div class="line">        overflow: hidden;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    .a1 &#123;</div><div class="line">        width: 200px;</div><div class="line">        height: 200px;</div><div class="line">        background: #ccc;</div><div class="line">        position: absolute;</div><div class="line">        left: 0;</div><div class="line">        top: 0;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    .b1 &#123;</div><div class="line">        width: 100%;</div><div class="line">        height: 200px;</div><div class="line">        background: #f60;</div><div class="line">        position: absolute;</div><div class="line">        left: 200px;</div><div class="line">        top: 0;</div><div class="line">        padding-right: 200px;</div><div class="line">        box-sizing: border-box;</div><div class="line">    &#125;</div><div class="line">    /*****第四种******/</div><div class="line">    </div><div class="line">    .cont3 &#123;</div><div class="line">        height: 200px;</div><div class="line">        border: 1px solid #000;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    .a2 &#123;</div><div class="line">        width: 200px;</div><div class="line">        height: 200px;</div><div class="line">        background: #ccc;</div><div class="line">        float: left;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    .b2 &#123;</div><div class="line">        width: 100%;</div><div class="line">        height: 200px;</div><div class="line">        background: #f60;</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
-<blockquote>
-<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-<script type="text/javascript">
-     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
-      function sTime(){ 
-      var d = new Date(); 
-      var s = d.getHours();
-      var m = d.getMinutes();
-      var se = d.getSeconds();
-      if(s<10){
-         s="0"+s; 
-      }else if(m<10){
-          m="0"+m; 
-      }else if(se<10){
-          se="0"+se; 
-      }
-      var tt = s +":"+ m +":"+ se; 
-      document.getElementById("vositortime").innerText = tt;
-      return tt; 
-      } 
-      var showTime = setInterval(sTime,1000);   
-      function getDate(){
-          var ts = sTime();
-          document.getElementById("vositortimes").innerText = ts;
-      }
-      getDate();
-</script></blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天，在网上看到一个题目，关于布局的，左边固定宽，右侧自适应（不少于3种方法），看到问题手痒自己试了一下，想了四种方法，码一下。&lt;br&gt;有好的方法，可以告诉我！&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="html/css" scheme="http://sky-xsk.github.io/tags/html-css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>html+css布局之--圣杯布局</title>
-    <link href="http://sky-xsk.github.io/2017/06/07/html-css%E5%B8%83%E5%B1%80%E4%B9%8B-%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80/"/>
-    <id>http://sky-xsk.github.io/2017/06/07/html-css布局之-圣杯布局/</id>
-    <published>2017-06-07T09:38:28.000Z</published>
-    <updated>2017-06-07T01:48:30.772Z</updated>
-    
-    <content type="html"><![CDATA[<p>圣杯布局，就是两边定宽，中间自适应的三栏布局！今天把这个布局代码，码一下！看代码不作过多解释！<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"> &lt;div id=&quot;parents&quot;&gt;</div><div class="line">    &lt;div id=&quot;top&quot;&gt;这是header!&lt;/div&gt;</div><div class="line">    &lt;div id=&quot;main&quot;&gt;</div><div class="line">        &lt;div id=&quot;left&quot;&gt;这是Left&lt;/div&gt;</div><div class="line">        &lt;div id=&quot;content&quot;&gt;这是Content!&lt;/div&gt;</div><div class="line">        &lt;div id=&quot;right&quot;&gt;这是Right!&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div id=&quot;foot&quot;&gt;这是Footer!&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;style&gt;</div><div class="line"> * &#123;</div><div class="line">        margin: 0;</div><div class="line">        padding: 0;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    #parents &#123;</div><div class="line">        width: 100%;</div><div class="line">        margin: 0 auto;</div><div class="line">        background: #ccc;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    #left,</div><div class="line">    #content,</div><div class="line">    #right &#123;</div><div class="line">        padding-bottom: 2000px;</div><div class="line">        margin-bottom: -2000px;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    #main &#123;</div><div class="line">        padding-left: 100px;</div><div class="line">        padding-right: 150px;</div><div class="line">        overflow: hidden;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    #top &#123;</div><div class="line">        background: #666;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    #left &#123;</div><div class="line">        background: #E79F6D;</div><div class="line">        float: left;</div><div class="line">        width: 100px;</div><div class="line">        position: relative;</div><div class="line">        left: -100px;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    #content &#123;</div><div class="line">        background: #D6D6D6;</div><div class="line">        float: left;</div><div class="line">        width: 100%;</div><div class="line">        margin-left: -100px;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    #right &#123;</div><div class="line">        background: #77BBDD;</div><div class="line">        float: left;</div><div class="line">        width: 150px;</div><div class="line">        margin-left: -150px;</div><div class="line">        position: relative;</div><div class="line">        left: 150px;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    #foot &#123;</div><div class="line">        background: #666;</div><div class="line">        clear: both;</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></p>
-<p>提示：自己动手试一下，效果会更好！</p>
-<blockquote>
-<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-<script type="text/javascript">
-     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
-      function sTime(){ 
-      var d = new Date(); 
-      var s = d.getHours();
-      var m = d.getMinutes();
-      var se = d.getSeconds();
-      if(s<10){
-         s="0"+s; 
-      }else if(m<10){
-          m="0"+m; 
-      }else if(se<10){
-          se="0"+se; 
-      }
-      var tt = s +":"+ m +":"+ se; 
-      document.getElementById("vositortime").innerText = tt;
-      return tt; 
-      } 
-      var showTime = setInterval(sTime,1000);   
-      function getDate(){
-          var ts = sTime();
-          document.getElementById("vositortimes").innerText = ts;
-      }
-      getDate();
-</script></blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;圣杯布局，就是两边定宽，中间自适应的三栏布局！今天把这个布局代码，码一下！看代码不作过多解释！&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="html/css" scheme="http://sky-xsk.github.io/tags/html-css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在vue怎么使用echarts</title>
-    <link href="http://sky-xsk.github.io/2017/06/05/%E5%9C%A8vue%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8echarts/"/>
-    <id>http://sky-xsk.github.io/2017/06/05/在vue怎么使用echarts/</id>
-    <published>2017-06-05T11:40:18.000Z</published>
-    <updated>2017-06-05T06:03:49.023Z</updated>
-    
-    <content type="html"><![CDATA[<p>现在很多的项目，对数据可视化看的越来越重要，数据可视化可以多维度的分析数据，一目了然；对项目的美观和简洁度都有不少的提升，比原来那种表格化的数据格式要好很多了！<br>对这种问题，echarts解决了这样的问题，这里介绍一下 在vue怎么使用echarts！<br><a id="more"></a><br>同样，使用的vue-cli环境！<br>首先，通过npm安装ECharts和zrender，命令行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install echarts --save </div><div class="line">npm install zrender --save ;</div></pre></td></tr></table></figure></p>
-<p>html：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class=&quot;charts&quot;&gt;</div><div class="line">       &lt;h3&gt;vue2.0中使用echart&lt;/h3&gt;</div><div class="line">        &lt;div id=&quot;main&quot; style=&quot; width:100%; height:350px;&quot;&gt;&lt;/div&gt;  //这里的高度一定要的，不然是不会显示图标的  </div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure></p>
-<p>js部分：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">import echarts from &apos;echarts&apos;;   //这里是你必须的，千万不能忘记！</div><div class="line">  export default &#123;  </div><div class="line">      data() &#123;  </div><div class="line">            return &#123;  </div><div class="line">                // 初始化空对象  </div><div class="line">                chart: null,  </div><div class="line">                // 初始化图表配置  </div><div class="line">                opinion: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;],  </div><div class="line">                opinionData: [&#123;  </div><div class="line">                    value: 26,  </div><div class="line">                    name: &apos;A&apos;  </div><div class="line">                &#125;, &#123;  </div><div class="line">                    value: 31,  </div><div class="line">                    name: &apos;B&apos;  </div><div class="line">                &#125;, &#123;  </div><div class="line">                    value: 18,  </div><div class="line">                    name: &apos;C&apos;  </div><div class="line">                &#125;, &#123;  </div><div class="line">                    value: 28,  </div><div class="line">                    name: &apos;D&apos; </div><div class="line">                &#125;, &#123;  </div><div class="line">                    value: 21,  </div><div class="line">                    name: &apos;E&apos;  </div><div class="line">                &#125;]  </div><div class="line">            &#125;  </div><div class="line">        &#125;,  </div><div class="line">        methods: &#123;  </div><div class="line">            // 绘图  </div><div class="line">            drawGraph(id) &#123;  </div><div class="line">                // 绘图方法  </div><div class="line">                this.chart = echarts.init(document.getElementById(id))  </div><div class="line">                    // 皮肤添加同一般使用方式  </div><div class="line">                this.chart.showLoading();  </div><div class="line">                    // 返回到data中  </div><div class="line">                var that = this  </div><div class="line">                // ajax 请求数据  </div><div class="line">                // $.ajax(&#123;  </div><div class="line">                //         // 方式  </div><div class="line">                //         type: &quot;GET&quot;,  </div><div class="line">                //         // 是否异步  </div><div class="line">                //         async: true,  </div><div class="line">                //         // 路径||API  </div><div class="line">                //         url: &quot;xxx&quot;,  </div><div class="line">                //         //返回数据形式为json  </div><div class="line">                //         dataType: &quot;json&quot;,  </div><div class="line">                //         // 加载成功  </div><div class="line">                //         success: function(result) &#123;  </div><div class="line">                //             // 更新初始数据  </div><div class="line">                //             that.opinionData = result  </div><div class="line">                //         &#125;,  </div><div class="line">                //         // 加载错误  </div><div class="line">                //         error: function(errorMsg) &#123;  </div><div class="line">                //             // alert(&quot;请求数据失败!&quot;);  </div><div class="line">                //             console.log(errorMsg)  </div><div class="line">                //         &#125;  </div><div class="line">                //     &#125;)  </div><div class="line">               // set  </div><div class="line">                this.chart.setOption(&#123;  </div><div class="line">                    title: &#123;  </div><div class="line">                        text: &apos;此处为标题&apos;,  </div><div class="line">                        subtext: &apos;副标题&apos;,  </div><div class="line">                        x: &apos;center&apos;  </div><div class="line">                    &#125;,  </div><div class="line">                    tooltip: &#123;  </div><div class="line">                        trigger: &apos;item&apos;,  </div><div class="line">                        formatter: &quot;&#123;a&#125; &lt;br/&gt;&#123;b&#125; : &#123;c&#125; (&#123;d&#125;%)&quot;  </div><div class="line">                    &#125;,  </div><div class="line">                    legend: &#123;  </div><div class="line">                        x: &apos;center&apos;,  </div><div class="line">                        y: &apos;bottom&apos;,  </div><div class="line">                        data: this.opinion // this  </div><div class="line">                    &#125;,  </div><div class="line">                    toolbox: &#123;  </div><div class="line">                        show: true,  </div><div class="line">                        feature: &#123;  </div><div class="line">                            mark: &#123;  </div><div class="line">                                show: true  </div><div class="line">                            &#125;,  </div><div class="line">                            dataView: &#123;  </div><div class="line">                                show: true,  </div><div class="line">                                readOnly: false  </div><div class="line">                            &#125;,  </div><div class="line">                            magicType: &#123;  </div><div class="line">                                show: true,  </div><div class="line">                                type: [&apos;pie&apos;]  </div><div class="line">                            &#125;,  </div><div class="line">                            restore: &#123;  </div><div class="line">                                show: true  </div><div class="line">                            &#125;,  </div><div class="line">                            saveAsImage: &#123;  </div><div class="line">                                show: true  </div><div class="line">                            &#125;  </div><div class="line">                        &#125;  </div><div class="line">                    &#125;,  </div><div class="line">                    calculable: true,  </div><div class="line">                    series: [&#123;  </div><div class="line">                        name: &apos;种类&apos;,  </div><div class="line">                        type: &apos;pie&apos;,  </div><div class="line">                        // 内圆半径，外圆半径  </div><div class="line">                        radius: [30, 100],  </div><div class="line">                        // 位置，左右，上下  </div><div class="line">                        center: [&apos;50%&apos;, &apos;50%&apos;],  </div><div class="line">                        roseType: &apos;area&apos;,  </div><div class="line">                        data: this.opinionData, // this  </div><div class="line">                    &#125;]  </div><div class="line">                &#125;)  </div><div class="line">                this.chart.hideLoading()  </div><div class="line">            &#125;  </div><div class="line">        &#125;,  </div><div class="line">        mounted() &#123;  </div><div class="line">            this.$nextTick(function() &#123;  </div><div class="line">                this.drawGraph(&apos;main&apos;)  </div><div class="line">            &#125;)  </div><div class="line">        &#125;  </div><div class="line">&#125;  </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>效果如下图：<br><img src="/img/chart.png" alt="">  </p>
-<blockquote>
-<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-<script type="text/javascript">
-     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
-      function sTime(){ 
-      var d = new Date(); 
-      var s = d.getHours();
-      var m = d.getMinutes();
-      var se = d.getSeconds();
-      if(s<10){
-         s="0"+s; 
-      }else if(m<10){
-          m="0"+m; 
-      }else if(se<10){
-          se="0"+se; 
-      }
-      var tt = s +":"+ m +":"+ se; 
-      document.getElementById("vositortime").innerText = tt;
-      return tt; 
-      } 
-      var showTime = setInterval(sTime,1000);   
-      function getDate(){
-          var ts = sTime();
-          document.getElementById("vositortimes").innerText = ts;
-      }
-      getDate();
-</script></blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;现在很多的项目，对数据可视化看的越来越重要，数据可视化可以多维度的分析数据，一目了然；对项目的美观和简洁度都有不少的提升，比原来那种表格化的数据格式要好很多了！&lt;br&gt;对这种问题，echarts解决了这样的问题，这里介绍一下 在vue怎么使用echarts！&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="vue2.0" scheme="http://sky-xsk.github.io/tags/vue2-0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决百度分享不支持https的问题</title>
-    <link href="http://sky-xsk.github.io/2017/06/01/%E8%A7%A3%E5%86%B3%E7%99%BE%E5%BA%A6%E5%88%86%E4%BA%AB%E4%B8%8D%E6%94%AF%E6%8C%81https%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>http://sky-xsk.github.io/2017/06/01/解决百度分享不支持https的问题/</id>
-    <published>2017-06-01T08:44:13.000Z</published>
-    <updated>2017-06-02T01:51:17.374Z</updated>
-    
-    <content type="html"><![CDATA[<p>前段时间搭博客的时候，想添加一个百度分享来引流，不了百度分享，不支持https，这个问题困扰了我好久。我呢，在网上搜索了很多资料，最后终于解决了，现在将问题的解决办法分享一下：<br>本站左侧就可以查看效果！<br><a id="more"></a><br><b>第一步</b><br>首先,<code>https://github.com/sky-xsk/-https-</code>我的github上，把这个文件下载或者克隆下来，这个步骤就不做过多解释！（有用的话给个star）<br><b>第二步</b><br>解压压缩文件，把里面的static文件夹，放置到你网站的根目录下面，记住一定是<b>根目录</b>；<br>根目录是啥？这里解释一下，打开你的浏览器，打开百度主页，在搜索框里输入：“根目录是什么？”，看到一个合理的解释即可！（开个玩笑）<br><b>第三步</b><br>window._bd_share_config={“common”:{“bdSnsKey”:{},”bdText”:””,”bdMini”:”2”,”bdMiniList”:false,”bdPic”:””,”bdStyle”:”0”,”bdSize”:”16”},”slide”:{“type”:”slide”,”bdImg”:”5”,”bdPos”:”left”,”bdTop”:”178.5”}};with(document)0[(getElementsByTagName(‘head’)[0]||body).appendChild(createElement(‘script’)).src=’<a href="https://sky-xsk.github.io/static/api/js/share.js?v=89860593.js?cdnversion=&#39;+~(-new">https://sky-xsk.github.io/static/api/js/share.js?v=89860593.js?cdnversion=&#39;+~(-new</a> Date()/36e5)];<br>看到这个，把src后面的网址改成如上面的代码，注意在src=’<a href="https://sky-xsk.github.io/static/api/js/share.js?v=89860593.js?cdnversion=&#39;+~(-new">https://sky-xsk.github.io/static/api/js/share.js?v=89860593.js?cdnversion=&#39;+~(-new</a> Date()/36e5)]里面，<a href="https://sky-xsk.github.io改成自己网址即可；" target="_blank" rel="external">https://sky-xsk.github.io改成自己网址即可；</a><br>这里是我改好的，你按照这个修改该即可！<br><b>注意</b><br>这里提两个主要点：<br>1.static文件夹，放置的路径一定是你网站的根目录；<br>2.修改的src一定是你自己的网址；</p>
-<blockquote>
-<p></p><p>访客的ip和所在地址：<b id="vositor" style="color:red"></b>  访问时间: <b id="vositortimes" style="color:red"></b> 当前时间: <b id="vositortime" style="color:red"></b></p><p></p>
-<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-<script type="text/javascript">
-     var add = document.getElementById('vositor').innerHTML=returnCitySN['cip'] + ' , ' + returnCitySN['cname']; 
-      function sTime(){ 
-      var d = new Date(); 
-      var s = d.getHours();
-      var m = d.getMinutes();
-      var se = d.getSeconds();
-      if(s<10){
-         s="0"+s; 
-      }else if(m<10){
-          m="0"+m; 
-      }else if(se<10){
-          se="0"+se; 
-      }
-      var tt = s +":"+ m +":"+ se; 
-      document.getElementById("vositortime").innerText = tt;
-      return tt; 
-      } 
-      var showTime = setInterval(sTime,1000);   
-      function getDate(){
-          var ts = sTime();
-          document.getElementById("vositortimes").innerText = ts;
-      }
-      getDate();
-</script>
-
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;前段时间搭博客的时候，想添加一个百度分享来引流，不了百度分享，不支持https，这个问题困扰了我好久。我呢，在网上搜索了很多资料，最后终于解决了，现在将问题的解决办法分享一下：&lt;br&gt;本站左侧就可以查看效果！&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="百度分享" scheme="http://sky-xsk.github.io/tags/%E7%99%BE%E5%BA%A6%E5%88%86%E4%BA%AB/"/>
-    
-      <category term="https" scheme="http://sky-xsk.github.io/tags/https/"/>
     
   </entry>
   
